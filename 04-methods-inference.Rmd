@@ -1,0 +1,6 @@
+# Methods Centered on Determining Predictive Factors
+
+This chapter will be focused on methods which have a sound probabilistic framework, and allow for inference into the statistical importance of predictive factors.
+
+ - Logistic Regression
+ - Mixed Effects Models

@@ -1,0 +1,11 @@
+# Methods centered on predicting at-risk students
+
+
+This chapter will explore the use of machine learning algorithms whose primary focus is prediction. This comes at the expense of model interpretatbility, and this tradeoff will be discussed herein as well.
+
+ - Decision Trees and Random Forests
+ - Neural Networks
+
+## Example one
+
+## Example two

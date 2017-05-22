@@ -1,0 +1,8 @@
+# Descriptive Statistics
+
+Here in we will describe
+ - the data set
+ - the methods by which we label students at risk
+ - the distributions of at-risk students by 
+     - demographic indicators
+     - registration record indicators 

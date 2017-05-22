@@ -1,0 +1,3 @@
+# Comparisons
+
+This chapter will compare the effectiveness of the methods developped in the previous two chapters, and compare them to more basic approaches to identifying students at-risk.
