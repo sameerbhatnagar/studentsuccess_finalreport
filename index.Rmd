@@ -13,7 +13,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib,studentsuccess.bib]
 biblio-style: apalike
 link-citations: true
-github-repo: rstudio/bookdown-demo
+github-repo: sbhatnagar/studentsuccess_finalreport
 description: "This is the Final Report for PAREA grant"
 ---
 
