@@ -2,3 +2,4 @@ book_filename: "studentsuccess_final_report"
 language:
   ui:
     chapter_name: "Chapter "
+output_dir: "docs"

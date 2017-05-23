@@ -1,0 +1,101 @@
+--- 
+title: "Data Mining for Student Success and Perseverance"
+author:
+ - Sameer Bhatnagar
+ - Jonathan Guillemette
+ - Micheal Dugdale
+ - Sahir Bhatnagar
+ - Nathaniel Lasry
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib,studentsuccess.bib]
+biblio-style: apalike
+link-citations: true
+github-repo: sbhatnagar/studentsuccess_finalreport
+description: "This is the Final Report for PAREA grant"
+---
+
+# Preface
+
+This report summarizes the work done by our team on using college registration records at three diffrenet anglophone CEGEPS in Montreal in order to find predictors of attrition.
+
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction {#intro}
+
+
+
+
+
+<!--chapter:end:01-intro.Rmd-->
+
+# Literature
+
+The most important relevant work for this project is [@jorgensen_predicting_2009].
+
+<!--chapter:end:02-literature.Rmd-->
+
+# Descriptive Statistics
+
+Here in we will describe
+ - the data set
+ - the methods by which we label students at risk
+ - the distributions of at-risk students by 
+     - demographic indicators
+     - registration record indicators 
+     
+For example, how many what is the distribution of terms spent by a student at Dawson College, disaggregated by gender?
+
+```{r sample-plot}
+library(ggplot2)
+library(cowplot)
+library(data.table)
+load('bin/data/labelled_students.Rdata')
+past_students=students_last_session[status!='current']
+ggplot(data = past_students,aes(term,fill=Sexe))+geom_histogram(binwidth = 1)
+```
+
+<!--chapter:end:03-descriptive-stats.Rmd-->
+
+# Methods Centered on Determining Predictive Factors
+
+This chapter will be focused on methods which have a sound probabilistic framework, and allow for inference into the statistical importance of predictive factors.
+
+ - Logistic Regression
+ - Mixed Effects Models
+
+<!--chapter:end:04-methods-inference.Rmd-->
+
+# Methods centered on predicting at-risk students
+
+
+This chapter will explore the use of machine learning algorithms whose primary focus is prediction. This comes at the expense of model interpretatbility, and this tradeoff will be discussed herein as well.
+
+ - Decision Trees and Random Forests
+ - Neural Networks
+
+## Example one
+
+## Example two
+
+<!--chapter:end:05-methods-prediction.Rmd-->
+
+# Comparisons
+
+This chapter will compare the effectiveness of the methods developped in the previous two chapters, and compare them to more basic approaches to identifying students at-risk.
+
+<!--chapter:end:06-comparisons.Rmd-->
+
+# Final Words
+
+We have finished a nice book.
+
+<!--chapter:end:07-summary.Rmd-->
+
+`r if (knitr:::is_html_output()) '# References {-}'`
+
+<!--chapter:end:08-references.Rmd-->
+
