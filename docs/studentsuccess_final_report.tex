@@ -124,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-05-22}
+  \date{2017-05-23}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -227,6 +227,156 @@ interpretatbility, and this tradeoff will be discussed herein as well.
 This chapter will compare the effectiveness of the methods developped in
 the previous two chapters, and compare them to more basic approaches to
 identifying students at-risk.
+
+For example, we know that some CEGEPs have implemented a policy whereby
+they identify students as being at risk based on their mid-term
+assessments: if the student receives a certain number of ``at-risk'' or
+``failing'' results, they are automatically sent an email referring them
+to academic support services.
+
+Based on this, we can ask the following research questions : - how
+effective is this approach at identifying students who drop-out? - how
+does this approach compare to our models from the previous chapters?
+
+We begin with a basic logistic regression with demographic variables,
+and as well as the number of each type of results of mid-term
+assessment, for students in their last term at the college. With these
+predictors, we try to predict if students are about to graduate, or
+simply not register again.
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+\begin{minipage}[b]{0.30\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\centering\strut
+Estimate\strut
+\end{minipage} & \begin{minipage}[b]{0.16\columnwidth}\centering\strut
+Std. Error\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+z value\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\centering\strut
+Pr(\textgreater{}\textbar{}z\textbar{})\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{num\_pass}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0.5877\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.02321\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+25.32\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+1.747e-141\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{num\_at\_risk}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+1.455\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.03664\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+39.7\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{num\_failing}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+2.193\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.04653\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+47.15\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{num\_courses}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+-0.7442\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.02373\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+-31.36\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+6.315e-216\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{SexeM}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0.2111\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.0386\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+5.469\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+4.537e-08\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{birth\_placeQuebec}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+-0.5914\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.04815\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+-12.28\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+1.108e-34\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{LangueMaternelleAU}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+-0.193\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.05173\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+-3.731\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+0.0001907\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{LangueMaternelleFR}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0.3504\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.04914\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+7.13\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+1.006e-12\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.30\columnwidth}\centering\strut
+\textbf{(Intercept)}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\centering\strut
+0.5654\strut
+\end{minipage} & \begin{minipage}[t]{0.16\columnwidth}\centering\strut
+0.0694\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+8.147\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\centering\strut
+3.741e-16\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+(Dispersion parameter for binomial family taken to be 1 )
+
+\begin{longtable}[]{@{}cl@{}}
+\toprule
+\begin{minipage}[t]{0.25\columnwidth}\centering\strut
+Null deviance:\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
+24452 on 18370 degrees of freedom\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\centering\strut
+Residual deviance:\strut
+\end{minipage} & \begin{minipage}[t]{0.35\columnwidth}\raggedright\strut
+17188 on 18362 degrees of freedom\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 \chapter{Final Words}\label{final-words}
 

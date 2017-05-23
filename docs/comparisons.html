@@ -29,7 +29,7 @@
 <meta name="author" content="Nathaniel Lasry">
 
 
-<meta name="date" content="2017-05-22">
+<meta name="date" content="2017-05-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -142,6 +142,109 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="comparisons" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> Comparisons</h1>
 <p>This chapter will compare the effectiveness of the methods developped in the previous two chapters, and compare them to more basic approaches to identifying students at-risk.</p>
+<p>For example, we know that some CEGEPs have implemented a policy whereby they identify students as being at risk based on their mid-term assessments: if the student receives a certain number of “at-risk” or “failing” results, they are automatically sent an email referring them to academic support services.</p>
+<p>Based on this, we can ask the following research questions : - how effective is this approach at identifying students who drop-out? - how does this approach compare to our models from the previous chapters?</p>
+<p>We begin with a basic logistic regression with demographic variables, and as well as the number of each type of results of mid-term assessment, for students in their last term at the college. With these predictors, we try to predict if students are about to graduate, or simply not register again.</p>
+<table style="width:96%;">
+<colgroup>
+<col width="34%" />
+<col width="15%" />
+<col width="18%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">Estimate</th>
+<th align="center">Std. Error</th>
+<th align="center">z value</th>
+<th align="center">Pr(&gt;|z|)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>num_pass</strong></td>
+<td align="center">0.5877</td>
+<td align="center">0.02321</td>
+<td align="center">25.32</td>
+<td align="center">1.747e-141</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>num_at_risk</strong></td>
+<td align="center">1.455</td>
+<td align="center">0.03664</td>
+<td align="center">39.7</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>num_failing</strong></td>
+<td align="center">2.193</td>
+<td align="center">0.04653</td>
+<td align="center">47.15</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>num_courses</strong></td>
+<td align="center">-0.7442</td>
+<td align="center">0.02373</td>
+<td align="center">-31.36</td>
+<td align="center">6.315e-216</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>SexeM</strong></td>
+<td align="center">0.2111</td>
+<td align="center">0.0386</td>
+<td align="center">5.469</td>
+<td align="center">4.537e-08</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>birth_placeQuebec</strong></td>
+<td align="center">-0.5914</td>
+<td align="center">0.04815</td>
+<td align="center">-12.28</td>
+<td align="center">1.108e-34</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>LangueMaternelleAU</strong></td>
+<td align="center">-0.193</td>
+<td align="center">0.05173</td>
+<td align="center">-3.731</td>
+<td align="center">0.0001907</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>LangueMaternelleFR</strong></td>
+<td align="center">0.3504</td>
+<td align="center">0.04914</td>
+<td align="center">7.13</td>
+<td align="center">1.006e-12</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>(Intercept)</strong></td>
+<td align="center">0.5654</td>
+<td align="center">0.0694</td>
+<td align="center">8.147</td>
+<td align="center">3.741e-16</td>
+</tr>
+</tbody>
+</table>
+<p>(Dispersion parameter for binomial family taken to be 1 )</p>
+<table style="width:64%;">
+<colgroup>
+<col width="26%" />
+<col width="37%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center">Null deviance:</td>
+<td>24452 on 18370 degrees of freedom</td>
+</tr>
+<tr class="even">
+<td align="center">Residual deviance:</td>
+<td>17188 on 18362 degrees of freedom</td>
+</tr>
+</tbody>
+</table>
 
 </div>
             </section>
