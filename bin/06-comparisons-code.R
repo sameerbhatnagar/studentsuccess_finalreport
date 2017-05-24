@@ -38,7 +38,7 @@ fit %>% summary() %>% pander::pander()
 
 
 ## ---- simulate-ss-module ----
-n=3
+n=2
 t=table(last_term$num_at_risk+last_term$num_failing>n,last_term$status)
 recall=t[2,2]/sum(t[,2])
 precision=(t[1,1]+t[2,2])/sum(t)
@@ -47,3 +47,12 @@ recall
 precision
 false_pos
 
+
+n=2
+t=table(last_term[term==3]$num_at_risk+last_term[term==3]$num_failing>n,last_term[term==3]$status)
+recall=t[2,2]/sum(t[,2])
+precision=(t[1,1]+t[2,2])/sum(t)
+false_pos = t[2,1]
+recall
+precision
+false_pos
