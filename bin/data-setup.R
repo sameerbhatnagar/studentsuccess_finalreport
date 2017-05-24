@@ -14,15 +14,17 @@ subdir<-paste0(getwd())
 '%NI%' <- function(x,y)!('%in%'(x,y))
 
 ## ---- choose-college ----
-admission<-admission.Dawson
-etudiant_session<-etudiant_session.Dawson
-inscription<-inscription.Dawson
-cours<-cours.Dawson
-certification_type<-certification_type.Dawson
-student_certification<-student_certification.Dawson
-evaluation_etudiant<-evaluation_etudiant.Dawson
-etudiant_cours_secondaire<-etudiant_cours_secondaire.Dawson
-etudiant<- etudiant.Dawson
+colleges<-c('Dawson','Vanier','JAC')
+for (college in colleges){
+admission<-get(paste0('admission.',college))
+etudiant_session<-get(paste0('etudiant_session.',college))
+inscription<-get(paste0('inscription.',college))
+cours<-get(paste0('cours.',college))
+certification_type<-get(paste0('certification_type.',college))
+student_certification<-get(paste0('student_certification.',college))
+evaluation_etudiant<-get(paste0('evaluation_etudiant.',college))
+etudiant_cours_secondaire<-get(paste0('etudiant_cours_secondaire.',college))
+etudiant<- get(paste0('etudiant.',college))
 
 
 # keep admission records for only those who started or ended after Fall 2010
@@ -102,6 +104,8 @@ mappings<-mappings[order(N,decreasing = T)][N>max(N)*0.01][,.(program,profile)]
 mappings<-rbind(mappings,transitions[,.(program,profile)])
 new_profiles=data.table(profile=c('500G1','500G2','500G3','500G4','500G5','500G6'),program=rep('500A1',6))
 mappings<-rbind(mappings,new_profiles)
+new_profiles=data.table(profile=c('200B5','300AD','410C0','500AE','500AF'),program=c('200B0','300A0','410C0','500A1','500A1'))
+mappings<-rbind(mappings,new_profiles)
 
 
 setkey(mappings,profile)
@@ -129,7 +133,18 @@ current[,program:=paste0(program,'-current')]
 current %>% setkey(student_number,ansession)
 current %>% duplicated() %>% which
 
+# students who, in their last session record, do not appear in certification table,
+# nor are they current students, must have dropped out
 quitters<-last.term[student_number %NI% current$student_number][student_number %NI% finishers$student_number]
+# unless they went certified from another college
+other_colleges=colleges[colleges!=college]
+
+o.g<-get(paste0('student_certification.',other_colleges[1]))$student_number
+quitters<-quitters[!intersect(quitters,o.g)]
+
+o.g<-get(paste0('student_certification.',other_colleges[2]))$student_number
+quitters<-quitters[!intersect(quitters,o.g)]
+
 quitters[,program:=paste0(program,'-out')]
 quitters %>% setkey(student_number,ansession)
 quitters %>% duplicated() %>% which
@@ -204,8 +219,10 @@ students_last_session[,c('program','status'):=tstrsplit(program,'-')]
 
 
 save(courses,
-     file = 'bin/data/course_records_Dawson.Rdata')
+     file = paste0('bin/data/course_records_',college,'.Rdata'))
 save(students_last_session,
-     file='bin/data/labelled_students.Rdata')
+     file = paste0('bin/data/labelled_students_',college,'.Rdata'))
+}
 rm(list=ls())
+
 

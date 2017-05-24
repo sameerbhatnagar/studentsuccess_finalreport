@@ -6,17 +6,12 @@ Here in we will describe
  - the distributions of at-risk students by 
      - demographic indicators
      - registration record indicators 
-     
-For example, how many what is the distribution of terms spent by a student at Dawson College, disaggregated by gender?
 
-```{r sample-plot}
-library(ggplot2)
-library(cowplot)
-library(data.table)
-load('bin/data/labelled_students.Rdata')
-past_students=students_last_session[status!='current']
-ggplot(data = past_students,aes(term,fill=Sexe))+geom_histogram(binwidth = 1)
-```
+
+## Demographics across the colleges and major programs
+
+## Fraction of students who change colleges
+
 
 
 

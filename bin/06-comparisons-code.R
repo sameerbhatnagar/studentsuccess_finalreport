@@ -3,7 +3,7 @@ rm(list=ls())
 library(data.table)
 library(magrittr)
 load("bin/data/course_records_Dawson.Rdata")
-load("bin/data/labelled_students.Rdata")
+load("bin/data/labelled_students_Dawson.Rdata")
 na=courses[,sum(is.na(result)|result=='Not applicable'),by=.(student_number,ansession)]
 setnames(na,'V1','num_na')
 pass=courses[,sum(result=='Passing',na.rm = T),by=.(student_number,ansession)]
