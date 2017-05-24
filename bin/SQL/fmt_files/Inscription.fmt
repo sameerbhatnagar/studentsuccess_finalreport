@@ -1,0 +1,20 @@
+11.0
+18
+1       SQLCHAR             0       12      ","      1     IDInscription                                                          ""
+2       SQLCHAR             0       12      ","      2     IDEtudiantSession                                                      ""
+3       SQLCHAR             0       12      ","      3     IDGroupe                                                               ""
+4       SQLCHAR             0       2       ","      4     TypeRAF                                                                Latin1_General_CI_AS
+5       SQLCHAR             0       2       ","      5     ModeEnseignementDistance                                               Latin1_General_CI_AS
+6       SQLCHAR             0       5       ","      6     Ponderation                                                            ""
+7       SQLCHAR             0       30      ","      7     NbAbsences                                                             ""
+8       SQLCHAR             0       2       ","      8     Langue                                                                 Latin1_General_CI_AS
+9       SQLCHAR             0       5       ","      9     MoyenneGroupeEvaluation                                                ""
+10      SQLCHAR             0       5       ","      10    Etat                                                                   ""
+11      SQLCHAR             0       12      ","      11    IndicateurCoursSuivi                                                   ""
+12      SQLCHAR             0       12      ","      12    IndicateurCoursInscrit                                                 ""
+13      SQLCHAR             0       1       ","      13    IndicateurSupprime                                                     ""
+14      SQLCHAR             0       24      ","      14    DateHeureSynchronisationMinistere                                      ""
+15      SQLCHAR             0       30      ","      15    MoyenneNotesRetenuesCoteR                                              ""
+16      SQLCHAR             0       2       ","      16    CodeRemarque                                                           Latin1_General_CI_AS
+17      SQLCHAR             0       5       ","      17    Note                                                                   ""
+18      SQLCHAR             0       30      "\r\n"   18    CoteR                                                                  ""

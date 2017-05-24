@@ -1,0 +1,12 @@
+11.0
+10
+1       SQLCHAR             0       12      ","      1     IDCoursSecondaire                                      ""
+2       SQLCHAR             0       10      ","      2     Numero                                                 Latin1_General_CI_AS
+3       SQLCHAR             0       10      ","      3     NumeroValidationPrealable                              Latin1_General_CI_AS
+4       SQLCHAR             0       100     ","      4     Titre                                                  Latin1_General_CI_AS
+5       SQLCHAR             0       5       ","      5     NbUnites                                               ""
+6       SQLCHAR             0       5       ","      6     Seuil                                                  ""
+7       SQLCHAR             0       1       ","      7     TypeMoyenneSpecifique                                  Latin1_General_CI_AS
+8       SQLCHAR             0       12      ","      8     PointsBonis                                            ""
+9       SQLCHAR             0       3       ","      9     DomaineFormation                                       Latin1_General_CI_AS
+10      SQLCHAR             0       2       "\r\n"   10    SecteurEnseignement                                    Latin1_General_CI_AS

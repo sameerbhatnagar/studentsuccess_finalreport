@@ -1,0 +1,7 @@
+11.0
+5
+1       SQLCHAR             0       16000   ","      1     student_number                   ""
+2       SQLCHAR             0       12      ","      2     IDType                           ""
+3       SQLCHAR             0       7       ","      3     AnSession                        ""
+4       SQLCHAR             0       5       ","      4     program                          Latin1_General_CI_AS
+5       SQLCHAR             0       10      "\r\n"   5     division                         Latin1_General_CI_AS

@@ -1,0 +1,13 @@
+11.0
+11
+1       SQLCHAR             0       12      ","      1     IDGroupe                                                     ""
+2       SQLCHAR             0       8       ","      2     course                                                       Latin1_General_CI_AS
+3       SQLCHAR             0       12      ","      3     section                                                      ""
+4       SQLCHAR             0       30      ","      4     PonderationTheo                                              ""
+5       SQLCHAR             0       30      ","      5     PonderationLab                                               ""
+6       SQLCHAR             0       30      ","      6     PonderationPersonnel                                         ""
+7       SQLCHAR             0       5       ","      7     Credite                                                      ""
+8       SQLCHAR             0       5       ","      8     SeuilPassageNoteFinale                                       ""
+9       SQLCHAR             0       7       ","      9     NbEtudiantsPremierJourClasse                                 ""
+10      SQLCHAR             0       7       ","      10    NbEtudiantsAuRecensement                                     ""
+11      SQLCHAR             0       5       "\r\n"   11    MoyenneGroupeEvaluation                                      ""

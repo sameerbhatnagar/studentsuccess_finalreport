@@ -1,0 +1,16 @@
+11.0
+14
+1       SQLCHAR             0       12      ","      1     IDAdmission                                    ""
+2       SQLCHAR             0       1800    ","      2     student_number                                 ""
+3       SQLCHAR             0       5       ","      3     spe                                            ""
+4       SQLCHAR             0       5       ","      4     speAdmission                                   ""
+5       SQLCHAR             0       7       ","      5     ansessionDebut                                 ""
+6       SQLCHAR             0       7       ","      6     ansessionFin                                   ""
+7       SQLCHAR             0       24      ","      7     Withdrawal_date                                ""
+8       SQLCHAR             0       5       ","      8     TypeAdmission                                  ""
+9       SQLCHAR             0       5       ","      9     NoTour                                         ""
+10      SQLCHAR             0       5       ","      10    reforme                                        ""
+11      SQLCHAR             0       7       ","      11    cohorte                                        ""
+12      SQLCHAR             0       1       ","      12    population                                     Latin1_General_CI_AS
+13      SQLCHAR             0       1       ","      13    IndicateurReadmission                          ""
+14      SQLCHAR             0       5       "\r\n"   14    program                                        Latin1_General_CI_AS

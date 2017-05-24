@@ -17,3 +17,17 @@ The electronic version of this report is always up-to date and on the web, viewa
 ### PDF version 
  - should always available at https://github.com/sameerbhatnagar/studentsuccess_finalreport/blob/master/docs/studentsuccess_final_report.pdf
 
+
+ ### Collaborating Colleges
+  - for any CEGEP that would like to extract their CLARA tables, into the same anonymized format as what was used for this project, please refer to the SQL procedures in the folder `bin/SQL`
+
+
+## This project was made possible by:
+ - PAREA (Programme d'Aide de Recherche et Enseignment et Apprentissage)
+ - Derek Gaucher and Anna Likht, from the Dawson College department of Information Systems and Technology, for writing the data extraction scripts that could be used by collaborating colleges
+ - Diane Gauvin, Academic Dean, Dawson College, for setting in motion the process of creating a mirror database of CLARA, for the purposes of research into Student Success and Perseverance
+ - Partners at Collaborating Colleges
+     - Larry Calahan, and Ross Tzankov (especially for additional feedback in generalizing SQL procedures)
+     - Kim Rousseau and Greg Bagshaw from John Abbott College
+
+

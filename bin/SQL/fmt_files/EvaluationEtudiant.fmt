@@ -1,0 +1,6 @@
+11.0
+4
+1       SQLCHAR             0       1800    ","      1     student_number                   ""
+2       SQLCHAR             0       7       ","      2     AnSession                        ""
+3       SQLCHAR             0       12      ","      3     IdGroupe                         ""
+4       SQLCHAR             0       15      "\r\n"   4     result                           Latin1_General_CI_AS

@@ -1,0 +1,8 @@
+11.0
+6
+1       SQLCHAR             0       12      ","      1     idEtudeAnterieure                                      ""
+2       SQLCHAR             0       1800    ","      2     student_number                                         ""
+3       SQLCHAR             0       5       ","      3     EtatEtudeSecondaire                                    ""
+4       SQLCHAR             0       5       ","      4     EtatEtudeSecondaireAdulte                              ""
+5       SQLCHAR             0       5       ","      5     EtatEtudeCollegial                                     ""
+6       SQLCHAR             0       5       "\r\n"   6     EtatEtudeUniversitaire                                 ""

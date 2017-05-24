@@ -1,0 +1,13 @@
+11.0
+11
+1       SQLCHAR             0       12      ","      1     IDEtudiantSession                                        ""
+2       SQLCHAR             0       1800    ","      2     student_number                                           ""
+3       SQLCHAR             0       5       ","      3     program                                                  Latin1_General_CI_AS
+4       SQLCHAR             0       7       ","      4     ansession                                                ""
+5       SQLCHAR             0       5       ","      5     Etat                                                     ""
+6       SQLCHAR             0       5       ","      6     SPE                                                      ""
+7       SQLCHAR             0       3       ","      7     TypeFrequentation                                        Latin1_General_CI_AS
+8       SQLCHAR             0       1       ","      8     IndicateurCommandite                                     ""
+9       SQLCHAR             0       1       ","      9     IndicateurFinissant                                      ""
+10      SQLCHAR             0       1       ","      10    IndicateurFinissantCalcule                               ""
+11      SQLCHAR             0       30      "\r\n"   11    Moyenne                                                  ""

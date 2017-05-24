@@ -1,0 +1,20 @@
+11.0
+18
+1       SQLCHAR             0       12      ","      1     IDEtudiantCoursSecondaire                              ""
+2       SQLCHAR             0       1800    ","      2     student_number                                         ""
+3       SQLCHAR             0       12      ","      3     IDCoursSecondaire                                      ""
+4       SQLCHAR             0       5       ","      4     Resultat                                               ""
+5       SQLCHAR             0       3       ","      5     CodeRemarque                                           Latin1_General_CI_AS
+6       SQLCHAR             0       1       ","      6     IndicateurReussi                                       ""
+7       SQLCHAR             0       12      ","      7     Etat                                                   ""
+8       SQLCHAR             0       7       ","      8     Annee                                                  ""
+9       SQLCHAR             0       5       ","      9     session                                                ""
+10      SQLCHAR             0       5       ","      10    RangCinquieme                                          ""
+11      SQLCHAR             0       5       ","      11    RangCentile                                            ""
+12      SQLCHAR             0       5       ","      12    MoyenneGroupe                                          ""
+13      SQLCHAR             0       2       ","      13    RegimePedagogiqueCours                                 Latin1_General_CI_AS
+14      SQLCHAR             0       2       ","      14    TypeFormation                                          Latin1_General_CI_AS
+15      SQLCHAR             0       5       ","      15    Origine                                                ""
+16      SQLCHAR             0       1       ","      16    IndicateurSupprime                                     ""
+17      SQLCHAR             0       120     ","      17    School                                                 Latin1_General_CI_AS
+18      SQLCHAR             0       2       "\r\n"   18    School_Type                                            Latin1_General_CI_AS
