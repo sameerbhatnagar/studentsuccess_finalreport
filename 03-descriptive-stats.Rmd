@@ -17,3 +17,6 @@ load('bin/data/labelled_students.Rdata')
 past_students=students_last_session[status!='current']
 ggplot(data = past_students,aes(term,fill=Sexe))+geom_histogram(binwidth = 1)
 ```
+
+
+

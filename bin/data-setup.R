@@ -148,10 +148,10 @@ sessions.cast<-sessions[,.(student_number,program,term)] %>% dcast.data.table(st
 # sessions[,.SD[.N],by=student_number][,program] %>% table()
 
 ## ---- build-transcripts-for-all-students ----
-groups<-cours[,.(IDGroupe,course)]
+groups<-cours[,.(IDGroupe,course,section)]
 setkey(groups,IDGroupe)
 setkey(inscription.clean,IDGroupe)
-courses<-groups[inscription.clean][,.(IDInscription,IDEtudiantSession,IDGroupe,course,Note,MoyenneGroupeEvaluation)]
+courses<-groups[inscription.clean][,.(IDInscription,IDEtudiantSession,IDGroupe,course,Note,MoyenneGroupeEvaluation,section,CoteR)]
 
 setkey(courses,IDEtudiantSession,IDGroupe)
 # d<-courses[courses %>% duplicated() %>% which()]
