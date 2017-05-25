@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Mining for Student Success</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="0.1" data-path=""><a href="#data-mining-for-student-success-and-perseverance"><i class="fa fa-check"></i><b>0.1</b> Data Mining for Student Success and Perseverance</a><ul>
+<li class="chapter" data-level="0.1.1" data-path=""><a href="#to-contribute-to-the-report"><i class="fa fa-check"></i><b>0.1.1</b> To contribute to the report:</a></li>
+<li class="chapter" data-level="0.1.2" data-path=""><a href="#pdf-version"><i class="fa fa-check"></i><b>0.1.2</b> PDF version</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path=""><a href="#this-project-was-made-possible-by"><i class="fa fa-check"></i><b>0.2</b> This project was made possible by:</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<!--bookdown:title:end-->
+<!--bookdown:title:start-->
+<div id="data-mining-for-student-success-and-perseverance" class="section level2">
+<h2><span class="header-section-number">0.1</span> Data Mining for Student Success and Perseverance</h2>
+<p>This repository hosts the code needed to generate the final report for the PAREA grant.</p>
+<p>The electronic version of this report is always up-to date and on the web, viewable at sameerbhatnagar.github.io/studentsuccess_finalreport</p>
+<div id="to-contribute-to-the-report" class="section level3">
+<h3><span class="header-section-number">0.1.1</span> To contribute to the report:</h3>
+<ul>
+<li>clone the repository</li>
+<li><code>mkdir bin/data</code></li>
+<li>make your own working branch off of the master</li>
+<li>Open the R Project file <code>studentsuccess_finalreport.Rproj</code> with un updated version of
+<ul>
+<li>R</li>
+<li>RStudio</li>
+</ul></li>
+<li><p>in the R console, run the command <code>&gt; Sys.setenv(R_path_to_data_directory = '&lt;Enter Absolute Path to your local copy of Data&gt;')</code></p></li>
+<li>Open the script <code>data-setup.R</code> in the folder <code>bin</code></li>
+<li>run the script to produce some of useful R objects (will automatically be placed in the folder <code>bin/data</code>)</li>
+<li>press <code>build-book</code> in RStudio IDE to get a local preview of the entire book in</li>
+<li><p>Modify <strong>only the <code>.Rmd</code> files</strong>. Commit, and make a pull request back to me (Sameer), and I will merge to master branch, which will automatically update the live web version</p></li>
+</ul>
+</div>
+<div id="pdf-version" class="section level3">
+<h3><span class="header-section-number">0.1.2</span> PDF version</h3>
+<ul>
+<li>should always available at <a href="https://github.com/sameerbhatnagar/studentsuccess_finalreport/blob/master/docs/studentsuccess_final_report.pdf" class="uri">https://github.com/sameerbhatnagar/studentsuccess_finalreport/blob/master/docs/studentsuccess_final_report.pdf</a></li>
+</ul>
+<p>### Collaborating Colleges - for any CEGEP that would like to extract their CLARA tables, into the same anonymized format as what was used for this project, please refer to the SQL procedures in the folder <code>bin/SQL</code></p>
+</div>
+</div>
+<div id="this-project-was-made-possible-by" class="section level2">
+<h2><span class="header-section-number">0.2</span> This project was made possible by:</h2>
+<ul>
+<li>PAREA (Programme d’Aide de Recherche et Enseignment et Apprentissage)</li>
+<li>Derek Gaucher and Anna Likht, from the Dawson College department of Information Systems and Technology, for writing the data extraction scripts that could be used by collaborating colleges</li>
+<li>Diane Gauvin, Academic Dean, Dawson College, for setting in motion the process of creating a mirror database of CLARA, for the purposes of research into Student Success and Perseverance</li>
+<li>Partners at Collaborating Colleges
+<ul>
+<li>Larry Calahan, and Ross Tzankov (especially for additional feedback in generalizing SQL procedures)</li>
+<li>Kim Rousseau and Greg Bagshaw from John Abbott College</li>
+</ul></li>
+</ul>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>

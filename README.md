@@ -8,8 +8,15 @@ The electronic version of this report is always up-to date and on the web, viewa
  - clone the repository
  - `mkdir bin/data`
  - make your own working branch off of the master
+ - Open the R Project file `studentsuccess_finalreport.Rproj` with un updated version of 
+     - R 
+     - RStudio
+ - in the R console, run the command 
+ ```
+ > Sys.setenv(R_path_to_data_directory = '<Enter Absolute Path to your local copy of Data>')
+```
+
  - Open the script `data-setup.R` in the folder `bin`
- - set the variable `path_to_data` at the top of the script to point to the absolute path where the .Rdata built by @JonathanGuillemette resides
  - run the script to produce some of useful R objects (will automatically be placed in the folder `bin/data`)
  - press `build-book` in RStudio IDE to get a local preview of the entire book in
  - Modify **only the `.Rmd` files**. Commit, and make a pull request back to me (Sameer), and I will merge to master branch, which will automatically update the live web version
