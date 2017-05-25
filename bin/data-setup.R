@@ -187,7 +187,7 @@ courses<-evaluation_etudiant[,.(student_number,IDGroupe,result)][courses]
 setkey(courses,student_number,ansession,course)
 # d<-courses[courses %>% duplicated() %>% which()]
 # courses[student_number==d[2]$student_number]
-courses<-unique(courses, by= c("student_number","ansession"),fromLast = T)
+courses<-unique(courses, by= c("student_number","ansession","course"),fromLast = T)
 
 ## ---- build-model-matrix-to-predict-drop-out-following-term ----
 last.term.minus.1 %>% setkey(student_number)
