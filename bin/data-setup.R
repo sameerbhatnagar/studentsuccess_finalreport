@@ -1,7 +1,7 @@
 ## ---- load-data ----
 rm(list=ls())
 
-path.to.data.directory<-"~/Desktop/StudentSuccessClean/"
+path.to.data.directory<-'C:/Work/JAC/PAREA/SamClone/studentsuccess_finalreport/bin/data/'
 NOW = 20171
 load(paste0(path.to.data.directory,'student_success_Triple.RData'))
 earliest.ansession<-20103
