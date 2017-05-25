@@ -32,7 +32,7 @@ admission.recent<-admission[ansessionDebut>=earliest.ansession,
                             .(student_number,ansessionDebut,program,population,speAdmission)]
 student_certification.recent<-student_certification[ansession>=earliest.ansession]
 setkey(student_certification.recent,student_number,ansession)
-student_certification.recent<-student_certification.recent %>% unique()
+student_certification.recent<-student_certification.recent %>% unique(by=c("student_number","ansession"))
 
 # remove session IDs from inscription that have only NA's as Note (unless current semester!)
 current.sessions<-etudiant_session[ansession==NOW,IDEtudiantSession]
@@ -71,7 +71,7 @@ setkey(sessions,student_number,ansession)
 # sessions[student_number==x$student_number[1]]$IDEtudiantSession
 # inscription.clean[IDEtudiantSession==491578]
 # inscription.clean[IDEtudiantSession==471795]
-sessions<-unique(sessions)
+sessions<-unique(sessions,by=c('student_number','ansession'))
 
 # label terms
 setkey(sessions,student_number,ansession)
@@ -96,7 +96,7 @@ mappings<-mappings[!substr(profile,1,1)=='0']
 
 mappings<-mappings[substr(profile,1,3)==substr(program,1,3),]
 mappings %>% setkey('program','profile')
-mappings<-mappings %>% unique()
+mappings<-mappings %>% unique(by=c('program','profile'))
 
 changeups<-mappings[substr(profile,1,3)=='570'|substr(profile,1,3)=='410'][substr(profile,1,4)==substr(program,1,4)]
 mappings<-rbind(mappings[!substr(profile,1,3)=='570'|substr(profile,1,3)=='410'],changeups)
@@ -109,7 +109,7 @@ mappings<-rbind(mappings,new_profiles)
 
 
 setkey(mappings,profile)
-mappings<-mappings[!duplicated(mappings)]
+mappings<-mappings %>% unique(by='profile')
 setkey(sessions,'profile.code')
 sessions<-mappings[sessions]
 
@@ -153,7 +153,7 @@ sessions<-rbind(sessions,finishers,current,quitters)
 setkey(sessions,student_number,ansession)
 d<-sessions[sessions %>% duplicated() %>% which()]
 # sessions[student_number == d[23]$student_number]
-sessions<-unique(sessions,fromLast = T)
+sessions<-unique(sessions,by=c("student_number","ansession"),fromLast = T)
 
 sessions %>% setkey(student_number,ansession)
 sessions %>% duplicated() %>% which()
@@ -187,7 +187,7 @@ courses<-evaluation_etudiant[,.(student_number,IDGroupe,result)][courses]
 setkey(courses,student_number,ansession,course)
 # d<-courses[courses %>% duplicated() %>% which()]
 # courses[student_number==d[2]$student_number]
-courses<-unique(courses,fromLast = T)
+courses<-unique(courses, by= c("student_number","ansession"),fromLast = T)
 
 ## ---- build-model-matrix-to-predict-drop-out-following-term ----
 last.term.minus.1 %>% setkey(student_number)
