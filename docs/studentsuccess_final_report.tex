@@ -31,6 +31,46 @@
 \urlstyle{same}  % don't use monospace font for urls
 \usepackage{natbib}
 \bibliographystyle{apalike}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
+\newcommand{\ImportTok}[1]{{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
+\newcommand{\BuiltInTok}[1]{{#1}}
+\newcommand{\ExtensionTok}[1]{{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
 \usepackage{longtable,booktabs}
 \usepackage{graphicx,grffile}
 \makeatletter
@@ -84,7 +124,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-05-25}
+  \date{2017-05-26}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -327,6 +367,96 @@ Residual deviance:\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
+
+\chapter{Continuing Education at
+Dawson}\label{continuing-education-at-dawson}
+
+The department of Continuing at Education offers evening courses across
+many disciplines throughout the year. The purpose of this report is to
+give a broad overview of the demographics and sector-level metrics for
+students taking courses within Cont Ed.
+
+\subsection{How have each of the departments increased their ContEd
+offerings over
+time?}\label{how-have-each-of-the-departments-increased-their-conted-offerings-over-time}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept_sizes <-courses[section>}\DecValTok{3000} \NormalTok{&}\StringTok{ }\NormalTok{CoteR==}\StringTok{'E'}\NormalTok{,.N,by=.(ansession,course.dept)]}
+\NormalTok{leave_out <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'990'}\NormalTok{,}\StringTok{'520'}\NormalTok{,}\StringTok{'570'}\NormalTok{,}\StringTok{'311'}\NormalTok{,}\StringTok{'242'}\NormalTok{,}\StringTok{'365'}\NormalTok{,}\StringTok{'388'}\NormalTok{,}\StringTok{'607'}\NormalTok{,}\StringTok{'608'}\NormalTok{,}\StringTok{'510'}\NormalTok{,}\StringTok{'410'}\NormalTok{,}\StringTok{'243'}\NormalTok{,}\StringTok{'582'}\NormalTok{,}\StringTok{'574'}\NormalTok{)}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =} \NormalTok{dept_sizes[course.dept %NI%}\StringTok{ }\NormalTok{leave_out], }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\KeywordTok{factor}\NormalTok{(ansession),}\DataTypeTok{y=}\NormalTok{N))+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{linetype=}\StringTok{'dashed'}\NormalTok{)+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color=}\NormalTok{course.dept))+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle =} \DecValTok{90}\NormalTok{, }\DataTypeTok{hjust =} \DecValTok{1}\NormalTok{))+}
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(~course.dept)+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position =} \StringTok{'none'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+\end{verbatim}
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/dept-level-sizes-over-time-1.pdf}
+
+\subsection{Which parts of Continuing Education are the most important
+in
+2016?}\label{which-parts-of-continuing-education-are-the-most-important-in-2016}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dept_sizes <-courses[section>}\DecValTok{3000} \NormalTok{&}\StringTok{ }\NormalTok{CoteR==}\StringTok{'E'} \NormalTok{&}\StringTok{ }\KeywordTok{as.integer}\NormalTok{(ansession/}\DecValTok{10}\NormalTok{)==}\DecValTok{2016}\NormalTok{,.N,by=course.dept]}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =} \NormalTok{courses[section>}\DecValTok{3000} \NormalTok{&}\StringTok{ }\NormalTok{CoteR==}\StringTok{'E'} \NormalTok{&}\StringTok{ }\KeywordTok{as.integer}\NormalTok{(ansession/}\DecValTok{10}\NormalTok{)==}\DecValTok{2016}\NormalTok{], }\KeywordTok{aes}\NormalTok{(course.dept))+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/dept-level-sizes-2016-1.pdf}
 
 \chapter{Final Words}\label{final-words}
 

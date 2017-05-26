@@ -1,0 +1,65 @@
+# Continuing Education at Dawson
+
+```{r conted-local-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,message = FALSE)
+knitr::read_chunk("bin/ContEdDawson.R")
+```
+
+```{r conted-setup}
+```
+
+The department of Continuing at Education offers evening courses across many disciplines throughout the year. The purpose of this report is to give a broad overview of the demographics and sector-level metrics for students taking courses within Cont Ed.
+
+## Services
+
+Herein, we look at the services offered by the Division of Continuing Education.
+
+### Continuing Education's Growth over Time
+
+How have each of the departments increased their ContEd offerings over time? 
+
+```{r dept-level-sizes-over-time}
+```
+
+### Department Level Seat Distributions
+
+Which parts of Continuing Education are the most important in 2016? 
+
+```{r dept-level-sizes-2016}
+```
+
+### Course Level distributions
+
+If we look at the three most important departments (Math,Humanities and English) in 2016, how are the seats distrinuted across courses?
+
+```{r big-dept-seat-dist-by-course}
+```
+
+### Specialized spaces
+
+If we look at the departments that require specialized spaces (i.e. labs), in 2016, how are the seats distributed by course? 
+ - Has this evolved over time?
+ - What are the seasonal variations?
+
+#### Winter
+```{r lab-dept-seat-dist-by-course-winter}
+```
+
+#### Fall
+```{r lab-dept-seat-dist-by-course-fall}
+```
+
+#### Summer
+```{r lab-dept-seat-dist-by-course-summer}
+```
+
+
+
+## Students
+
+### Demographics
+Who are the students using continuing education services?
+
+
+
+### Success Rates
