@@ -60,6 +60,19 @@ If we look at the departments that require specialized spaces (i.e. labs), in 20
 ### Demographics
 Who are the students using continuing education services?
 
+  - are there gender differences?
+  - are there age differences?
+  - do these demographics change over time?
+  - are there seasonal variations?
+  - are there differences in different departments?
+  
+```{r demographics-over-time}
+```
 
+What is impact of condensed summer term? 
+
+```{r demographics-over-time-summer}
+```
 
 ### Success Rates
+To come...

@@ -2,8 +2,9 @@
 rm(list = ls())
 library(ggplot2)
 library(data.table)
-load("bin/data/course_records_Dawson_plus.Rdata")
-load("bin/data/labelled_students_Dawson_plus.Rdata")
+library(magrittr)
+load("bin/data/course_records_plus_Dawson.Rdata")
+load("bin/data/labelled_students_plus_Dawson.Rdata")
 '%NI%' <- function(x,y)!('%in%'(x,y))
 
 
@@ -61,18 +62,25 @@ ggplot(data = clab[ansession%%10==2],aes(course))+
   facet_wrap(~ansession)+
   labs(y='Seats in Summer Term')
 
+## ---- demographics-over-time ----
+courses[,age:=as.integer(courses$ansession/10)-courses$DateNaissance %>% substr(1,4) %>% as.integer()]
 
-## ---- Sexe-dept-ansession ----
-c_s<-courses[section>3000 & CoteR=='E',.N,by=.(course.dept,ansession,Sexe)]
-c_s[,course.dept:=substr(course,1,3)]
-ggplot(data = c_s[course.dept %NI% leave_out], aes(x=factor(ansession),y=N,group=Sexe))+
-  geom_line(aes(color=Sexe))+
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))+
-  facet_wrap(~course.dept)+
-  theme(legend.position = 'none')+
-  labs(x='ansession',y='Seats')
+demo<-courses[section>3000 & CoteR=='E',.(mean(age),mean(Note,na.rm = T),.N),by=.(course,ansession,Sexe)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
 
+demo[,course.dept:=substr(course,1,3)]
+demo<-demo[,.(mean(mean_age),mean(mean_grade,na.rm = T),mean(N)),by=.(course.dept,ansession,Sexe)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+setnames(demo,'V3','mean_N')
 
+science<-c(keep_dept,'201','603')
+ggplot(data=demo[ansession%%10!=2][ansession>20133][ansession<20171][!is.na(mean_grade)][course.dept %in% science],
+       aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=Sexe,size=mean_N))+facet_wrap(~ansession)
 
-## ---- num-courses-per-student ----
-# disagregated by success rates
+## ---- demographics-over-time-summer ----
+ggplot(data=demo[ansession%%10==2][!is.na(mean_grade)][course.dept %in% science],
+       aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=Sexe,size=mean_N))+facet_wrap(~ansession)
