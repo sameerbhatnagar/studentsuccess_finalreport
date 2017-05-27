@@ -65,14 +65,41 @@ Who are the students using continuing education services?
   - do these demographics change over time?
   - are there seasonal variations?
   - are there differences in different departments?
-  
-```{r demographics-over-time}
+
+#### Sexe
+```{r Sexe-demographics-over-time}
 ```
 
 What is impact of condensed summer term? 
 
-```{r demographics-over-time-summer}
+```{r Sexe-demographics-over-time-summer}
 ```
+
+#### Birth Place
+Now, instead of looking at effect of gender, we focus instead on Birth Place. To Quebec residents stand out in any consistent way, as compared to those born elsewhere?
+
+```{r birth-place-demographics-over-time}
+```
+
+Again, what is impact of condensed summer term? 
+
+```{r birth-place-demographics-over-time-summer}
+```
+
+#### Mother Tongue
+Finally we look at the possible impact of Mother Tongue. How do anglophones, francophones, and allophones compare in Continuing Education?
+
+```{r langue-demographics-over-time}
+```
+
+Again, what is impact of condensed summer term? 
+
+```{r langue-demographics-over-time-summer}
+```
+
+
+
+
 
 ### Success Rates
 To come...

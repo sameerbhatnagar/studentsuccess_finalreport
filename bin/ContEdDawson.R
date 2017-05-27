@@ -62,7 +62,7 @@ ggplot(data = clab[ansession%%10==2],aes(course))+
   facet_wrap(~ansession)+
   labs(y='Seats in Summer Term')
 
-## ---- demographics-over-time ----
+## ---- Sexe-demographics-over-time ----
 courses[,age:=as.integer(courses$ansession/10)-courses$DateNaissance %>% substr(1,4) %>% as.integer()]
 
 demo<-courses[section>3000 & CoteR=='E',.(mean(age),mean(Note,na.rm = T),.N),by=.(course,ansession,Sexe)]
@@ -80,7 +80,58 @@ ggplot(data=demo[ansession%%10!=2][ansession>20133][ansession<20171][!is.na(mean
        aes(x=mean_age,y=mean_grade))+
   geom_point(aes(color=course.dept,shape=Sexe,size=mean_N))+facet_wrap(~ansession)
 
-## ---- demographics-over-time-summer ----
+## ---- Sexe-demographics-over-time-summer ----
 ggplot(data=demo[ansession%%10==2][!is.na(mean_grade)][course.dept %in% science],
        aes(x=mean_age,y=mean_grade))+
   geom_point(aes(color=course.dept,shape=Sexe,size=mean_N))+facet_wrap(~ansession)
+
+## ---- birth-place-demographics-over-time ----
+courses[,birth_place:=ifelse(birth_place=='Quebec','Quebec','other')]
+demo<-courses[section>3000 & CoteR=='E',.(mean(age),mean(Note,na.rm = T),.N),by=.(course,ansession,birth_place)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+
+demo[,course.dept:=substr(course,1,3)]
+demo<-demo[,.(mean(mean_age),mean(mean_grade,na.rm = T),mean(N)),by=.(course.dept,ansession,birth_place)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+setnames(demo,'V3','mean_N')
+
+science<-c(keep_dept,'201','603')
+ggplot(data=demo[ansession%%10!=2][ansession>20133][ansession<20171][!is.na(mean_grade)][course.dept %in% science],
+       aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=birth_place,size=mean_N))+facet_wrap(~ansession)
+
+## ---- birth-place-demographics-over-time-summer ----
+ggplot(data=demo[ansession%%10==2][!is.na(mean_grade)][course.dept %in% science],
+       aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=birth_place,size=mean_N))+facet_wrap(~ansession)
+
+
+## ---- langue-demographics-over-time ----
+courses[,LangueMaternelle:=ifelse(LangueMaternelle=='AT','AU',LangueMaternelle)]
+
+demo<-courses[section>3000 & CoteR=='E',.(mean(age),mean(Note,na.rm = T),.N),by=.(course,ansession,LangueMaternelle)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+
+demo[,course.dept:=substr(course,1,3)]
+demo<-demo[,.(mean(mean_age),mean(mean_grade,na.rm = T),mean(N)),by=.(course.dept,ansession,LangueMaternelle)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+setnames(demo,'V3','mean_N')
+
+science<-c(keep_dept,'201','603')
+ggplot(data=demo[ansession%%10!=2][ansession>20133][ansession<20171][!is.na(mean_grade)][course.dept %in% science],
+       aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=LangueMaternelle,size=mean_N))+facet_wrap(~ansession)
+
+## ---- langue-demographics-over-time-summer ----
+ggplot(data=demo[ansession%%10==2][!is.na(mean_grade)][course.dept %in% science],
+       aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=LangueMaternelle,size=mean_N))+facet_wrap(~ansession)
+
+##---- courses-per-student ----
+courses_per_student<-courses[section>3000 & CoteR=='E',
+        .(.N,sum(Note>60),Sexe,age), by=.(student_number,ansession)]
+setnames(courses_per_student,"V2",'num_passed')
