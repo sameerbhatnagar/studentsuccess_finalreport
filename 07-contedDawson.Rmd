@@ -75,6 +75,16 @@ What is impact of condensed summer term?
 ```{r Sexe-demographics-over-time-summer}
 ```
 
+Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years, 
+
+```{r Sexe-demographics}
+```
+
+and then add on the average grade achieved by students with the same gender, in the same courses from the same disciplines, but from the ``regular'' day division.
+
+```{r Sexe-demographics-day-mean}
+```
+
 #### Birth Place
 Now, instead of looking at effect of gender, we focus instead on Birth Place. To Quebec residents stand out in any consistent way, as compared to those born elsewhere?
 
@@ -85,6 +95,17 @@ Again, what is impact of condensed summer term?
 
 ```{r birth-place-demographics-over-time-summer}
 ```
+
+Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years, 
+
+```{r birth-place-demographics}
+```
+
+and then add on the average grade achieved by students with the same **birth place** (namely quebec residents vs *other*), in the same courses from the same disciplines, but from the ``regular'' day division.
+
+```{r birth-place-demographics-day-mean}
+```
+
 
 #### Mother Tongue
 Finally we look at the possible impact of Mother Tongue. How do anglophones, francophones, and allophones compare in Continuing Education?
@@ -97,6 +118,15 @@ Again, what is impact of condensed summer term?
 ```{r langue-demographics-over-time-summer}
 ```
 
+Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years, 
+
+```{r langue-demographics}
+```
+
+and then add on the average grade achieved by students with the same **mother tongue**, in the same courses from the same disciplines, but from the ``regular'' day division.
+
+```{r langue-demographics-day-mean}
+```
 
 
 

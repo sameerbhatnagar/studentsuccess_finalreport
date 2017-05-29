@@ -80,10 +80,36 @@ ggplot(data=demo[ansession%%10!=2][ansession>20133][ansession<20171][!is.na(mean
        aes(x=mean_age,y=mean_grade))+
   geom_point(aes(color=course.dept,shape=Sexe,size=mean_N))+facet_wrap(~ansession)
 
+
 ## ---- Sexe-demographics-over-time-summer ----
 ggplot(data=demo[ansession%%10==2][!is.na(mean_grade)][course.dept %in% science],
        aes(x=mean_age,y=mean_grade))+
   geom_point(aes(color=course.dept,shape=Sexe,size=mean_N))+facet_wrap(~ansession)
+
+## ---- Sexe-demographics ----
+demo<-courses[section>3000 & CoteR=='E',.(mean(age),mean(Note,na.rm = T),.N),by=.(course,Sexe)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+
+demo[,course.dept:=substr(course,1,3)]
+demo<-demo[,.(mean(mean_age),mean(mean_grade,na.rm = T),mean(N)),by=.(course.dept,Sexe)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+setnames(demo,'V3','mean_N')
+
+day_avg<-courses[section<3000 & CoteR=='D',mean(Note,na.rm = T),by=.(Sexe,course.dept)]
+setnames(day_avg,'V1','day_avg_note')
+
+science<-c(keep_dept,'201','603')
+p<-ggplot(data=demo[!is.na(mean_grade)][course.dept %in% science],
+       aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=Sexe,size=mean_N))
+p
+
+## ---- Sexe-demographics-day-mean ----
+p+geom_hline(data = day_avg[course.dept %in% science],
+             mapping = aes(yintercept = day_avg_note,color=course.dept,linetype=Sexe))
+
 
 ## ---- birth-place-demographics-over-time ----
 courses[,birth_place:=ifelse(birth_place=='Quebec','Quebec','other')]
@@ -108,6 +134,31 @@ ggplot(data=demo[ansession%%10==2][!is.na(mean_grade)][course.dept %in% science]
   geom_point(aes(color=course.dept,shape=birth_place,size=mean_N))+facet_wrap(~ansession)
 
 
+## ---- birth-place-demographics ----
+demo<-courses[section>3000 & CoteR=='E',.(mean(age),mean(Note,na.rm = T),.N),by=.(course,birth_place)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+
+demo[,course.dept:=substr(course,1,3)]
+demo<-demo[,.(mean(mean_age),mean(mean_grade,na.rm = T),mean(N)),by=.(course.dept,birth_place)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+setnames(demo,'V3','mean_N')
+
+day_avg<-courses[section<3000 & CoteR=='D',mean(Note,na.rm = T),by=.(birth_place,course.dept)]
+setnames(day_avg,'V1','day_avg_note')
+
+science<-c(keep_dept,'201','603')
+p<-ggplot(data=demo[!is.na(mean_grade)][course.dept %in% science],
+          aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=birth_place,size=mean_N))
+p
+
+## ---- birth-place-demographics-day-mean ----
+p+geom_hline(data = day_avg[course.dept %in% science],
+             mapping = aes(yintercept = day_avg_note,color=course.dept,linetype=birth_place))
+
+
 ## ---- langue-demographics-over-time ----
 courses[,LangueMaternelle:=ifelse(LangueMaternelle=='AT','AU',LangueMaternelle)]
 
@@ -130,6 +181,35 @@ ggplot(data=demo[ansession%%10!=2][ansession>20133][ansession<20171][!is.na(mean
 ggplot(data=demo[ansession%%10==2][!is.na(mean_grade)][course.dept %in% science],
        aes(x=mean_age,y=mean_grade))+
   geom_point(aes(color=course.dept,shape=LangueMaternelle,size=mean_N))+facet_wrap(~ansession)
+
+
+## ---- langue-demographics ----
+demo<-courses[section>3000 & CoteR=='E',.(mean(age),mean(Note,na.rm = T),.N),by=.(course,LangueMaternelle)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+
+demo[,course.dept:=substr(course,1,3)]
+demo<-demo[,.(mean(mean_age),mean(mean_grade,na.rm = T),mean(N)),by=.(course.dept,LangueMaternelle)]
+setnames(demo,'V1','mean_age')
+setnames(demo,'V2','mean_grade')
+setnames(demo,'V3','mean_N')
+
+day_avg<-courses[section<3000 & CoteR=='D',mean(Note,na.rm = T),by=.(LangueMaternelle,course.dept)]
+setnames(day_avg,'V1','day_avg_note')
+
+science<-c(keep_dept,'201','603')
+p<-ggplot(data=demo[!is.na(mean_grade)][course.dept %in% science],
+          aes(x=mean_age,y=mean_grade))+
+  geom_point(aes(color=course.dept,shape=LangueMaternelle,size=mean_N))
+p
+
+## ---- langue-demographics-day-mean ----
+p+geom_hline(data = day_avg[course.dept %in% science],
+             mapping = aes(yintercept = day_avg_note,color=course.dept,linetype=LangueMaternelle))
+
+
+
+
 
 ##---- courses-per-student ----
 courses_per_student<-courses[section>3000 & CoteR=='E',
