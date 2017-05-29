@@ -209,9 +209,30 @@ p+geom_hline(data = day_avg[course.dept %in% science],
 
 
 
+##---- day-conted-same-students ----
+evening_pass_rates_student<-courses[section>3000 & CoteR=='E',
+        .(.N,sum(Note>60,na.rm=T),mean(Note,na.rm=T)), by=.(student_number,course.dept)]
+setnames(evening_pass_rates_student,"V2",'num_passed')
+setnames(evening_pass_rates_student,"V3",'mean_grade_conted')
+evening_pass_rates_student[,frac_passes:=num_passed/N]
+# evening_pass_rates_student[,division:='ContEd']
 
+day_pass_rates_student<-courses[student_number %in% evening_pass_rates_student$student_number
+        ][section <3000 & CoteR=='D',
+          .(.N,sum(Note>60,na.rm = T),mean(Note,na.rm=T)),by=.(student_number,course.dept)]
+setnames(day_pass_rates_student,"V2",'num_passed')
+setnames(day_pass_rates_student,"V3",'mean_grade_day')
 
-##---- courses-per-student ----
-courses_per_student<-courses[section>3000 & CoteR=='E',
-        .(.N,sum(Note>60),Sexe,age), by=.(student_number,ansession)]
-setnames(courses_per_student,"V2",'num_passed')
+day_pass_rates_student[,frac_passes:=num_passed/N]
+# day_pass_rates_student[,division:='ContEd']
+
+# rbind(day_pass_rates_student,evening_pass_rates_student)
+
+setkey(evening_pass_rates_student,'student_number','course.dept')
+setkey(day_pass_rates_student,'student_number','course.dept')
+d<-evening_pass_rates_student[day_pass_rates_student,nomatch=0][course.dept %in% science]
+
+ggplot(data = d, aes(x=mean_grade_conted,y=mean_grade_day))+
+  geom_point(alpha=1/10)+
+  geom_abline(slope=1,linetype='dashed',color='grey70')+
+  facet_wrap(~course.dept)
