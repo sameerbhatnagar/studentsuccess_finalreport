@@ -210,29 +210,35 @@ p+geom_hline(data = day_avg[course.dept %in% science],
 
 
 ##---- day-conted-same-students ----
-evening_pass_rates_student<-courses[section>3000 & CoteR=='E',
-        .(.N,sum(Note>60,na.rm=T),mean(Note,na.rm=T)), by=.(student_number,course.dept)]
-setnames(evening_pass_rates_student,"V2",'num_passed')
+load(Sys.getenv('R_path_to_data_directory'))
+
+evening_pass_rates_student<-courses[Note>0][section>3000 & CoteR=='E',
+        .(.N,sum(Note>60,na.rm=T),mean(Note,na.rm=T),Sexe,LangueMaternelle), by=.(student_number,course.dept)]
+setnames(evening_pass_rates_student,"V2",'num_passed_conted')
 setnames(evening_pass_rates_student,"V3",'mean_grade_conted')
-evening_pass_rates_student[,frac_passes:=num_passed/N]
-# evening_pass_rates_student[,division:='ContEd']
+setnames(evening_pass_rates_student,"N",'N_conted')
+evening_pass_rates_student[,frac_passed_conted:=num_passed_conted/N_conted]
 
-day_pass_rates_student<-courses[student_number %in% evening_pass_rates_student$student_number
+day_pass_rates_student<-courses[Note>0][student_number %in% evening_pass_rates_student$student_number
         ][section <3000 & CoteR=='D',
-          .(.N,sum(Note>60,na.rm = T),mean(Note,na.rm=T)),by=.(student_number,course.dept)]
-setnames(day_pass_rates_student,"V2",'num_passed')
+          .(.N,sum(Note>60,na.rm = T),mean(Note,na.rm=T),Sexe,LangueMaternelle),by=.(student_number,course.dept)]
+setnames(day_pass_rates_student,"V2",'num_passed_day')
 setnames(day_pass_rates_student,"V3",'mean_grade_day')
-
-day_pass_rates_student[,frac_passes:=num_passed/N]
-# day_pass_rates_student[,division:='ContEd']
-
-# rbind(day_pass_rates_student,evening_pass_rates_student)
+setnames(day_pass_rates_student,"N",'N_day')
+day_pass_rates_student[,frac_passed_day:=num_passed_day/N_day]
 
 setkey(evening_pass_rates_student,'student_number','course.dept')
 setkey(day_pass_rates_student,'student_number','course.dept')
-d<-evening_pass_rates_student[day_pass_rates_student,nomatch=0][course.dept %in% science]
+d<-evening_pass_rates_student[day_pass_rates_student,nomatch=0]
 
-ggplot(data = d, aes(x=mean_grade_conted,y=mean_grade_day))+
-  geom_point(alpha=1/10)+
+hsavg<-etudiant_cours_secondaire[student_number %in% d$student_number,mean(Resultat,na.rm=T),by=student_number]
+setnames(hsavg,'V1','hs_avg')
+hsavg$hs_avg_c<-cut(hsavg$hs_avg,breaks = seq(70,91,5))
+setkey(hsavg,'student_number')
+d<-d[hsavg][!is.na(hs_avg_c)]
+
+ggplot(data = d[course.dept %in% science][course.dept!='420'],
+       aes(x=mean_grade_conted,y=mean_grade_day))+
+  geom_point(aes(color=LangueMaternelle,shape=Sexe),size=1)+
   geom_abline(slope=1,linetype='dashed',color='grey70')+
-  facet_wrap(~course.dept)
+  facet_grid(hs_avg_c~course.dept)
