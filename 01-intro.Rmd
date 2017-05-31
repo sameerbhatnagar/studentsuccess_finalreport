@@ -1,5 +1,10 @@
 # Introduction {#intro}
 
+This report outlines the results from a three year intercollegiate research project funded by the**PAREA** agency ( _Programmme d'Aide à la Recherche en Enseignment et Apprentissage_) from the _Ministère de l'Education_ of the provincial Government of Quebec.
 
+In the province of Quebec, students finish their secondary education at what is the equivalent of Grade 11 in other parts of North America. Students are then able to attend **CEGEP** ( _Collège d'enseignment général et professionel_) for either 
 
-
+ - two years, as part of pre-university program, e.g Science, Social Science, Liberal Arts
+ - three years, as part of technical program, meant specifically to lead directly to the job market, e.g. Nursing, Civil Engineering Technology, Diagnotsic Imaging Technology
+ 
+There are 48 CEGEPs in the Quebec network, more than a quarter of which are on the island of Montreal. CEGEPs are publically funded, and fall under the purview of the _Ministère de l'Education et Enseignment Superieur_. Almost all of the CEGEP's use the same database system, known as **CLARA** in order to manage the data related to student admission, registration and graduation. Our research team's main objective is to leverage this uniformity of how data is automatically generated and stored to determine
