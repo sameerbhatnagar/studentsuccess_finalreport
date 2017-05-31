@@ -108,7 +108,8 @@
 <p>Here in we will describe - the data set - the methods by which we label students at risk - the distributions of at-risk students by - demographic indicators - registration record indicators</p>
 <div id="demographics-across-the-colleges-and-major-programs" class="section level2">
 <h2><span class="header-section-number">4.1</span> Demographics across the colleges and major programs</h2>
-<p>Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven’t. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says. <img src="studentsuccess_final_report_files/figure-html/Average%20comp-1.png" width="672" /></p>
+<p>Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven’t. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/Average%20comp-1.png" width="672" /></p>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -120,8 +121,8 @@
 ## sample estimates:
 ## mean of x mean of y 
 ##  79.97370  59.08109</code></pre>
-<p>We can see that….</p>
-<p>Let us now look at a semester by semester basis. Let us start by looking at the average grades of students on the semester during which they are either graduating or dropping-out.</p>
+<p>From the average total grade between the drop outs and the graduates, we can clearly see that the distributions are significantly different, but what is surprising is that 22% of students have an average grade above 75% and that more than 52% of the students who dropped out had an average grade above 60%. In other words, most students who drop out have passing averages. One hypothesis for this effect is that students who end up dropping out start with good semesters and have their performance decline closer to the final semester. Let us verify this hypothesis.</p>
+<p>Let us now look at the performance of drop outs vs graduates on a semester by semester basis. Let us start by looking at the average grades of students in their last semester during which they are either graduating or dropping-out.</p>
 <p><img src="studentsuccess_final_report_files/figure-html/Last%20semester%20comp-1.png" width="672" /></p>
 <pre><code>## 
 ##  Welch Two Sample t-test
@@ -134,8 +135,8 @@
 ## sample estimates:
 ## mean of x mean of y 
 ##  51.08037  79.17648</code></pre>
-<p>We can see that the data says that…</p>
-<p>Let us now turn our attention to the semester before the one where they graduate or drop out. As we go back in time, we are expecting the difference between the two groups to diminish. <img src="studentsuccess_final_report_files/figure-html/N-1%20semester%20comp-1.png" width="672" /></p>
+<p>In this data, we can clearly observe a stark difference between the graduates and the drop outs. First of all, note that 22% of students still have a term average over 75% in the semester in which they drop out. To push it further 14% of students who drop out have an average grade over 80%. The data clearly suggests that some of the drop outs aren’t dropping out because of academic performance. Furthermore, the long tail of the data on the low end of performance suggests that some of the students stopped coming to class prior to the end of the semester resulting in very low grades that serve to drive their cegep average grades from the graph above even lower. 35% of students have a grade below 40 suggesting that they have indeed stopped coming to school some time during the semester. What if these students hadn’t stopped coming, would their performance be similar to that of graduates?</p>
+<p>Let us now turn our attention to the semester before the one where they graduate or drop out. <img src="studentsuccess_final_report_files/figure-html/N-1%20semester%20comp-1.png" width="672" /></p>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -147,6 +148,7 @@
 ## sample estimates:
 ## mean of x mean of y 
 ##  64.24363  80.69328</code></pre>
+<p>The data clearly shows that even if there are significant differences between the groups</p>
 <p>Finally, let us look at 2 semesters before they graduate or drop-out. We are again expecting the same trend. <img src="studentsuccess_final_report_files/figure-html/N-2%20semester%20comp-1.png" width="672" /></p>
 <pre><code>## 
 ##  Welch Two Sample t-test
