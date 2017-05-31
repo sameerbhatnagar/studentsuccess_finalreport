@@ -1,4 +1,11 @@
 # Descriptive Statistics
+```{r descriptive-local-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,message = FALSE)
+knitr::read_chunk("bin/03-descriptive-stats-code.R")
+```
+
+```{r descriptive-stats-setup}
+```
 
 Here in we will describe
  - the data set
@@ -9,6 +16,25 @@ Here in we will describe
 
 ## Demographics across the colleges and major programs
 Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven't. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says.
+```{r Average comp}
+```
+
+We can see that....
+
+Let us now look at a semester by semester basis. Let us start by looking at the average grades of students on the semester during which they are either graduating or dropping-out. 
+
+```{r Last semester comp}
+```
+We can see that the data says that...
+
+Let us now turn our attention to the semester before the one where they graduate or drop out. As we go back in time, we are expecting the difference between the two groups to diminish.
+```{r N-1 semester comp}
+```
+Finally, let us look at 2 semesters before they graduate or drop-out. We are again expecting the same trend.
+```{r N-2 semester comp}
+```
+
+Sweet. Now let's look at...
 
 
 
