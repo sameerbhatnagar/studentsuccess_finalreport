@@ -1,0 +1,141 @@
+# Continuing Education at Dawson
+
+```{r conted-local-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE,message = FALSE)
+knitr::read_chunk("bin/ContEdDawson.R")
+```
+
+```{r conted-setup}
+```
+
+The department of Continuing at Education offers evening courses across many disciplines throughout the year. The purpose of this report is to give a broad overview of the demographics and sector-level metrics for students taking courses within Cont Ed.
+
+## Services
+
+Herein, we look at the services offered by the Division of Continuing Education.
+
+### Continuing Education's Growth over Time
+
+How have each of the departments increased their ContEd offerings over time? 
+
+```{r dept-level-sizes-over-time}
+```
+
+### Department Level Seat Distributions
+
+Which parts of Continuing Education are the most important in 2016? 
+
+```{r dept-level-sizes-2016}
+```
+
+### Course Level distributions
+
+If we look at the three most important departments (Math,Humanities and English) in 2016, how are the seats distrinuted across courses?
+
+```{r big-dept-seat-dist-by-course}
+```
+
+### Specialized spaces
+
+If we look at the departments that require specialized spaces (i.e. labs), in 2016, how are the seats distributed by course? 
+ - Has this evolved over time?
+ - What are the seasonal variations?
+
+#### Winter
+```{r lab-dept-seat-dist-by-course-winter}
+```
+
+#### Fall
+```{r lab-dept-seat-dist-by-course-fall}
+```
+
+#### Summer
+```{r lab-dept-seat-dist-by-course-summer}
+```
+
+
+
+## Students
+
+### Demographics
+Who are the students using continuing education services?
+
+  - are there gender differences?
+  - are there age differences?
+  - do these demographics change over time?
+  - are there seasonal variations?
+  - are there differences in different departments?
+
+#### Sexe
+```{r Sexe-demographics-over-time}
+```
+
+What is impact of condensed summer term? 
+
+```{r Sexe-demographics-over-time-summer}
+```
+
+Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years, 
+
+```{r Sexe-demographics}
+```
+
+and then add on the average grade achieved by students with the same gender, in the same courses from the same disciplines, but from the ``regular'' day division.
+
+```{r Sexe-demographics-day-mean}
+```
+
+#### Birth Place
+Now, instead of looking at effect of gender, we focus instead on Birth Place. To Quebec residents stand out in any consistent way, as compared to those born elsewhere?
+
+```{r birth-place-demographics-over-time}
+```
+
+Again, what is impact of condensed summer term? 
+
+```{r birth-place-demographics-over-time-summer}
+```
+
+Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years, 
+
+```{r birth-place-demographics}
+```
+
+and then add on the average grade achieved by students with the same **birth place** (namely quebec residents vs *other*), in the same courses from the same disciplines, but from the ``regular'' day division.
+
+```{r birth-place-demographics-day-mean}
+```
+
+
+#### Mother Tongue
+Finally we look at the possible impact of Mother Tongue. How do anglophones, francophones, and allophones compare in Continuing Education?
+
+```{r langue-demographics-over-time}
+```
+
+Again, what is impact of condensed summer term? 
+
+```{r langue-demographics-over-time-summer}
+```
+
+Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years, 
+
+```{r langue-demographics}
+```
+
+and then add on the average grade achieved by students with the same **mother tongue**, in the same courses from the same disciplines, but from the ``regular'' day division.
+
+```{r langue-demographics-day-mean}
+```
+
+
+
+
+### Success Rates
+
+There are many students who take courses through both Continuing Education, and the regular day division over the course of their time at Dawson. One way of measuring the difference in the student experience here would be to look at those students alone, and compare the average of their grades in each division, while controlling for discipline. (the diagonal in each facet is simply meant to provide a reference for a hypothetical 1-to-1 correlation.) In order to control for student strength, we bin by overall average of high school grades. 
+
+```{r day-conted-same-students}
+```
+
+
