@@ -7,8 +7,10 @@ Here in we will describe
      - demographic indicators
      - registration record indicators 
 
-
 ## Demographics across the colleges and major programs
+Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven't. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says.
+
+
 
 ## Fraction of students who change colleges
 
