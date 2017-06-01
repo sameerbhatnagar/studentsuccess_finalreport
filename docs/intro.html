@@ -29,7 +29,7 @@
 <meta name="author" content="Nathaniel Lasry">
 
 
-<meta name="date" content="2017-05-29">
+<meta name="date" content="2017-06-01">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -72,15 +72,18 @@
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a><ul>
+<li class="chapter" data-level="3.1" data-path="literature.html"><a href="literature.html#modeling-success-and-attrition-in-cegep"><i class="fa fa-check"></i><b>3.1</b> Modeling success and attrition in CEGEP</a></li>
+<li class="chapter" data-level="3.2" data-path="literature.html"><a href="literature.html#predictive-modelling-in-learning-analytics-and-educational-data-mining"><i class="fa fa-check"></i><b>3.2</b> Predictive Modelling in Learning Analytics and Educational Data Mining</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
 <li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#demographics-across-the-colleges-and-major-programs"><i class="fa fa-check"></i><b>4.1</b> Demographics across the colleges and major programs</a></li>
 <li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#fraction-of-students-who-change-colleges"><i class="fa fa-check"></i><b>4.2</b> Fraction of students who change colleges</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="methods-centered-on-determining-predictive-factors.html"><a href="methods-centered-on-determining-predictive-factors.html"><i class="fa fa-check"></i><b>5</b> Methods Centered on Determining Predictive Factors</a></li>
 <li class="chapter" data-level="6" data-path="methods-centered-on-predicting-at-risk-students.html"><a href="methods-centered-on-predicting-at-risk-students.html"><i class="fa fa-check"></i><b>6</b> Methods centered on predicting at-risk students</a><ul>
-<li class="chapter" data-level="6.1" data-path="methods-centered-on-predicting-at-risk-students.html"><a href="methods-centered-on-predicting-at-risk-students.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
-<li class="chapter" data-level="6.2" data-path="methods-centered-on-predicting-at-risk-students.html"><a href="methods-centered-on-predicting-at-risk-students.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+<li class="chapter" data-level="6.1" data-path="methods-centered-on-predicting-at-risk-students.html"><a href="methods-centered-on-predicting-at-risk-students.html#decision-trees-and-random-forests"><i class="fa fa-check"></i><b>6.1</b> Decision Trees and Random Forests</a></li>
+<li class="chapter" data-level="6.2" data-path="methods-centered-on-predicting-at-risk-students.html"><a href="methods-centered-on-predicting-at-risk-students.html#neural-networks"><i class="fa fa-check"></i><b>6.2</b> Neural Networks</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="comparisons.html"><a href="comparisons.html"><i class="fa fa-check"></i><b>7</b> Comparisons</a></li>
 <li class="chapter" data-level="8" data-path="continuing-education-at-dawson.html"><a href="continuing-education-at-dawson.html"><i class="fa fa-check"></i><b>8</b> Continuing Education at Dawson</a><ul>
@@ -119,7 +122,42 @@
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Introduction</h1>
+<p>This report outlines the results from a three year intercollegiate research project funded by the<strong>PAREA</strong> agency ( <em>Programmme d’Aide à la Recherche en Enseignment et Apprentissage</em>) from the <em>Ministère de l’Education</em> of the provincial Government of Quebec.</p>
+<p>In the province of Quebec, students finish their secondary education at what is the equivalent of Grade 11 in other parts of North America. Students are then able to attend <strong>CEGEP</strong> ( <em>Collège d’enseignment général et professionel</em>) for either</p>
+<ul>
+<li>two years, as part of pre-university program, e.g Science, Social Science, Liberal Arts</li>
+<li>three years, as part of technical program, meant specifically to lead directly to the job market, e.g. Nursing, Civil Engineering Technology, Diagnotsic Imaging Technology</li>
+</ul>
+<p>There are 48 CEGEPs in the Quebec network, and public or private, they all fall under the purview of the <em>Ministère de l’Education et Enseignment Superieur</em>. Over the past twenty years, there has been significant work<span class="citation">(Jorgensen et al. <a href="#ref-jorgensen2003students">2003</a>; Jorgensen et al. <a href="#ref-jorgensen2005academic">2005</a>; Jorgensen et al. <a href="#ref-jorgensen2009predicting">2009</a>; Rivière <a href="#ref-riviere1995decrocheurs">1995</a>; Shaienks, Gluszynski, and Bayard <a href="#ref-shaienks2008statcan">2008</a>)</span> and media <span class="citation">(Breton <a href="#ref-breton2016soleil">2016</a>; Dion-Viens <a href="#ref-dion-viens2015lapresse">2015</a>; Duchaine <a href="#ref-duchaine2017lapresse">2017</a>)</span> on the topic of student attrition in CEGEP. The scholarly work done has often focused on determing predictors of attrition through surveys, or focused on specific vulnerable sub populations. The media has often reported on government figures, which rely on data that looks at information at a very coarse level of granularity (of students graduated from high schoolhow many obtain diplomas from CEGEP)</p>
+<p>Almost all of the CEGEP’s use the same database system, known as <strong>CLARA</strong> in order to manage the data related to student admission, registration and graduation. Our research team’s main objective is to leverage this uniformity of how data is automatically generated and stored, in order to determine if, in this wealth of data, there might be predictors of student attrition. This effort stands apart from previous work and reports in that - the data analyzed is much finer-grained: the unit of analysis is down to the semester registration records for each student - we look at the general population of students - with every additional college that participates in our study, we can track students who change CEGEPs, and be more accurate in our determinations of which students drop out</p>
 
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-jorgensen2003students">
+<p>Jorgensen, Shirley, Catherine Fichten, Alice Havel, Daniel Lamb, Crystal James, and Maria Barile. 2003. <em>Students with Disabilities at Dawson College: Success and Outcomes. Final Report Presented to Parea, Spring 2003.</em> ERIC.</p>
+</div>
+<div id="ref-jorgensen2005academic">
+<p>Jorgensen, Shirley, Catherine S Fichten, Alice Havel, Daniel Lamb, Crystal James, and Maria Barile. 2005. “Academic Performance of College Students with and Without Disabilities: An Archival Study.” <em>Canadian Journal of Counselling</em> 39 (2). Canadian Counselling; Psychotherapy Association: 101.</p>
+</div>
+<div id="ref-jorgensen2009predicting">
+<p>Jorgensen, Shirley, Vittoria Ferraro, Catherine Fichten, and Alice Havel. 2009. “Predicting College Retention and Dropout: Sex and Disability.” <em>Online Submission</em>. ERIC.</p>
+</div>
+<div id="ref-riviere1995decrocheurs">
+<p>Rivière, Bernard. 1995. “Comprendre Les décrocheurs Afin de Mieux Les Aider.” <em>Pédagogie Collégiale</em> 9 (2): 11–15.</p>
+</div>
+<div id="ref-shaienks2008statcan">
+<p>Shaienks, Danielle, Tomasz Gluszynski, and Justin Bayard. 2008. <em>Les études Postsecondaires, Participation et décrochage: Différences Entre L’université, Le Collège et Les Autres Types d’établissements Postsecondaires</em>. Statistique Canada.</p>
+</div>
+<div id="ref-breton2016soleil">
+<p>Breton, Brigitte. 2016. “Décrocher Du cégep et de L’université.” <em>La Presse</em>, March. <a href="http://www.lapresse.ca/le-soleil/opinions/editoriaux/brigitte-breton/201603/18/01-4962274-decrocher-du-cegep-et-de-luniversite.php" class="uri">http://www.lapresse.ca/le-soleil/opinions/editoriaux/brigitte-breton/201603/18/01-4962274-decrocher-du-cegep-et-de-luniversite.php</a>.</p>
+</div>
+<div id="ref-dion-viens2015lapresse">
+<p>Dion-Viens, Daphnée. 2015. “Cégeps: à Peine 31% Des étudiants Obtiennent Un Diplôme Dans Les délais.” <em>Le Journal de Montréal</em>. <a href="http://www.journaldemontreal.com/2015/09/20/le-tiers-des-cegepiens-diplomes-dans-les-temps" class="uri">http://www.journaldemontreal.com/2015/09/20/le-tiers-des-cegepiens-diplomes-dans-les-temps</a>.</p>
+</div>
+<div id="ref-duchaine2017lapresse">
+<p>Duchaine, Gabrielle. 2017. “Qu’est-Ce Qui Cloche Au cégep ? - La Presse+.” <em>La Presse+</em>. <a href="http://plus.lapresse.ca/screens/b45190c1-bc7d-47c5-9c9c-4e44d3c7cc38%7CT_~rJqYWRu8L.html">http://plus.lapresse.ca/screens/b45190c1-bc7d-47c5-9c9c-4e44d3c7cc38%7CT_~rJqYWRu8L.html</a>.</p>
+</div>
 </div>
             </section>
 

@@ -9,21 +9,67 @@ load("bin/data/labelled_students_Dawson.Rdata")
 #Look to find the grades of the students who dropped as a total average
 
 ave<-courses[,mean(Note),by=.(student_number)]
-setnames(ave,'V1','Average')
-students_last_session<-merge(ave,students_last_session)
+setnames(ave,'V1','Average_all_courses')
+setkey(students_last_session,student_number)
+setkey(ave,student_number)
+students_last_session<-ave[students_last_session]
 
-c1<-courses[,mean(Note),by=c("term","student_number")]
-c2<-c1[,status:=students_last_session$status[which(student_number == students_last_session$student_number)],by=student_number]
+avg_grade_per_term<-courses[,mean(Note,na.rm=TRUE),by=.(student_number,term)]
+setnames(avg_grade_per_term,"V1","avg_grade")
+student_term_status<-courses[,.(student_number,term,`current-out`)]
+setnames(student_term_status,"current-out","status")
+student_term_status[is.na(status),status:='student']
 
+setkey(student_term_status,student_number,term)
+student_term_status<-student_term_status %>% unique(by=c('student_number','term'))
+setkey(avg_grade_per_term,student_number,term)
+avg_grade_per_term<-avg_grade_per_term[student_term_status]
+
+current_students<-avg_grade_per_term[status=='current',student_number] %>% unique()
+avg_grade_per_term<-avg_grade_per_term[!(student_number %in% current_students)]
+setkey(avg_grade_per_term,'student_number','term')
+
+avg_grade_last_term<-avg_grade_per_term[,.SD[.N],by=student_number]
 #Then compare the grade histograms for students who dropped vs students who graduated. Then look at only the ones
 #who dropped, but look across time. Are they really different?
 
-## ---- Average comp ----
-hist(students_last_session$Average[which(students_last_session$status=="out")],col=rgb(1,0,0,0.5),main="Average Total Grade",ylim=c(0,3500))
-hist(students_last_session$Average[which(students_last_session$status=="grad")],col=rgb(0,0,1,0.5),add=T)
+## edit by sameer: because data.table has such a major difference in speed between finding
+## the last entry of each group, versus the N-x entry of each group,
+# we successively remove the 'last term' when trying to find the N-x term
+# (the difference in speed is prohibitive as we re-build the entire project everyday)
+# so here is for term N-1
+setkey(avg_grade_last_term,student_number,term)
+setkey(avg_grade_per_term,student_number,term)
+tmp<-avg_grade_per_term[!avg_grade_last_term]
+avg_grade_last_term_minus1<-tmp[,.SD[.N], by=student_number]
+setkey(avg_grade_last_term_minus1,student_number)
+setkey(students_last_session,student_number)
+avg_grade_last_term_minus1<-students_last_session[avg_grade_last_term_minus1][,.(student_number,avg_grade,term,status,i.status)]
 
-t.test(students_last_session$Average[which(students_last_session$status == "grad")],
-       students_last_session$Average[which(students_last_session$status == "out")])
+## and here for N-2
+tmp_remove<- tmp[,.SD[.N], by=student_number]
+setkey(tmp_remove,student_number,term)
+setkey(tmp,student_number,term)
+tmp2<-tmp[!tmp_remove]
+
+setkey(tmp2,student_number,term)
+avg_grade_last_term_minus2<-tmp2[,.SD[.N], by=student_number]
+setkey(avg_grade_last_term_minus2,student_number)
+setkey(students_last_session,student_number)
+avg_grade_last_term_minus2<-students_last_session[avg_grade_last_term_minus2][,.(student_number,avg_grade,term,status,i.status)]
+
+
+## ---- Average-comp ----
+# hist(students_last_session$Average[which(students_last_session$status=="out")],col=rgb(1,0,0,0.5),main="Average Total Grade",ylim=c(0,3500))
+# hist(students_last_session$Average[which(students_last_session$status=="grad")],col=rgb(0,0,1,0.5),add=T)
+ggplot(data = students_last_session[!is.na(Average_all_courses)], aes(x=Average_all_courses, group=status))+
+  geom_histogram(binwidth=5,center=2.5,aes(color=status))
+
+## ---- Average-comp-ttest ----
+# t.test(students_last_session$Average[which(students_last_session$status == "grad")],
+       # students_last_session$Average[which(students_last_session$status == "out")])
+t.test(Average_all_courses ~ status,data=students_last_session)
+
 #Nice to see that the majority of kids who drop have a college average above 60%. Ie they are passing!!!
 #Clearly they are different in terms of the average overall grade during their stay.
 
@@ -32,29 +78,46 @@ t.test(students_last_session$Average[which(students_last_session$status == "grad
 #imagine a plot where you see histograms of 2 colors for DO sem, then another graph for DO-1, then DO-2 and
 #the grades keep getting closer
 
-##---- Last semester comp ----
-hist(c2[,.SD[.N],by=c("student_number")][status=="out"]$V1,xlab="Grade",col=rgb(1,0,0,0.5),main="Average semester grades on drop-out or graduation semester",ylim=c(0,3500))
-hist(c2[,.SD[.N],by=c("student_number")][status=="grad"]$V1,col=rgb(0,0,1,0.5),add=T)
-legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
-box(which="plot")
+##---- Last-semester-comp ----
+# hist(c2[,.SD[.N],by=c("student_number")][status=="out"]$V1,xlab="Grade",col=rgb(1,0,0,0.5),main="Average semester grades on drop-out or graduation semester",ylim=c(0,3500))
+# hist(c2[,.SD[.N],by=c("student_number")][status=="grad"]$V1,col=rgb(0,0,1,0.5),add=T)
+# legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
+# box(which="plot")
 
-t.test(c2[,.SD[.N],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N],by=c("student_number")][status=="grad"]$V1)
+ggplot(data=avg_grade_last_term[!is.na(avg_grade)],aes(x=avg_grade,group=status))+
+  geom_histogram(binwidth=5,center=2.5,aes(color=status))
 
-## ---- N-1 semester comp ----
-hist(c2[,.SD[.N-1],by=c("student_number")][status=="out"]$V1,xlab="Grade",col=rgb(1,0,0,0.5),main="Average semester grades in 1 semester before drop-out or graduation semester",ylim=c(0,3500))
-hist(c2[,.SD[.N-1],by=c("student_number")][status=="grad"]$V1,col=rgb(0,0,1,0.5),add=T)
-legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
-box(which="plot")
 
-t.test(c2[,.SD[.N-1],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N-1],by=c("student_number")][status=="grad"]$V1)
+## ---- Last-semester-comp-ttest ----
+# t.test(c2[,.SD[.N],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N],by=c("student_number")][status=="grad"]$V1)
+t.test(avg_grade ~ status,data=avg_grade_last_term)
 
-## ---- N-2 semester comp ----
-hist(c2[,.SD[.N-2],by=c("student_number")][status=="out"]$V1,xlab="Grade",col=rgb(1,0,0,0.5),main="Average semester grades in 2 semesters before drop-out or graduation semester",ylim=c(0,3500))
-hist(c2[,.SD[.N-2],by=c("student_number")][status=="grad"]$V1,col=rgb(0,0,1,0.5),add=T)
-legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
-box(which="plot")
+## ---- N-1-semester-comp ----
+# hist(c2[,.SD[.N-1],by=c("student_number")][status=="out"]$V1,xlab="Grade",col=rgb(1,0,0,0.5),main="Average semester grades in 1 semester before drop-out or graduation semester",ylim=c(0,3500))
+# hist(c2[,.SD[.N-1],by=c("student_number")][status=="grad"]$V1,col=rgb(0,0,1,0.5),add=T)
+# legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
+# box(which="plot")
+ggplot(data = avg_grade_last_term_minus1[status!='current'],aes(x=avg_grade, group=status))+
+  geom_histogram(binwidth=5,center=2.5,aes(color=status))
 
-t.test(c2[,.SD[.N-2],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N-2],by=c("student_number")][status=="grad"]$V1)
+
+## ---- N-1-semester-comp-ttest ----
+# t.test(c2[,.SD[.N-1],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N-1],by=c("student_number")][status=="grad"]$V1)
+t.test(avg_grade ~ status,data=avg_grade_last_term_minus1)
+
+
+## ---- N-2-semester-comp ----
+# hist(c2[,.SD[.N-2],by=c("student_number")][status=="out"]$V1,xlab="Grade",col=rgb(1,0,0,0.5),main="Average semester grades in 2 semesters before drop-out or graduation semester",ylim=c(0,3500))
+# hist(c2[,.SD[.N-2],by=c("student_number")][status=="grad"]$V1,col=rgb(0,0,1,0.5),add=T)
+# legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
+# box(which="plot")
+ggplot(data = avg_grade_last_term_minus2[status!='current'],aes(x=avg_grade, group=status))+
+  geom_histogram(binwidth=5,center=2.5,aes(color=status))
+
+
+## ---- N-2-semester-comp-ttest ----
+# t.test(c2[,.SD[.N-2],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N-2],by=c("student_number")][status=="grad"]$V1)
+t.test(avg_grade ~ status,data=avg_grade_last_term_minus2)
 
 
 
