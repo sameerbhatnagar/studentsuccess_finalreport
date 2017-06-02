@@ -3,6 +3,7 @@ rm(list=ls())
 library(data.table)
 library(magrittr)
 library(ggplot2)
+library(stringr)
 load("bin/data/course_records_Dawson.Rdata")
 load("bin/data/labelled_students_Dawson.Rdata")
 
@@ -63,7 +64,11 @@ avg_grade_last_term_minus2<-students_last_session[avg_grade_last_term_minus2][,.
 # hist(students_last_session$Average[which(students_last_session$status=="out")],col=rgb(1,0,0,0.5),main="Average Total Grade",ylim=c(0,3500))
 # hist(students_last_session$Average[which(students_last_session$status=="grad")],col=rgb(0,0,1,0.5),add=T)
 ggplot(data = students_last_session[!is.na(Average_all_courses)], aes(x=Average_all_courses, group=status))+
-  geom_histogram(binwidth=5,center=2.5,aes(color=status))
+  geom_histogram(binwidth=5,center=2.5,aes(fill=status))+
+  scale_fill_manual(values = c('green','red'))+
+  labs(x='Average grade of all courses taken before final semester at college',
+       y='Number of Students')+
+  ggtitle('Comparing Overall Academic Performance of Students who Graduate, and those who Do Not')
 
 ## ---- Average-comp-ttest ----
 # t.test(students_last_session$Average[which(students_last_session$status == "grad")],
@@ -85,8 +90,11 @@ t.test(Average_all_courses ~ status,data=students_last_session)
 # box(which="plot")
 
 ggplot(data=avg_grade_last_term[!is.na(avg_grade)],aes(x=avg_grade,group=status))+
-  geom_histogram(binwidth=5,center=2.5,aes(color=status))
-
+  geom_histogram(binwidth=5,center=2.5,aes(fill=status))+
+  scale_fill_manual(values = c('green','red'))+
+  labs(x='Average grade of courses taken during final semester at college',
+       y='Number of Students')+
+  ggtitle('Comparing Academic Performance of Students who Graduate, and those who Do Notm in Their Final Semester')
 
 ## ---- Last-semester-comp-ttest ----
 # t.test(c2[,.SD[.N],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N],by=c("student_number")][status=="grad"]$V1)
@@ -98,7 +106,11 @@ t.test(avg_grade ~ status,data=avg_grade_last_term)
 # legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
 # box(which="plot")
 ggplot(data = avg_grade_last_term_minus1[status!='current'],aes(x=avg_grade, group=status))+
-  geom_histogram(binwidth=5,center=2.5,aes(color=status))
+  geom_histogram(binwidth=5,center=2.5,aes(fill=status))+
+  scale_fill_manual(values = c('green','red'))+
+  labs(x='Average grade of courses taken in the semester just before final semester at college',
+       y='Number of Students')+
+  ggtitle('Comparing Academic Performance of Students who Graduate, and those who Do Not, in their Second to Last Semester')
 
 
 ## ---- N-1-semester-comp-ttest ----
@@ -112,16 +124,72 @@ t.test(avg_grade ~ status,data=avg_grade_last_term_minus1)
 # legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
 # box(which="plot")
 ggplot(data = avg_grade_last_term_minus2[status!='current'],aes(x=avg_grade, group=status))+
-  geom_histogram(binwidth=5,center=2.5,aes(color=status))
+  geom_histogram(binwidth=5,center=2.5,aes(fill=status))+
+  scale_fill_manual(values = c('green','red'))+
+  labs(x='Average grade of courses taken two semesters just before final semester at college',
+       y='Number of Students')+
+  ggtitle('Comparing Academic Performance of Students who Graduate, and those who Do Not, two semesters before their last')
 
 
 ## ---- N-2-semester-comp-ttest ----
 # t.test(c2[,.SD[.N-2],by=c("student_number")][status=="out"]$V1, c2[,.SD[.N-2],by=c("student_number")][status=="grad"]$V1)
 t.test(avg_grade ~ status,data=avg_grade_last_term_minus2)
 
+## ---- third-semester-attrition-by-program ----
+third_term<-courses[term==3]
+setnames(third_term,'current-out','status')
+third_term[is.na(status),status:='student']
+third_term_avg<-third_term[,mean(Note,na.rm = T),by=.(student_number,program)]
+setnames(third_term_avg,'V1','avg_grade')
+third_term_prog<-third_term[,.(student_number,program,status)] %>% unique(by=c('student_number','program'))
+setkey(third_term_avg,'student_number','program')
+setkey(third_term_prog,'student_number','program')
+third_term_avg<-third_term_prog[third_term_avg]
+third_term_avg[status%in%c('grad','current','student'),status:='Not-drop-out']
+prog_list<-third_term_avg$program %>% table() %>% sort() %>% tail(13) %>% names()
+prog_list<-prog_list[!grepl('out',prog_list)]
+third_term_avg[,c('p','s'):=tstrsplit(program,'-')]
+
+ggplot(data = third_term_avg[status!='current'][p%in%prog_list],aes(x=avg_grade, group=status))+
+  geom_histogram(binwidth=5,center=2.5,aes(fill=status))+
+  scale_fill_manual(values = c('green','red'))+
+  facet_wrap(~p)+
+  labs(x='Average grade of courses taken in third term',
+       y='Number of Students')+
+  ggtitle('Comparing Academic Performance of Students who Graduate, and those who Do Not, in their third term of study')
+
+
+## ---- failed-courses ----
+num_failed_per_term<-courses[,.(.N,sum(Note<60,na.rm=TRUE)),by=.(student_number,term)]
+setnames(num_failed_per_term,"V2","num_failed")
+setnames(num_failed_per_term,'N',"num_courses")
+student_term_status<-courses[,.(student_number,term,`current-out`)]
+setnames(student_term_status,"current-out","status")
+student_term_status[is.na(status),status:='student']
+
+setkey(student_term_status,student_number,term)
+student_term_status<-student_term_status %>% unique(by=c('student_number','term'))
+setkey(num_failed_per_term,student_number,term)
+num_failed_per_term<-num_failed_per_term[student_term_status]
+
+current_students<-num_failed_per_term[status=='current',student_number] %>% unique()
+num_failed_per_term<-num_failed_per_term[!(student_number %in% current_students)]
+setkey(num_failed_per_term,'student_number','term')
+num_failed_per_term[status%in%c('grad','current','student'),status:='Not-drop-out']
+
+num_failed_third_term<-num_failed_per_term[,.SD[3],by=student_number]
+with(num_failed_third_term,table(status,num_failed)) %>% pander::pander()
+
+## ---- prop-failed-courses----
+ggplot(data = num_failed_third_term, aes(x=num_failed/num_courses,group=status))+
+  geom_histogram(binwidth=0.1,center=0.05,aes(fill=status))+
+  scale_fill_manual(values = c('green','red'))+
+  labs(x='Fraction of Courses Failed in Third Term',
+       y='Number of Students')+
+  ggtitle('Comparing Fraction courses failed, for Students who Graduate, and those who Do Not, in their third term of study')
+
+
 
 
 #Next step will be to look for students who have great MSE the whole way through and who haven't failed a class.
 #Let's figure out the people who leave after X semesters for reasons that aren't academic. How big is that fraction?
-
-## ----
