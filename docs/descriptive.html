@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Mining for Student Success and Perseverance</title>
+  <meta name="description" content="This is the Final Report for PAREA grant">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Mining for Student Success and Perseverance" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the Final Report for PAREA grant" />
+  <meta name="github-repo" content="sbhatnagar/studentsuccess_finalreport" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Mining for Student Success and Perseverance" />
+  
+  <meta name="twitter:description" content="This is the Final Report for PAREA grant" />
+  
+
+<meta name="author" content="Sameer Bhatnagar">
+<meta name="author" content="Jonathan Guillemette">
+<meta name="author" content="Micheal Dugdale">
+<meta name="author" content="Sahir Bhatnagar">
+<meta name="author" content="Nathaniel Lasry">
+
+
+<meta name="date" content="2017-06-02">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="littreview.html">
+<link rel="next" href="explanatory.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Mining for Student Success</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#context"><i class="fa fa-check"></i><b>2.1</b> Context</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objectives"><i class="fa fa-check"></i><b>2.2</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="littreview.html"><a href="littreview.html"><i class="fa fa-check"></i><b>3</b> Literature</a><ul>
+<li class="chapter" data-level="3.1" data-path="littreview.html"><a href="littreview.html#modeling-success-and-attrition-in-cegep"><i class="fa fa-check"></i><b>3.1</b> Modeling success and attrition in CEGEP</a></li>
+<li class="chapter" data-level="3.2" data-path="littreview.html"><a href="littreview.html#predictive-modelling-in-learning-analytics-and-educational-data-mining"><i class="fa fa-check"></i><b>3.2</b> Predictive Modelling in Learning Analytics and Educational Data Mining</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="4.1" data-path="descriptive.html"><a href="descriptive.html#demographics-across-the-colleges-and-major-programs"><i class="fa fa-check"></i><b>4.1</b> Demographics across the colleges and major programs</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="descriptive.html"><a href="descriptive.html#dawson"><i class="fa fa-check"></i><b>4.1.1</b> Dawson</a></li>
+<li class="chapter" data-level="4.1.2" data-path="descriptive.html"><a href="descriptive.html#john-abbott-college"><i class="fa fa-check"></i><b>4.1.2</b> John Abbott College</a></li>
+<li class="chapter" data-level="4.1.3" data-path="descriptive.html"><a href="descriptive.html#vanier"><i class="fa fa-check"></i><b>4.1.3</b> Vanier</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="descriptive.html"><a href="descriptive.html#academic-performance-in-semesters-leading-to-drop-out"><i class="fa fa-check"></i><b>4.2</b> Academic Performance in Semesters leading to drop-out</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="descriptive.html"><a href="descriptive.html#grades"><i class="fa fa-check"></i><b>4.2.1</b> Grades</a></li>
+<li class="chapter" data-level="4.2.2" data-path="descriptive.html"><a href="descriptive.html#passed-vs.failed-courses"><i class="fa fa-check"></i><b>4.2.2</b> Passed vs. Failed Courses</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="explanatory.html"><a href="explanatory.html"><i class="fa fa-check"></i><b>5</b> Methods Centered on Determining Predictive Factors</a></li>
+<li class="chapter" data-level="6" data-path="predictive.html"><a href="predictive.html"><i class="fa fa-check"></i><b>6</b> Methods centered on predicting at-risk students</a><ul>
+<li class="chapter" data-level="6.1" data-path="predictive.html"><a href="predictive.html#decision-trees-and-random-forests"><i class="fa fa-check"></i><b>6.1</b> Decision Trees and Random Forests</a></li>
+<li class="chapter" data-level="6.2" data-path="predictive.html"><a href="predictive.html#neural-networks"><i class="fa fa-check"></i><b>6.2</b> Neural Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="comparisons.html"><a href="comparisons.html"><i class="fa fa-check"></i><b>7</b> Comparisons</a></li>
+<li class="chapter" data-level="8" data-path="conted.html"><a href="conted.html"><i class="fa fa-check"></i><b>8</b> Continuing Education at Dawson</a><ul>
+<li class="chapter" data-level="8.1" data-path="conted.html"><a href="conted.html#services"><i class="fa fa-check"></i><b>8.1</b> Services</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="conted.html"><a href="conted.html#continuing-educations-growth-over-time"><i class="fa fa-check"></i><b>8.1.1</b> Continuing Education’s Growth over Time</a></li>
+<li class="chapter" data-level="8.1.2" data-path="conted.html"><a href="conted.html#department-level-seat-distributions"><i class="fa fa-check"></i><b>8.1.2</b> Department Level Seat Distributions</a></li>
+<li class="chapter" data-level="8.1.3" data-path="conted.html"><a href="conted.html#course-level-distributions"><i class="fa fa-check"></i><b>8.1.3</b> Course Level distributions</a></li>
+<li class="chapter" data-level="8.1.4" data-path="conted.html"><a href="conted.html#specialized-spaces"><i class="fa fa-check"></i><b>8.1.4</b> Specialized spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="conted.html"><a href="conted.html#students"><i class="fa fa-check"></i><b>8.2</b> Students</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="conted.html"><a href="conted.html#demographics"><i class="fa fa-check"></i><b>8.2.1</b> Demographics</a></li>
+<li class="chapter" data-level="8.2.2" data-path="conted.html"><a href="conted.html#success-rates"><i class="fa fa-check"></i><b>8.2.2</b> Success Rates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Mining for Student Success and Perseverance</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="descriptive" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Descriptive Statistics</h1>
+<p>** Under Construction **</p>
+<p>Here in we will describe - the data set - the methods by which we label students at risk - the distributions of at-risk students by - demographic indicators - registration record indicators</p>
+<div id="demographics-across-the-colleges-and-major-programs" class="section level2">
+<h2><span class="header-section-number">4.1</span> Demographics across the colleges and major programs</h2>
+<div id="dawson" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Dawson</h3>
+<table style="width:42%;">
+<colgroup>
+<col width="13%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">AN</th>
+<th align="center">AU</th>
+<th align="center">FR</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>F</strong></td>
+<td align="center">0.33</td>
+<td align="center">0.15</td>
+<td align="center">0.12</td>
+<td align="center">0.6</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>M</strong></td>
+<td align="center">0.23</td>
+<td align="center">0.1</td>
+<td align="center">0.07</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Sum</strong></td>
+<td align="center">0.56</td>
+<td align="center">0.25</td>
+<td align="center">0.19</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="john-abbott-college" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> John Abbott College</h3>
+<table style="width:42%;">
+<colgroup>
+<col width="13%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">AN</th>
+<th align="center">AU</th>
+<th align="center">FR</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>F</strong></td>
+<td align="center">0.31</td>
+<td align="center">0.09</td>
+<td align="center">0.12</td>
+<td align="center">0.52</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>M</strong></td>
+<td align="center">0.3</td>
+<td align="center">0.07</td>
+<td align="center">0.11</td>
+<td align="center">0.48</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Sum</strong></td>
+<td align="center">0.61</td>
+<td align="center">0.16</td>
+<td align="center">0.23</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="vanier" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Vanier</h3>
+<table style="width:42%;">
+<colgroup>
+<col width="13%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">AN</th>
+<th align="center">AU</th>
+<th align="center">FR</th>
+<th align="center">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>F</strong></td>
+<td align="center">0.26</td>
+<td align="center">0.17</td>
+<td align="center">0.1</td>
+<td align="center">0.53</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>M</strong></td>
+<td align="center">0.24</td>
+<td align="center">0.16</td>
+<td align="center">0.08</td>
+<td align="center">0.48</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Sum</strong></td>
+<td align="center">0.5</td>
+<td align="center">0.33</td>
+<td align="center">0.18</td>
+<td align="center">1.01</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="academic-performance-in-semesters-leading-to-drop-out" class="section level2">
+<h2><span class="header-section-number">4.2</span> Academic Performance in Semesters leading to drop-out</h2>
+<div id="grades" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Grades</h3>
+<p>Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven’t. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says. <img src="studentsuccess_final_report_files/figure-html/Average-comp-1.png" width="672" /></p>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  Average_all_courses by status
+## t = 78.251, df = 7349.6, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  20.36923 21.41600
+## sample estimates:
+## mean in group grad  mean in group out 
+##           79.97370           59.08109</code></pre>
+<p>From the average total grade between the drop outs and the graduates, we can clearly see that the distributions are significantly different, but what is surprising is that 22% of students have an average grade above 75% and that more than 52% of the students who dropped out had an average grade above 60%. In other words, most students who drop out have passing averages. One hypothesis for this effect is that students who end up dropping out start with good semesters and have their performance decline closer to the final semester. Let us verify this hypothesis.</p>
+<p>Let us now look at the performance of drop outs vs graduates on a semester by semester basis. Let us start by looking at the average grades of students in their last semester during which they are either graduating or dropping-out.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/Last-semester-comp-1.png" width="672" /></p>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  avg_grade by status
+## t = 84.649, df = 7619.5, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  27.00250 28.28279
+## sample estimates:
+## mean in group grad  mean in group out 
+##           79.17656           51.53391</code></pre>
+<p>In this data, we can clearly observe a stark difference between the graduates and the drop outs. First of all, note that 23% of students still have a term average over 75% in the semester in which they drop out. To push it further 15% of students who drop out have an average grade over 80%. The data clearly suggests that some of the drop outs aren’t dropping out because of academic performance. Furthermore, the long tail of the data on the low end of performance suggests that some of the students stopped coming to class prior to the end of the semester resulting in very low grades that serve to drive their cegep average grades from the graph above even lower. 34% of students have a grade below 40 suggesting that they have indeed stopped coming to school some time during the semester. What if these students hadn’t stopped coming, would their performance be similar to that of graduates?</p>
+<p>Let us now turn our attention to the semester before the one where they graduate or drop out.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/N-1-semester-comp-1.png" width="672" /></p>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  avg_grade by status
+## t = 57.702, df = 6604.9, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  15.65690 16.75814
+## sample estimates:
+## mean in group grad  mean in group out 
+##           80.56981           64.36230</code></pre>
+<p>The data clearly shows that even if there are significant differences between the groups, the drop out student population is getting closer to the graduate population. A section of 33% is observed to have an average grade above 75%.</p>
+<p>Finally, let us look at 2 semesters before they graduate or drop-out. We are again expecting the same trend.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/N-2-semester-comp-1.png" width="672" /></p>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  avg_grade by status
+## t = 42.166, df = 4390.4, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  10.95430 12.02262
+## sample estimates:
+## mean in group grad  mean in group out 
+##           80.42574           68.93729</code></pre>
+<p>One of the profile level Key Performance Indicators that colleges are supposed to specifically keep track of is third semester retention. In this light, we can somewhat flip the line of questionning above, and look to see if the distribution of grades in the third semester students looks different for those who will drop out, and those who will continue on.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/third-semester-attrition-by-program-1.png" width="672" /></p>
+<p>In conclusion, the data strongly suggests that there are approximately 20% of students who consistently have averages above 75%, but still drop out. Therefore, that section of the drop out population is a section that will always go undetected if only traditional academic failure metrics are used to assess which students are likely to drop out. Students who move out to the US or the rest of Canada after their second semester and those who drop out by lack of interest are two potential student types that will always drop out no matter what remedial solutions are offered for them.</p>
+</div>
+<div id="passed-vs.failed-courses" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Passed vs. Failed Courses</h3>
+<p>The line of questionning above can be repeated, but instead of looking at the average grade of courses taken in a term, we can instead look to see if the number of courses passed, or the proportion failed, might be different for students who drop out versus those who do not.</p>
+<table style="width:86%;">
+<colgroup>
+<col width="26%" />
+<col width="8%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Not-drop-out</strong></td>
+<td align="center">11339</td>
+<td align="center">1320</td>
+<td align="center">447</td>
+<td align="center">216</td>
+<td align="center">116</td>
+<td align="center">66</td>
+<td align="center">34</td>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>out</strong></td>
+<td align="center">263</td>
+<td align="center">113</td>
+<td align="center">93</td>
+<td align="center">80</td>
+<td align="center">134</td>
+<td align="center">109</td>
+<td align="center">59</td>
+<td align="center">36</td>
+<td align="center">15</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>What we remark in the table above is that the number of courses failed does not seem to differentiate students who will drop out after their third term. But perhaps, we should consider the fraction of courses that a student took in their third term, and failed?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/prop-failed-courses-1.png" width="672" /></p>
+<p>For the above graphic, we calculate, for each student in their term, the fraction of courses that they took and <em>failed</em>, and we plot the distributions for the group of students we know who dropped out, and those we know stayed in the college for a fourth term. The red boxplot shows that,of the students who dropped out after their third term, 50% of them failed more than than half of their classes in that third term (the central notch represents a 95% confidence interval on the median). Conversely, the distribution on the left, squashed down at 0, shows that almost all students who stay on for a fourth term, pass all of their third term classes (The additional dots shown in this distribution are considered outliers to the distribution, meaning there are some students who failed all of their third term classes, and decided to stay for an additional fourth term).</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="littreview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="explanatory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-descriptive-stats.Rmd",
+"text": "Edit"
+},
+"download": ["studentsuccess_final_report.pdf", "studentsuccess_final_report.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,4 +1,6 @@
-# Continuing Education at Dawson
+# Continuing Education at Dawson {#conted}
+
+** Under Construction **
 
 ```{r conted-local-setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE,message = FALSE)
@@ -12,7 +14,7 @@ The department of Continuing at Education offers evening courses across many dis
 
 ## Services
 
-Herein, we look at the services offered by the Division of Continuing Education.
+Herein, we look at the services offered by the Division of Continuing Education. This section is meant to give an overview of the breadth and depth of the offerings outside of the regular day division.
 
 ### Continuing Education's Growth over Time
 
@@ -21,6 +23,8 @@ How have each of the departments increased their ContEd offerings over time?
 ```{r dept-level-sizes-over-time}
 ```
 
+The above figure shows that the demand for courses in the Math department (department 201) has steadily increased over the last seven years, as have the Humanities (department 345), and English (602 and 603).
+
 ### Department Level Seat Distributions
 
 Which parts of Continuing Education are the most important in 2016? 
@@ -28,12 +32,16 @@ Which parts of Continuing Education are the most important in 2016?
 ```{r dept-level-sizes-2016}
 ```
 
+The previous plot shows that while there are many departments that offered courses in 2016, the bulk share were in Math, English and the Huamnities. Of note here are the departments that require specialized lab spaces, such as Chemistry (202) and Physics (203), which will be looked at more closely as we move forward.
+
+
 ### Course Level distributions
 
 If we look at the three most important departments (Math,Humanities and English) in 2016, how are the seats distrinuted across courses?
 
 ```{r big-dept-seat-dist-by-course}
 ```
+
 
 ### Specialized spaces
 
@@ -70,6 +78,13 @@ Who are the students using continuing education services?
 ```{r Sexe-demographics-over-time}
 ```
 
+Of note in the above figure:
+  - English (603): 2016 marks the first year where male students have a passing average
+  - Math (201): failing averages in all semesters
+  - Chemistry (202): fairly consistent performance across time for both genders, with slightly aging demographic over the years
+  - Physics (203): most consistent in academic performance and demographics
+  - Computer Science (420): most widely varying in both dimensions across time
+  
 What is impact of condensed summer term? 
 
 ```{r Sexe-demographics-over-time-summer}
@@ -85,11 +100,19 @@ and then add on the average grade achieved by students with the same gender, in 
 ```{r Sexe-demographics-day-mean}
 ```
 
+What is clear from the above is that 
+ - in general, students do better in their day division courses than in the their Continuing Education Counterparts
+ - Math is the most difficult subject both in the day division and in the evening
+ - the Physics department has the smallest performance gap between day students and those in Continuing Education
+
 #### Birth Place
 Now, instead of looking at effect of gender, we focus instead on Birth Place. To Quebec residents stand out in any consistent way, as compared to those born elsewhere?
 
 ```{r birth-place-demographics-over-time}
 ```
+
+Some observations from the above figure:
+ - The older students in Continuing Education were in large part not born in Quebec. 
 
 Again, what is impact of condensed summer term? 
 
@@ -106,6 +129,7 @@ and then add on the average grade achieved by students with the same **birth pla
 ```{r birth-place-demographics-day-mean}
 ```
 
+The same observation as from our study of gender demographics above holds: regardless of birthplace, day division students outperform their day division counterparts, and this gap is smallest in the physics department. The overall weakness in math is not limited to any one gender, nor explained by birth place
 
 #### Mother Tongue
 Finally we look at the possible impact of Mother Tongue. How do anglophones, francophones, and allophones compare in Continuing Education?
@@ -135,7 +159,25 @@ and then add on the average grade achieved by students with the same **mother to
 
 There are many students who take courses through both Continuing Education, and the regular day division over the course of their time at Dawson. One way of measuring the difference in the student experience here would be to look at those students alone, and compare the average of their grades in each division, while controlling for discipline. (the diagonal in each facet is simply meant to provide a reference for a hypothetical 1-to-1 correlation.) In order to control for student strength, we bin by overall average of high school grades. 
 
-```{r day-conted-same-students}
+```{r day-conted-same-students-AN, fig.show='hold'}
 ```
 
+```{r day-conted-same-students-FR, fig.show='hold'}
+```
+
+```{r day-conted-same-students-AU}
+```
+
+The above graphic shows that stronger students seem to be able to do as well in their day courses as they do in their evening ones, but this is not the cas for weaker students. What's more, there seems to be no consistency across departments.
+
+The following graphic is the same as above, but instead of binning students by their High School Average (as a proxy for over student strength), we use students first term CEGEP grades, and then plot their performance in day and evening courses averaged over all subsequent terms (disaggregated again by discipline).
+
+```{r day-conted-same-students-term1vsall-AN, fig.show='hold'}
+```
+
+```{r day-conted-same-students-term1vsall-FR, fig.show='hold'}
+```
+
+```{r day-conted-same-students-term1vsall-AU}
+```
 

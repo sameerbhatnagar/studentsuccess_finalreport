@@ -1,10 +1,13 @@
-# Descriptive Statistics
+# Descriptive Statistics {#descriptive}
+
+** Under Construction **
+
 ```{r descriptive-local-setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE,message = FALSE)
 knitr::read_chunk("bin/03-descriptive-stats-code.R")
 ```
 
-```{r descriptive-stats-setup}
+```{r packages}
 ```
 
 Here in we will describe
@@ -16,9 +19,21 @@ Here in we will describe
 
 ## Demographics across the colleges and major programs
 
+### Dawson
+```{r demographics-dawson}
+```
+
+### John Abbott College
+```{r demographics-jac}
+```
+
+### Vanier
+```{r demographics-vanier}
+```
 
 ## Academic Performance in Semesters leading to drop-out
-
+```{r descriptive-stats-setup}
+```
 ### Grades 
 Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven't. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says.
 ```{r Average-comp}
@@ -83,11 +98,11 @@ The line of questionning above can be repeated, but instead of looking at the av
 ```{r failed-courses}
 ```
 
-What we remark in the table above is that the number of courses failed does not seem to differentiate students who will drop out aftre their third term. But perhaps, we should consider the fraction of courses that a student took in their third term, and failed?
+What we remark in the table above is that the number of courses failed does not seem to differentiate students who will drop out after their third term. But perhaps, we should consider the fraction of courses that a student took in their third term, and failed?
 
 ```{r prop-failed-courses}
 ```
 
-No major distinction here either.
+For the above graphic, we calculate, for each student in their term, the fraction of courses that they took and _failed_, and we plot the distributions for the group of students we know who dropped out, and those we know stayed in the college for a fourth term. The red boxplot shows that,of the students who dropped out after their third term, 50% of them failed more than than half of their classes in that third term (the central notch represents a 95% confidence interval on the median). Conversely, the distribution on the left, squashed down at 0, shows that almost all students who stay on for a fourth term, pass all of their third term classes (The additional dots shown in this distribution are considered outliers to the distribution, meaning there are some students who failed all of their third term classes, and decided to stay for an additional fourth term).
 
 

@@ -1,12 +1,29 @@
-## ---- descriptive-stats-setup ----
-rm(list=ls())
+## ---- packages ----
 library(data.table)
 library(magrittr)
 library(ggplot2)
 library(stringr)
-load("bin/data/course_records_Dawson.Rdata")
-load("bin/data/labelled_students_Dawson.Rdata")
 
+## ---- demographics-dawson ----
+load("bin/data/labelled_students_Dawson.Rdata")
+with(students_last_session,table(Sexe,LangueMaternelle)) %>% prop.table() %>%
+  round(2) %>% addmargins( )%>% pander::pander()
+
+## ---- demographics-jac ----
+load("bin/data/labelled_students_JAC.Rdata")
+with(students_last_session,table(Sexe,LangueMaternelle)) %>% prop.table() %>%
+  round(2) %>% addmargins( )%>% pander::pander()
+
+## ---- demographics-vanier ----
+load("bin/data/labelled_students_Vanier.Rdata")
+with(students_last_session,table(Sexe,LangueMaternelle))[,2:4] %>% prop.table() %>%
+  round(2) %>% addmargins( )%>% pander::pander()
+
+
+## ---- descriptive-stats-setup ----
+rm(list=ls())
+load("bin/data/labelled_students_Dawson.Rdata")
+load("bin/data/course_records_Dawson.Rdata")
 #Look to find the grades of the students who dropped as a total average
 
 ave<-courses[,mean(Note),by=.(student_number)]
@@ -181,11 +198,12 @@ num_failed_third_term<-num_failed_per_term[,.SD[3],by=student_number]
 with(num_failed_third_term,table(status,num_failed)) %>% pander::pander()
 
 ## ---- prop-failed-courses----
-ggplot(data = num_failed_third_term, aes(x=num_failed/num_courses,group=status))+
-  geom_histogram(binwidth=0.1,center=0.05,aes(fill=status))+
+ggplot(data = num_failed_third_term[!is.na(status)], aes(y=num_failed/num_courses,x=status))+
+  geom_boxplot(aes(fill=status),notch=T)+
+  geom_jitter(width=0.1,alpha=1/10)+
   scale_fill_manual(values = c('green','red'))+
-  labs(x='Fraction of Courses Failed in Third Term',
-       y='Number of Students')+
+  labs(y='Fraction of Courses Failed in Third Term',
+       x='Third Term Attrition Status')+
   ggtitle('Comparing Fraction courses failed, for Students who Graduate, and those who Do Not, in their third term of study')
 
 
