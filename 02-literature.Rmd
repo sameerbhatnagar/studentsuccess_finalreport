@@ -1,7 +1,9 @@
-# Literature
+# Literature {#littreview}
+
+**Under Construction **
 
 ## Modeling success and attrition in CEGEP
-The most important relevant work for this project is [@jorgensen_predicting_2009].
+The most important relevant work for this project is [[@jorgensen2009pareafinalreport]].
 
 
 ## Predictive Modelling in Learning Analytics and Educational Data Mining

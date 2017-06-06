@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Mining for Student Success and Perseverance</title>
+  <meta name="description" content="This is the Final Report for PAREA grant">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Data Mining for Student Success and Perseverance" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the Final Report for PAREA grant" />
+  <meta name="github-repo" content="sbhatnagar/studentsuccess_finalreport" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data Mining for Student Success and Perseverance" />
+  
+  <meta name="twitter:description" content="This is the Final Report for PAREA grant" />
+  
+
+<meta name="author" content="Sameer Bhatnagar">
+<meta name="author" content="Jonathan Guillemette">
+<meta name="author" content="Micheal Dugdale">
+<meta name="author" content="Sahir Bhatnagar">
+<meta name="author" content="Nathaniel Lasry">
+
+
+<meta name="date" content="2017-06-02">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="comparisons.html">
+<link rel="next" href="conclusion.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Data Mining for Student Success</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#context"><i class="fa fa-check"></i><b>2.1</b> Context</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objectives"><i class="fa fa-check"></i><b>2.2</b> Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="littreview.html"><a href="littreview.html"><i class="fa fa-check"></i><b>3</b> Literature</a><ul>
+<li class="chapter" data-level="3.1" data-path="littreview.html"><a href="littreview.html#modeling-success-and-attrition-in-cegep"><i class="fa fa-check"></i><b>3.1</b> Modeling success and attrition in CEGEP</a></li>
+<li class="chapter" data-level="3.2" data-path="littreview.html"><a href="littreview.html#predictive-modelling-in-learning-analytics-and-educational-data-mining"><i class="fa fa-check"></i><b>3.2</b> Predictive Modelling in Learning Analytics and Educational Data Mining</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
+<li class="chapter" data-level="4.1" data-path="descriptive.html"><a href="descriptive.html#demographics-across-the-colleges-and-major-programs"><i class="fa fa-check"></i><b>4.1</b> Demographics across the colleges and major programs</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="descriptive.html"><a href="descriptive.html#dawson"><i class="fa fa-check"></i><b>4.1.1</b> Dawson</a></li>
+<li class="chapter" data-level="4.1.2" data-path="descriptive.html"><a href="descriptive.html#john-abbott-college"><i class="fa fa-check"></i><b>4.1.2</b> John Abbott College</a></li>
+<li class="chapter" data-level="4.1.3" data-path="descriptive.html"><a href="descriptive.html#vanier"><i class="fa fa-check"></i><b>4.1.3</b> Vanier</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="descriptive.html"><a href="descriptive.html#academic-performance-in-semesters-leading-to-drop-out"><i class="fa fa-check"></i><b>4.2</b> Academic Performance in Semesters leading to drop-out</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="descriptive.html"><a href="descriptive.html#grades"><i class="fa fa-check"></i><b>4.2.1</b> Grades</a></li>
+<li class="chapter" data-level="4.2.2" data-path="descriptive.html"><a href="descriptive.html#passed-vs.failed-courses"><i class="fa fa-check"></i><b>4.2.2</b> Passed vs. Failed Courses</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="explanatory.html"><a href="explanatory.html"><i class="fa fa-check"></i><b>5</b> Methods Centered on Determining Predictive Factors</a></li>
+<li class="chapter" data-level="6" data-path="predictive.html"><a href="predictive.html"><i class="fa fa-check"></i><b>6</b> Methods centered on predicting at-risk students</a><ul>
+<li class="chapter" data-level="6.1" data-path="predictive.html"><a href="predictive.html#decision-trees-and-random-forests"><i class="fa fa-check"></i><b>6.1</b> Decision Trees and Random Forests</a></li>
+<li class="chapter" data-level="6.2" data-path="predictive.html"><a href="predictive.html#neural-networks"><i class="fa fa-check"></i><b>6.2</b> Neural Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="comparisons.html"><a href="comparisons.html"><i class="fa fa-check"></i><b>7</b> Comparisons</a></li>
+<li class="chapter" data-level="8" data-path="conted.html"><a href="conted.html"><i class="fa fa-check"></i><b>8</b> Continuing Education at Dawson</a><ul>
+<li class="chapter" data-level="8.1" data-path="conted.html"><a href="conted.html#services"><i class="fa fa-check"></i><b>8.1</b> Services</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="conted.html"><a href="conted.html#continuing-educations-growth-over-time"><i class="fa fa-check"></i><b>8.1.1</b> Continuing Education’s Growth over Time</a></li>
+<li class="chapter" data-level="8.1.2" data-path="conted.html"><a href="conted.html#department-level-seat-distributions"><i class="fa fa-check"></i><b>8.1.2</b> Department Level Seat Distributions</a></li>
+<li class="chapter" data-level="8.1.3" data-path="conted.html"><a href="conted.html#course-level-distributions"><i class="fa fa-check"></i><b>8.1.3</b> Course Level distributions</a></li>
+<li class="chapter" data-level="8.1.4" data-path="conted.html"><a href="conted.html#specialized-spaces"><i class="fa fa-check"></i><b>8.1.4</b> Specialized spaces</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="conted.html"><a href="conted.html#students"><i class="fa fa-check"></i><b>8.2</b> Students</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="conted.html"><a href="conted.html#demographics"><i class="fa fa-check"></i><b>8.2.1</b> Demographics</a></li>
+<li class="chapter" data-level="8.2.2" data-path="conted.html"><a href="conted.html#success-rates"><i class="fa fa-check"></i><b>8.2.2</b> Success Rates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Mining for Student Success and Perseverance</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conted" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Continuing Education at Dawson</h1>
+<p>** Under Construction **</p>
+<p>The department of Continuing at Education offers evening courses across many disciplines throughout the year. The purpose of this report is to give a broad overview of the demographics and sector-level metrics for students taking courses within Cont Ed.</p>
+<div id="services" class="section level2">
+<h2><span class="header-section-number">8.1</span> Services</h2>
+<p>Herein, we look at the services offered by the Division of Continuing Education. This section is meant to give an overview of the breadth and depth of the offerings outside of the regular day division.</p>
+<div id="continuing-educations-growth-over-time" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Continuing Education’s Growth over Time</h3>
+<p>How have each of the departments increased their ContEd offerings over time?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/dept-level-sizes-over-time-1.png" width="672" /></p>
+<p>The above figure shows that the demand for courses in the Math department (department 201) has steadily increased over the last seven years, as have the Humanities (department 345), and English (602 and 603).</p>
+</div>
+<div id="department-level-seat-distributions" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Department Level Seat Distributions</h3>
+<p>Which parts of Continuing Education are the most important in 2016?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/dept-level-sizes-2016-1.png" width="672" /></p>
+<p>The previous plot shows that while there are many departments that offered courses in 2016, the bulk share were in Math, English and the Huamnities. Of note here are the departments that require specialized lab spaces, such as Chemistry (202) and Physics (203), which will be looked at more closely as we move forward.</p>
+</div>
+<div id="course-level-distributions" class="section level3">
+<h3><span class="header-section-number">8.1.3</span> Course Level distributions</h3>
+<p>If we look at the three most important departments (Math,Humanities and English) in 2016, how are the seats distrinuted across courses?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/big-dept-seat-dist-by-course-1.png" width="672" /></p>
+</div>
+<div id="specialized-spaces" class="section level3">
+<h3><span class="header-section-number">8.1.4</span> Specialized spaces</h3>
+<p>If we look at the departments that require specialized spaces (i.e. labs), in 2016, how are the seats distributed by course? - Has this evolved over time? - What are the seasonal variations?</p>
+<div id="winter" class="section level4">
+<h4><span class="header-section-number">8.1.4.1</span> Winter</h4>
+<p><img src="studentsuccess_final_report_files/figure-html/lab-dept-seat-dist-by-course-winter-1.png" width="672" /></p>
+</div>
+<div id="fall" class="section level4">
+<h4><span class="header-section-number">8.1.4.2</span> Fall</h4>
+<p><img src="studentsuccess_final_report_files/figure-html/lab-dept-seat-dist-by-course-fall-1.png" width="672" /></p>
+</div>
+<div id="summer" class="section level4">
+<h4><span class="header-section-number">8.1.4.3</span> Summer</h4>
+<p><img src="studentsuccess_final_report_files/figure-html/lab-dept-seat-dist-by-course-summer-1.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="students" class="section level2">
+<h2><span class="header-section-number">8.2</span> Students</h2>
+<div id="demographics" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Demographics</h3>
+<p>Who are the students using continuing education services?</p>
+<ul>
+<li>are there gender differences?</li>
+<li>are there age differences?</li>
+<li>do these demographics change over time?</li>
+<li>are there seasonal variations?</li>
+<li>are there differences in different departments?</li>
+</ul>
+<div id="sexe" class="section level4">
+<h4><span class="header-section-number">8.2.1.1</span> Sexe</h4>
+<p><img src="studentsuccess_final_report_files/figure-html/Sexe-demographics-over-time-1.png" width="672" /></p>
+<p>Of note in the above figure: - English (603): 2016 marks the first year where male students have a passing average - Math (201): failing averages in all semesters - Chemistry (202): fairly consistent performance across time for both genders, with slightly aging demographic over the years - Physics (203): most consistent in academic performance and demographics - Computer Science (420): most widely varying in both dimensions across time</p>
+<p>What is impact of condensed summer term?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/Sexe-demographics-over-time-summer-1.png" width="672" /></p>
+<p>Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years,</p>
+<p><img src="studentsuccess_final_report_files/figure-html/Sexe-demographics-1.png" width="672" /></p>
+<p>and then add on the average grade achieved by students with the same gender, in the same courses from the same disciplines, but from the ``regular’’ day division.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/Sexe-demographics-day-mean-1.png" width="672" /></p>
+<p>What is clear from the above is that - in general, students do better in their day division courses than in the their Continuing Education Counterparts - Math is the most difficult subject both in the day division and in the evening - the Physics department has the smallest performance gap between day students and those in Continuing Education</p>
+</div>
+<div id="birth-place" class="section level4">
+<h4><span class="header-section-number">8.2.1.2</span> Birth Place</h4>
+<p>Now, instead of looking at effect of gender, we focus instead on Birth Place. To Quebec residents stand out in any consistent way, as compared to those born elsewhere?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/birth-place-demographics-over-time-1.png" width="672" /></p>
+<p>Some observations from the above figure: - The older students in Continuing Education were in large part not born in Quebec.</p>
+<p>Again, what is impact of condensed summer term?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/birth-place-demographics-over-time-summer-1.png" width="672" /></p>
+<p>Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years,</p>
+<p><img src="studentsuccess_final_report_files/figure-html/birth-place-demographics-1.png" width="672" /></p>
+<p>and then add on the average grade achieved by students with the same <strong>birth place</strong> (namely quebec residents vs <em>other</em>), in the same courses from the same disciplines, but from the ``regular’’ day division.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/birth-place-demographics-day-mean-1.png" width="672" /></p>
+<p>The same observation as from our study of gender demographics above holds: regardless of birthplace, day division students outperform their day division counterparts, and this gap is smallest in the physics department. The overall weakness in math is not limited to any one gender, nor explained by birth place</p>
+</div>
+<div id="mother-tongue" class="section level4">
+<h4><span class="header-section-number">8.2.1.3</span> Mother Tongue</h4>
+<p>Finally we look at the possible impact of Mother Tongue. How do anglophones, francophones, and allophones compare in Continuing Education?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/langue-demographics-over-time-1.png" width="672" /></p>
+<p>Again, what is impact of condensed summer term?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/langue-demographics-over-time-summer-1.png" width="672" /></p>
+<p>Finally, as there seems to be relatively little change in these patterns over time, we can collapse all over the past seven years,</p>
+<p><img src="studentsuccess_final_report_files/figure-html/langue-demographics-1.png" width="672" /></p>
+<p>and then add on the average grade achieved by students with the same <strong>mother tongue</strong>, in the same courses from the same disciplines, but from the ``regular’’ day division.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/langue-demographics-day-mean-1.png" width="672" /></p>
+</div>
+</div>
+<div id="success-rates" class="section level3">
+<h3><span class="header-section-number">8.2.2</span> Success Rates</h3>
+<p>There are many students who take courses through both Continuing Education, and the regular day division over the course of their time at Dawson. One way of measuring the difference in the student experience here would be to look at those students alone, and compare the average of their grades in each division, while controlling for discipline. (the diagonal in each facet is simply meant to provide a reference for a hypothetical 1-to-1 correlation.) In order to control for student strength, we bin by overall average of high school grades.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/day-conted-same-students-AN-1.png" width="672" /></p>
+<p><img src="studentsuccess_final_report_files/figure-html/day-conted-same-students-FR-1.png" width="672" /></p>
+<p><img src="studentsuccess_final_report_files/figure-html/day-conted-same-students-AU-1.png" width="672" /></p>
+<p>The above graphic shows that stronger students seem to be able to do as well in their day courses as they do in their evening ones, but this is not the cas for weaker students. What’s more, there seems to be no consistency across departments.</p>
+<p>The following graphic is the same as above, but instead of binning students by their High School Average (as a proxy for over student strength), we use students first term CEGEP grades, and then plot their performance in day and evening courses averaged over all subsequent terms (disaggregated again by discipline).</p>
+<p><img src="studentsuccess_final_report_files/figure-html/day-conted-same-students-term1vsall-AN-1.png" width="672" /></p>
+<p><img src="studentsuccess_final_report_files/figure-html/day-conted-same-students-term1vsall-FR-1.png" width="672" /></p>
+<p><img src="studentsuccess_final_report_files/figure-html/day-conted-same-students-term1vsall-AU-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="comparisons.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-contedDawson.Rmd",
+"text": "Edit"
+},
+"download": ["studentsuccess_final_report.pdf", "studentsuccess_final_report.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

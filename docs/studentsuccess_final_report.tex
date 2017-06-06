@@ -84,7 +84,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-06-01}
+  \date{2017-06-02}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -121,6 +121,8 @@ order to find predictors of attrition.
 
 \chapter{Introduction}\label{intro}
 
+\section{Context}\label{context}
+
 This report outlines the results from a three year intercollegiate
 research project funded by the\textbf{PAREA} agency ( \emph{Programmme
 d'Aide à la Recherche en Enseignment et Apprentissage}) from the
@@ -156,33 +158,86 @@ reported on government figures, which rely on data that looks at
 information at a very coarse level of granularity (of students graduated
 from high schoolhow many obtain diplomas from CEGEP)
 
-Almost all of the CEGEP's use the same database system, known as
-\textbf{CLARA} in order to manage the data related to student admission,
-registration and graduation. Our research team's main objective is to
-leverage this uniformity of how data is automatically generated and
-stored, in order to determine if, in this wealth of data, there might be
-predictors of student attrition. This effort stands apart from previous
-work and reports in that - the data analyzed is much finer-grained: the
-unit of analysis is down to the semester registration records for each
-student - we look at the general population of students - with every
-additional college that participates in our study, we can track students
-who change CEGEPs, and be more accurate in our determinations of which
-students drop out
+\section{Objectives}\label{objectives}
 
-\chapter{Literature}\label{literature}
+Almost all of the CEGEP's use the same database system, known as
+\textbf{CLARA} (developped by the company Skytech) in order to manage
+the data related to student admission, registration and graduation. Our
+research team's main objective is to leverage this uniformity of how
+data is automatically generated and stored, in order to determine if, in
+this wealth of data, there might be predictors of student attrition.
+This effort stands apart from previous work and reports in that:
+
+\begin{itemize}
+\tightlist
+\item
+  the data analyzed is much finer-grained: the unit of analysis is down
+  to the semester registration records for each student
+\item
+  we look at the general population of students
+\item
+  to our knowledge, this is the first ever such study to span multiple
+  CEGEPs, which we hope adds a greater relibility and validity to our
+  findings.
+\end{itemize}
+
+This project has two specific objectives:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  find predictors of students dropping out, whether they be demographic,
+  or based in academic performance, on a term by term basis.
+\item
+  evaluate methods by which students can be automatically flagged as
+  being at risk of dropping out, without so much a focus on
+  understanding why, but for the purpose of ``general offers of
+  support'' or further investigation
+\end{enumerate}
+
+This report is structured to reflect these two objectives. Namely, we
+begin with - a standard review of previous
+\protect\hyperlink{littreview}{related work}, - a section on
+\protect\hyperlink{descriptive}{descriptive statistics} which gives an
+overview of the dataset.
+
+We then move on to our methods and models over two chapters: - the
+\protect\hyperlink{explanatory}{first} addresses objective 1, outlining
+our efforts to find explanatory predictors of student attrition in
+classical statistical models. - The
+\protect\hyperlink{predictive}{following chapter} addresses objective 2,
+describing modern methods from the field of machine learning, which, at
+the expense of model interpretability, are fit to provide maximum
+predictive accuracy in identifying students at-risk.
+
+The report then concludes with -
+\protect\hyperlink{comparisons}{comparisons} of these methods with each
+other, and to current intervention frameworks in place at participating
+colleges - an auxilliary chapter looking at students from the division
+of \protect\hyperlink{conted}{Continuing Education} - a
+\protect\hyperlink{conclusion}{concluding chapter}, with reccomendations
+for future directions
+
+\hypertarget{littreview}{\chapter{Literature}\label{littreview}}
+
+\textbf{Under Construction }
 
 \section{Modeling success and attrition in
 CEGEP}\label{modeling-success-and-attrition-in-cegep}
 
 The most important relevant work for this project is
-\citep{jorgensen_predicting_2009}.
+{[}\citep{jorgensen2009pareafinalreport}{]}.
 
 \section{Predictive Modelling in Learning Analytics and Educational Data
 Mining}\label{predictive-modelling-in-learning-analytics-and-educational-data-mining}
 
 \citep{hla2017}
 
-\chapter{Descriptive Statistics}\label{descriptive-statistics}
+\hypertarget{descriptive}{\chapter{Descriptive
+Statistics}\label{descriptive}}
+
+** Under Construction **
 
 Here in we will describe - the data set - the methods by which we label
 students at risk - the distributions of at-risk students by -
@@ -190,6 +245,170 @@ demographic indicators - registration record indicators
 
 \section{Demographics across the colleges and major
 programs}\label{demographics-across-the-colleges-and-major-programs}
+
+\subsection{Dawson}\label{dawson}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+AN\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+AU\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+FR\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+Sum\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{F}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.33\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.15\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.12\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.6\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{M}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.23\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.1\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.07\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.4\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{Sum}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.56\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.25\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.19\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{John Abbott College}\label{john-abbott-college}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+AN\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+AU\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+FR\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+Sum\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{F}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.31\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.09\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.12\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.52\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{M}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.3\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.07\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.11\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.48\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{Sum}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.61\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.16\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.23\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Vanier}\label{vanier}
+
+\begin{longtable}[]{@{}ccccc@{}}
+\toprule
+\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+AN\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+AU\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+FR\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+Sum\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{F}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.26\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.17\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.1\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.53\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{M}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.24\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.16\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.08\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.48\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\textbf{Sum}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.5\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.33\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0.18\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+1.01\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Academic Performance in Semesters leading to
+drop-out}\label{academic-performance-in-semesters-leading-to-drop-out}
+
+\subsection{Grades}\label{grades}
 
 Do students who drop out do so because of poor grades? What fraction of
 students are counted year after year as drop-outs and labeled as
@@ -305,6 +524,15 @@ are again expecting the same trend.
 ##           80.42574           68.93729
 \end{verbatim}
 
+One of the profile level Key Performance Indicators that colleges are
+supposed to specifically keep track of is third semester retention. In
+this light, we can somewhat flip the line of questionning above, and
+look to see if the distribution of grades in the third semester students
+looks different for those who will drop out, and those who will continue
+on.
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/third-semester-attrition-by-program-1.pdf}
+
 In conclusion, the data strongly suggests that there are approximately
 20\% of students who consistently have averages above 75\%, but still
 drop out. Therefore, that section of the drop out population is a
@@ -315,11 +543,114 @@ second semester and those who drop out by lack of interest are two
 potential student types that will always drop out no matter what
 remedial solutions are offered for them.
 
-\section{Fraction of students who change
-colleges}\label{fraction-of-students-who-change-colleges}
+\subsection{Passed vs.~Failed Courses}\label{passed-vs.failed-courses}
 
-\chapter{Methods Centered on Determining Predictive
-Factors}\label{methods-centered-on-determining-predictive-factors}
+The line of questionning above can be repeated, but instead of looking
+at the average grade of courses taken in a term, we can instead look to
+see if the number of courses passed, or the proportion failed, might be
+different for students who drop out versus those who do not.
+
+\begin{longtable}[]{@{}ccccccccccc@{}}
+\toprule
+\begin{minipage}[b]{0.19\columnwidth}\centering\strut
+~\strut
+\end{minipage} & \begin{minipage}[b]{0.06\columnwidth}\centering\strut
+0\strut
+\end{minipage} & \begin{minipage}[b]{0.05\columnwidth}\centering\strut
+1\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+3\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+4\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+5\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+6\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+7\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+8\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\centering\strut
+10\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.19\columnwidth}\centering\strut
+\textbf{Not-drop-out}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+11339\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+1320\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+447\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+216\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+116\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+66\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+8\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+2\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+0\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.19\columnwidth}\centering\strut
+\textbf{out}\strut
+\end{minipage} & \begin{minipage}[t]{0.06\columnwidth}\centering\strut
+263\strut
+\end{minipage} & \begin{minipage}[t]{0.05\columnwidth}\centering\strut
+113\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+93\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+80\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+134\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+109\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+59\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+36\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+15\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\centering\strut
+1\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+What we remark in the table above is that the number of courses failed
+does not seem to differentiate students who will drop out after their
+third term. But perhaps, we should consider the fraction of courses that
+a student took in their third term, and failed?
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/prop-failed-courses-1.pdf}
+
+For the above graphic, we calculate, for each student in their term, the
+fraction of courses that they took and \emph{failed}, and we plot the
+distributions for the group of students we know who dropped out, and
+those we know stayed in the college for a fourth term. The red boxplot
+shows that,of the students who dropped out after their third term, 50\%
+of them failed more than than half of their classes in that third term
+(the central notch represents a 95\% confidence interval on the median).
+Conversely, the distribution on the left, squashed down at 0, shows that
+almost all students who stay on for a fourth term, pass all of their
+third term classes (The additional dots shown in this distribution are
+considered outliers to the distribution, meaning there are some students
+who failed all of their third term classes, and decided to stay for an
+additional fourth term).
+
+\hypertarget{explanatory}{\chapter{Methods Centered on Determining
+Predictive Factors}\label{explanatory}}
+
+\textbf{Under Construction}
 
 This chapter will be focused on methods which have a sound probabilistic
 framework, and allow for inference into the statistical importance of
@@ -333,8 +664,10 @@ predictive factors.
   Mixed Effects Models
 \end{itemize}
 
-\chapter{Methods centered on predicting at-risk
-students}\label{methods-centered-on-predicting-at-risk-students}
+\hypertarget{predictive}{\chapter{Methods centered on predicting at-risk
+students}\label{predictive}}
+
+\textbf{Under construction}
 
 Over the last twenty years, there has an increasing amount of work in
 the applied social sciences that explore the use of what
@@ -376,7 +709,9 @@ Forests}\label{decision-trees-and-random-forests}
 
 \section{Neural Networks}\label{neural-networks}
 
-\chapter{Comparisons}\label{comparisons}
+\hypertarget{comparisons}{\chapter{Comparisons}\label{comparisons}}
+
+** Under Construction **
 
 This chapter will compare the effectiveness of the methods developped in
 the previous two chapters, and compare them to more basic approaches to
@@ -532,8 +867,10 @@ Residual deviance:\strut
 \bottomrule
 \end{longtable}
 
-\chapter{Continuing Education at
-Dawson}\label{continuing-education-at-dawson}
+\hypertarget{conted}{\chapter{Continuing Education at
+Dawson}\label{conted}}
+
+** Under Construction **
 
 The department of Continuing at Education offers evening courses across
 many disciplines throughout the year. The purpose of this report is to
@@ -543,7 +880,8 @@ students taking courses within Cont Ed.
 \section{Services}\label{services}
 
 Herein, we look at the services offered by the Division of Continuing
-Education.
+Education. This section is meant to give an overview of the breadth and
+depth of the offerings outside of the regular day division.
 
 \subsection{Continuing Education's Growth over
 Time}\label{continuing-educations-growth-over-time}
@@ -553,12 +891,23 @@ time?
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/dept-level-sizes-over-time-1.pdf}
 
+The above figure shows that the demand for courses in the Math
+department (department 201) has steadily increased over the last seven
+years, as have the Humanities (department 345), and English (602 and
+603).
+
 \subsection{Department Level Seat
 Distributions}\label{department-level-seat-distributions}
 
 Which parts of Continuing Education are the most important in 2016?
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/dept-level-sizes-2016-1.pdf}
+
+The previous plot shows that while there are many departments that
+offered courses in 2016, the bulk share were in Math, English and the
+Huamnities. Of note here are the departments that require specialized
+lab spaces, such as Chemistry (202) and Physics (203), which will be
+looked at more closely as we move forward.
 
 \subsection{Course Level
 distributions}\label{course-level-distributions}
@@ -610,6 +959,14 @@ Who are the students using continuing education services?
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/Sexe-demographics-over-time-1.pdf}
 
+Of note in the above figure: - English (603): 2016 marks the first year
+where male students have a passing average - Math (201): failing
+averages in all semesters - Chemistry (202): fairly consistent
+performance across time for both genders, with slightly aging
+demographic over the years - Physics (203): most consistent in academic
+performance and demographics - Computer Science (420): most widely
+varying in both dimensions across time
+
 What is impact of condensed summer term?
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/Sexe-demographics-over-time-summer-1.pdf}
@@ -625,6 +982,12 @@ gender, in the same courses from the same disciplines, but from the
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/Sexe-demographics-day-mean-1.pdf}
 
+What is clear from the above is that - in general, students do better in
+their day division courses than in the their Continuing Education
+Counterparts - Math is the most difficult subject both in the day
+division and in the evening - the Physics department has the smallest
+performance gap between day students and those in Continuing Education
+
 \subsubsection{Birth Place}\label{birth-place}
 
 Now, instead of looking at effect of gender, we focus instead on Birth
@@ -632,6 +995,9 @@ Place. To Quebec residents stand out in any consistent way, as compared
 to those born elsewhere?
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/birth-place-demographics-over-time-1.pdf}
+
+Some observations from the above figure: - The older students in
+Continuing Education were in large part not born in Quebec.
 
 Again, what is impact of condensed summer term?
 
@@ -648,6 +1014,12 @@ same courses from the same disciplines, but from the ``regular'' day
 division.
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/birth-place-demographics-day-mean-1.pdf}
+
+The same observation as from our study of gender demographics above
+holds: regardless of birthplace, day division students outperform their
+day division counterparts, and this gap is smallest in the physics
+department. The overall weakness in math is not limited to any one
+gender, nor explained by birth place
 
 \subsubsection{Mother Tongue}\label{mother-tongue}
 
@@ -683,11 +1055,32 @@ diagonal in each facet is simply meant to provide a reference for a
 hypothetical 1-to-1 correlation.) In order to control for student
 strength, we bin by overall average of high school grades.
 
-\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-1.pdf}
+\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-AN-1.pdf}
 
-\chapter{Final Words}\label{final-words}
+\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-FR-1.pdf}
 
-We have finished a nice book.
+\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-AU-1.pdf}
+
+The above graphic shows that stronger students seem to be able to do as
+well in their day courses as they do in their evening ones, but this is
+not the cas for weaker students. What's more, there seems to be no
+consistency across departments.
+
+The following graphic is the same as above, but instead of binning
+students by their High School Average (as a proxy for over student
+strength), we use students first term CEGEP grades, and then plot their
+performance in day and evening courses averaged over all subsequent
+terms (disaggregated again by discipline).
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-term1vsall-AN-1.pdf}
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-term1vsall-FR-1.pdf}
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-term1vsall-AU-1.pdf}
+
+\hypertarget{conclusion}{\chapter{Conclusion}\label{conclusion}}
+
+** Under Construction **
 
 \bibliography{packages.bib,book.bib,studentsuccess.bib}
 
