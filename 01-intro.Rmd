@@ -1,5 +1,17 @@
 # Introduction {#intro}
 
+This report outlines the results from a three year intercollegiate research project funded by the**PAREA** agency ( _Programmme d'Aide à la Recherche en Enseignment et Apprentissage_) from the _Ministère de l'Education_ of the provincial Government of Quebec.
 
+In the province of Quebec, students finish their secondary education at what is the equivalent of Grade 11 in other parts of North America. Students are then able to attend **CEGEP** ( _Collège d'enseignment général et professionel_) for either 
 
+ - two years, as part of pre-university program, e.g Science, Social Science, Liberal Arts
+ - three years, as part of technical program, meant specifically to lead directly to the job market, e.g. Nursing, Civil Engineering Technology, Diagnotsic Imaging Technology
+ 
+There are 48 CEGEPs in the Quebec network, and public or private, they all fall under the purview of the _Ministère de l'Education et Enseignment Superieur_. Over the past twenty years, there has been significant work[@jorgensen2003students; @jorgensen2005academic; @jorgensen2009predicting; @riviere1995decrocheurs; @shaienks2008statcan] and media [@breton2016soleil; @dion-viens2015lapresse; @duchaine2017lapresse] on the topic of student attrition in CEGEP. The scholarly work done has often focused on determing predictors of attrition through surveys, or focused on specific vulnerable sub populations. The media has often reported on government figures, which rely on data that looks at information at a very coarse level of granularity (of students graduated from high schoolhow many obtain diplomas from CEGEP)
+
+Almost all of the CEGEP's use the same database system, known as **CLARA** in order to manage the data related to student admission, registration and graduation. Our research team's main objective is to leverage this uniformity of how data is automatically generated and stored, in order to determine if, in this wealth of data, there might be predictors of student attrition. This effort stands apart from previous work and reports in that 
+ - the data analyzed is much finer-grained: the unit of analysis is down to the semester registration records for each student
+ - we look at the general population of students
+ - with every additional college that participates in our study, we can track students who change CEGEPs, and be more accurate in our determinations of which students drop out
+ 
 

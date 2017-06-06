@@ -29,7 +29,7 @@
 <meta name="author" content="Nathaniel Lasry">
 
 
-<meta name="date" content="2017-05-31">
+<meta name="date" content="2017-06-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -75,7 +75,12 @@
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
 <li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
 <li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#demographics-across-the-colleges-and-major-programs"><i class="fa fa-check"></i><b>4.1</b> Demographics across the colleges and major programs</a></li>
-<li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#fraction-of-students-who-change-colleges"><i class="fa fa-check"></i><b>4.2</b> Fraction of students who change colleges</a></li>
+<li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#academic-performance-in-semesters-leading-to-drop-out"><i class="fa fa-check"></i><b>4.2</b> Academic Performance in Semesters leading to drop-out</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#grades"><i class="fa fa-check"></i><b>4.2.1</b> Grades</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#conclusion"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#passed-vs.failed-courses"><i class="fa fa-check"></i><b>4.3.1</b> Passed vs. Failed Courses</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="methods-centered-on-determining-predictive-factors.html"><a href="methods-centered-on-determining-predictive-factors.html"><i class="fa fa-check"></i><b>5</b> Methods Centered on Determining Predictive Factors</a></li>
 <li class="chapter" data-level="6" data-path="methods-centered-on-predicting-at-risk-students.html"><a href="methods-centered-on-predicting-at-risk-students.html"><i class="fa fa-check"></i><b>6</b> Methods centered on predicting at-risk students</a></li>
@@ -108,64 +113,158 @@
 <p>Here in we will describe - the data set - the methods by which we label students at risk - the distributions of at-risk students by - demographic indicators - registration record indicators</p>
 <div id="demographics-across-the-colleges-and-major-programs" class="section level2">
 <h2><span class="header-section-number">4.1</span> Demographics across the colleges and major programs</h2>
-<p>Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven’t. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says.</p>
+</div>
+<div id="academic-performance-in-semesters-leading-to-drop-out" class="section level2">
+<h2><span class="header-section-number">4.2</span> Academic Performance in Semesters leading to drop-out</h2>
+<div id="grades" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Grades</h3>
+<p>Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven’t. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says. &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 <p><img src="studentsuccess_final_report_files/figure-html/Average%20comp-1.png" width="672" /></p>
+<p>From the average total grade between the drop outs and the graduates, we can clearly see that the distributions are significantly different, but what is surprising is that NaN% of students have an average grade above 75% and that more than NaN% of the students who dropped out had an average grade above 60%. In other words, most students who drop out have passing averages. One hypothesis for this effect is that students who end up dropping out start with good semesters and have their performance decline closer to the final semester. Let us verify this hypothesis.</p>
+<p>Let us now look at the performance of drop outs vs graduates on a semester by semester basis. Let us start by looking at the average grades of students in their last semester during which they are either graduating or dropping-out. <img src="studentsuccess_final_report_files/figure-html/Average-comp-1.png" width="672" /></p>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
-## data:  students_last_session$Average[which(students_last_session$status ==  and students_last_session$Average[which(students_last_session$status ==     &quot;grad&quot;)] and     &quot;out&quot;)]
+## data:  Average_all_courses by status
 ## t = 78.251, df = 7349.6, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  20.36923 21.41600
 ## sample estimates:
-## mean of x mean of y 
-##  79.97370  59.08109</code></pre>
+## mean in group grad  mean in group out 
+##           79.97370           59.08109</code></pre>
 <p>From the average total grade between the drop outs and the graduates, we can clearly see that the distributions are significantly different, but what is surprising is that 22% of students have an average grade above 75% and that more than 52% of the students who dropped out had an average grade above 60%. In other words, most students who drop out have passing averages. One hypothesis for this effect is that students who end up dropping out start with good semesters and have their performance decline closer to the final semester. Let us verify this hypothesis.</p>
 <p>Let us now look at the performance of drop outs vs graduates on a semester by semester basis. Let us start by looking at the average grades of students in their last semester during which they are either graduating or dropping-out.</p>
-<p><img src="studentsuccess_final_report_files/figure-html/Last%20semester%20comp-1.png" width="672" /></p>
+<p><img src="studentsuccess_final_report_files/figure-html/Last-semester-comp-1.png" width="672" /></p>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
-## data:  c2[, .SD[.N], by = c(&quot;student_number&quot;)][status == &quot;out&quot;]$V1 and c2[, .SD[.N], by = c(&quot;student_number&quot;)][status == &quot;grad&quot;]$V1
-## t = -84.565, df = 7363.6, p-value &lt; 2.2e-16
+## data:  avg_grade by status
+## t = 84.649, df = 7619.5, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -28.74741 -27.44482
+##  27.00250 28.28279
 ## sample estimates:
-## mean of x mean of y 
-##  51.08037  79.17648</code></pre>
-<p>In this data, we can clearly observe a stark difference between the graduates and the drop outs. First of all, note that 22% of students still have a term average over 75% in the semester in which they drop out. To push it further 14% of students who drop out have an average grade over 80%. The data clearly suggests that some of the drop outs aren’t dropping out because of academic performance. Furthermore, the long tail of the data on the low end of performance suggests that some of the students stopped coming to class prior to the end of the semester resulting in very low grades that serve to drive their cegep average grades from the graph above even lower. 35% of students have a grade below 40 suggesting that they have indeed stopped coming to school some time during the semester. What if these students hadn’t stopped coming, would their performance be similar to that of graduates?</p>
-<p>Let us now turn our attention to the semester before the one where they graduate or drop out. <img src="studentsuccess_final_report_files/figure-html/N-1%20semester%20comp-1.png" width="672" /></p>
+## mean in group grad  mean in group out 
+##           79.17656           51.53391</code></pre>
+<p>In this data, we can clearly observe a stark difference between the graduates and the drop outs. First of all, note that 23% of students still have a term average over 75% in the semester in which they drop out. To push it further 15% of students who drop out have an average grade over 80%. The data clearly suggests that some of the drop outs aren’t dropping out because of academic performance. Furthermore, the long tail of the data on the low end of performance suggests that some of the students stopped coming to class prior to the end of the semester resulting in very low grades that serve to drive their cegep average grades from the graph above even lower. 34% of students have a grade below 40 suggesting that they have indeed stopped coming to school some time during the semester. What if these students hadn’t stopped coming, would their performance be similar to that of graduates?</p>
+<p>Let us now turn our attention to the semester before the one where they graduate or drop out.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/N-1-semester-comp-1.png" width="672" /> &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<p>In this data, we can clearly observe a stark difference between the graduates and the drop outs. First of all, note that 22% of students still have a term average over 75% in the semester in which they drop out. To push it further 14% of students who drop out have an average grade over 80%. The data clearly suggests that some of the drop outs aren’t dropping out because of academic performance. Furthermore, the long tail of the data on the low end of performance suggests that some of the students stopped coming to class prior to the end of the semester resulting in very low grades that serve to drive their cegep average grades from the graph above even lower. 34% of students have a grade below 40 suggesting that they have indeed stopped coming to school some time during the semester. What if these students hadn’t stopped coming, would their performance be similar to that of graduates?</p>
+<p>Let us now turn our attention to the semester before the one where they graduate or drop out.</p>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
-## data:  c2[, .SD[.N - 1], by = c(&quot;student_number&quot;)][status == &quot;out&quot;]$V1 and c2[, .SD[.N - 1], by = c(&quot;student_number&quot;)][status == &quot;grad&quot;]$V1
-## t = -57.484, df = 6274.5, p-value &lt; 2.2e-16
+## data:  avg_grade by status
+## t = 57.702, df = 6604.9, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -17.01062 -15.88867
+##  15.65690 16.75814
 ## sample estimates:
-## mean of x mean of y 
-##  64.24363  80.69328</code></pre>
-<p>The data clearly shows that even if there are significant differences between the groups</p>
-<p>Finally, let us look at 2 semesters before they graduate or drop-out. We are again expecting the same trend. <img src="studentsuccess_final_report_files/figure-html/N-2%20semester%20comp-1.png" width="672" /></p>
+## mean in group grad  mean in group out 
+##           80.56981           64.36230</code></pre>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>09d5dad94bfceabd1acdaa6e46b0bbf82e89c757 The data clearly shows that even if there are significant differences between the groups, the drop out student population is getting closer to the graduate population. A section of 33% is observed to have an average grade above 75%.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Finally, let us look at 2 semesters before they graduate or drop-out. We are again expecting the same trend.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/N-2-semester-comp-1.png" width="672" /></p>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
-## data:  c2[, .SD[.N - 2], by = c(&quot;student_number&quot;)][status == &quot;out&quot;]$V1 and c2[, .SD[.N - 2], by = c(&quot;student_number&quot;)][status == &quot;grad&quot;]$V1
-## t = -41.354, df = 4162.2, p-value &lt; 2.2e-16
+## data:  avg_grade by status
+## t = 42.166, df = 4390.4, p-value &lt; 2.2e-16
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -12.11730 -11.02037
+##  10.95430 12.02262
 ## sample estimates:
-## mean of x mean of y 
-##  68.90087  80.46971</code></pre>
-<p>Sweet. Now let’s look at…</p>
+## mean in group grad  mean in group out 
+##           80.42574           68.93729</code></pre>
 </div>
-<div id="fraction-of-students-who-change-colleges" class="section level2">
-<h2><span class="header-section-number">4.2</span> Fraction of students who change colleges</h2>
+</div>
+<div id="conclusion" class="section level2">
+<h2><span class="header-section-number">4.3</span> Conclusion</h2>
+<p>In conclusion, the data strongly suggests that there are approximately 20% of students who consistently have averages above 75%, but still drop out. Therefore, that section of the drop out population is a section that will always go undetected if only traditional academic failure metrics are used to assess which students are likely to drop out. Students who move out to the US or the rest of Canada after their second semester and those who drop out by lack of interest are two potential student types that will always drop out no matter what remedial solutions are offered for them.</p>
+<p>One of the profile level Key Performance Indicators that colleges are supposed to specifically keep track of is third semester retention. In this light, we can somewhat flip the line of questionning above, and look to see if the distribution of grades in the third semester students looks different for those who will drop out, and those who will continue on.</p>
+<p><img src="studentsuccess_final_report_files/figure-html/third-semester-attrition-by-program-1.png" width="672" /></p>
+<p>In conclusion, the data strongly suggests that there are approximately 20% of students who consistently have averages above 75%, but still drop out. Therefore, that section of the drop out population is a section that will always go undetected if only traditional academic failure metrics are used to assess which students are likely to drop out. Students who move out to the US or the rest of Canada after their second semester and those who drop out by lack of interest are two potential student types that will always drop out no matter what remedial solutions are offered for them.</p>
+<div id="passed-vs.failed-courses" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Passed vs. Failed Courses</h3>
+<p>The line of questionning above can be repeated, but instead of looking at the average grade of courses taken in a term, we can instead look to see if the number of courses passed, or the proportion failed, might be different for students who drop out versus those who do not.</p>
+<table style="width:86%;">
+<colgroup>
+<col width="26%" />
+<col width="8%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Not-drop-out</strong></td>
+<td align="center">11339</td>
+<td align="center">1320</td>
+<td align="center">447</td>
+<td align="center">216</td>
+<td align="center">116</td>
+<td align="center">66</td>
+<td align="center">34</td>
+<td align="center">8</td>
+<td align="center">2</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>out</strong></td>
+<td align="center">263</td>
+<td align="center">113</td>
+<td align="center">93</td>
+<td align="center">80</td>
+<td align="center">134</td>
+<td align="center">109</td>
+<td align="center">59</td>
+<td align="center">36</td>
+<td align="center">15</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<p>What we remark in the table above is that the number of courses failed does not seem to differentiate students who will drop out aftre their third term. But perhaps, we should consider the fraction of courses that a student took in their third term, and failed?</p>
+<p><img src="studentsuccess_final_report_files/figure-html/prop-failed-courses-1.png" width="672" /></p>
+<p>No major distinction here either.</p>
 
+</div>
 </div>
 </div>
             </section>
