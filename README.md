@@ -37,4 +37,8 @@ The electronic version of this report is always up-to date and on the web, viewa
      - Larry Calahan, and Ross Tzankov (especially for additional feedback in generalizing SQL procedures)
      - Kim Rousseau and Greg Bagshaw from John Abbott College
 
+## To Do List:
+ - Investigate baseline models that colleges can use for identifying at-risk students (Jon G)
+ - Finish Littl Review (Sam B) 
+
 
