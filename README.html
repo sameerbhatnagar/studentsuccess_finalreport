@@ -47,6 +47,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -98,19 +135,29 @@
 <div id="to-contribute-to-the-report" class="section level3">
 <h3><span class="header-section-number">0.1.1</span> To contribute to the report:</h3>
 <ul>
-<li>clone the repository</li>
-<li><code>mkdir bin/data</code></li>
-<li>make your own working branch off of the master</li>
+<li>go to <a href="https://github.com/sameerbhatnagar/studentsuccess_finalreport" class="uri">https://github.com/sameerbhatnagar/studentsuccess_finalreport</a> and fork the repository</li>
+<li>go to your home directory</li>
+<li>clone the repository you just forked (from the terminal: <code>git clone &lt;insert name of your forked repo</code>)</li>
+<li>from the terminal: <code>cd studentsuccess_finalreport</code></li>
+<li>from the terminal: <code>git remote add upstream https://github.com/sameerbhatnagar/studentsuccess_finalreport.git</code></li>
+<li>from the terminal: <code>mkdir bin/data</code></li>
+<li>copy or move the data to the newly created <code>bin/data</code></li>
 <li>Open the R Project file <code>studentsuccess_finalreport.Rproj</code> with un updated version of
 <ul>
 <li>R</li>
 <li>RStudio</li>
 </ul></li>
-<li><p>in the R console, run the command <code>&gt; Sys.setenv(R_path_to_data_directory = '&lt;Enter Absolute Path to your local copy of Data&gt;')</code></p></li>
+<li>create a text file and save it as <code>.Rprofile</code> (NOTE: it must be named <code>.Rprofile</code> without <code>.txt</code> at the end)</li>
+<li>in the newly created <code>.Rprofile</code> enter the following line:</li>
+</ul>
+<p><code>R_path_to_data_directory = '&lt;Enter Absolute Path to your local copy of Data&gt;'</code></p>
+<p>For example, my <code>.Rprofile</code> file looks like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">R_path_to_data_directory =<span class="st"> &quot;/home/sahir/git_repositories/studentsuccess_finalreport/bin/data/&quot;</span></code></pre></div>
+<ul>
 <li>Open the script <code>data-setup.R</code> in the folder <code>bin</code></li>
 <li>run the script to produce some of useful R objects (will automatically be placed in the folder <code>bin/data</code>)</li>
 <li>press <code>build-book</code> in RStudio IDE to get a local preview of the entire book in</li>
-<li><p>Modify <strong>only the <code>.Rmd</code> files</strong>. Commit, and make a pull request back to me (Sameer), and I will merge to master branch, which will automatically update the live web version</p></li>
+<li>Modify <strong>only the <code>.Rmd</code> files</strong>. Commit, and make a pull request back to me (Sameer), and I will merge to master branch, which will automatically update the live web version</li>
 </ul>
 </div>
 <div id="pdf-version" class="section level3">
