@@ -1,7 +1,21 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+<<<<<<< HEAD
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# Descriptive Statistics
+=======
 # Descriptive Statistics {#descriptive}
 
 ** Under Construction **
 
+>>>>>>> 4f93d86d25c1f4ca3944ef386be2d4c6efc17a37
 ```{r descriptive-local-setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE,message = FALSE)
 knitr::read_chunk("bin/03-descriptive-stats-code.R")
@@ -36,6 +50,17 @@ Here in we will describe
 ```
 ### Grades 
 Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven't. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says.
+<<<<<<< HEAD
+
+```{r Average comp}
+```
+
+```{r}
+x<-students_last_session$Average[which(students_last_session$status=="out")]
+```
+From the average total grade between the drop outs and the graduates, we can clearly see that the distributions are significantly different, but what is surprising is that `r round(sum(x>75, na.rm=T)/length(x),digits=2)*100`% of students have an average grade above 75% and that more than `r round(sum(x>59, na.rm=T)/length(x),digits=2)*100`% of the students who dropped out had an average grade above 60%. In other words, most students who drop out have passing averages. One hypothesis for this effect is that students who end up dropping out start with good semesters and have their performance decline closer to the final semester. Let us verify this hypothesis. 
+
+Let us now look at the performance of drop outs vs graduates on a semester by semester basis. Let us start by looking at the average grades of students in their last semester during which they are either graduating or dropping-out. 
 ```{r Average-comp}
 ```
 
@@ -65,6 +90,19 @@ Let us now turn our attention to the semester before the one where they graduate
 
 ```{r N-1-semester-comp}
 ```
+<<<<<<< HEAD
+```{r}
+x<-c2[,.SD[.N],by=c("student_number")][status=="out"]$V1
+```
+
+In this data, we can clearly observe a stark difference between the graduates and the drop outs. First of all, note that `r round(sum(x>75, na.rm=T)/length(x),digits=2)*100`% of students still have a term average over 75% in the semester in which they drop out. To push it further `r round(sum(x>80, na.rm=T)/length(x),digits=2)*100`% of students who drop out have an average grade over 80%. The data clearly suggests that some of the drop outs aren't dropping out because of academic performance. Furthermore, the long tail of the data on the low end of performance suggests that some of the students stopped coming to class prior to the end of the semester resulting in very low grades that serve to drive their cegep average grades from the graph above even lower. `r round(sum(x<40, na.rm=T)/length(x),digits=2)*100`% of students have a grade below 40 suggesting that they have indeed stopped coming to school some time during the semester. What if these students hadn't stopped coming, would their performance be similar to that of graduates? 
+
+Let us now turn our attention to the semester before the one where they graduate or drop out. 
+```{r N-1 semester comp}
+```
+```{r}
+x<-c2[,.SD[.N-1],by=c("student_number")][status=="out"]$V1
+```
 
 
 ```{r N-1-semester-comp-ttest}
@@ -73,6 +111,7 @@ Let us now turn our attention to the semester before the one where they graduate
 ```{r}
 x<-avg_grade_last_term_minus1[status=="out"]$avg_grade
 ```
+>>>>>>> 09d5dad94bfceabd1acdaa6e46b0bbf82e89c757
 The data clearly shows that even if there are significant differences between the groups, the drop out student population is getting closer to the graduate population. A section of `r round(sum(x>75, na.rm=T)/length(x),digits=2)*100`% is observed to have an average grade above 75%.
 
 Finally, let us look at 2 semesters before they graduate or drop-out. We are again expecting the same trend.
@@ -82,7 +121,12 @@ Finally, let us look at 2 semesters before they graduate or drop-out. We are aga
 
 ```{r N-2-semester-comp-ttest}
 ```
+```{r}
+x<-c2[,.SD[.N-2],by=c("student_number")][status=="out"]$V1
+```
+## Conclusion
 
+In conclusion, the data strongly suggests that there are approximately 20% of students who consistently have averages above 75%, but still drop out. Therefore, that section of the drop out population is a section that will always go undetected if only traditional academic failure metrics are used to assess which students are likely to drop out. Students who move out to the US or the rest of Canada after their second semester and those who drop out by lack of interest are two potential student types that will always drop out no matter what remedial solutions are offered for them. 
 
 One of the profile level Key Performance Indicators that colleges are supposed to specifically keep track of is third semester retention. In this light, we can somewhat flip the line of questionning above, and look to see if the distribution of grades in the third semester students looks different for those who will drop out, and those who will continue on. 
 
