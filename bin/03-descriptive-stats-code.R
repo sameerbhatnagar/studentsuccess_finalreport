@@ -238,3 +238,70 @@ ggplot(c2,aes(x=`F Count`,group=status)) + geom_histogram(bins=8,aes(color=statu
 
 #Next step will be to look for students who have great MSE the whole way through and who haven't failed a class.
 #Let's figure out the people who leave after X semesters for reasons that aren't academic. How big is that fraction?
+
+t1<-courses[,sum(result=="Failing",na.rm=T),by=c("term","student_number")]
+t2<-t1[,status:=students_last_session$status[which(student_number == students_last_session$student_number)],by=student_number]
+fcount<-courses[,sum(result=="Failing",na.rm=T),by=c("term","student_number")]
+setnames(fcount,'V1','F Count')
+t2<-merge(fcount,t2)
+
+#This is the right plot, but needs work (ggplot) to make it look nice.
+hist(t2$V1[which(t2$status=="out")],col=rgb(1,0,0,0.5),main="Average Total Grade",ylim=c(0,20500))
+hist(t2$V1[which(t2$status=="grad")],col=rgb(0,0,1,0.5),add=T)
+legend("topright",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
+box(which="plot")
+
+#Let's work backwords to see how the N-x semesters look withtrespect to their MSEs. Copying the code from above
+
+MSETot<-courses[,sum(result=="Failing",na.rm=T),by=.(student_number)]
+setnames(MSETot,'V1','Failing MSE-Total')
+setkey(students_last_session,student_number)
+setkey(MSETot,student_number)
+students_last_session<-MSETot[students_last_session]
+
+num_fail_per_term<-courses[,sum(result=="Failing",na.rm=T),by=.(student_number,term)]
+setnames(num_fail_per_term,"V1","MSE_term_F")
+student_term_status<-courses[,.(student_number,term,`current-out`)]
+setnames(student_term_status,"current-out","status")
+student_term_status[is.na(status),status:='student']
+
+setkey(student_term_status,student_number,term)
+student_term_status<-student_term_status %>% unique(by=c('student_number','term'))
+setkey(num_fail_per_term,student_number,term)
+num_fail_per_term<-num_fail_per_term[student_term_status]
+
+current_students<-num_fail_per_term[status=='current',student_number] %>% unique()
+num_fail_per_term<-num_fail_per_term[!(student_number %in% current_students)]
+setkey(num_fail_per_term,'student_number','term')
+
+num_fail_last_term<-num_fail_per_term[,.SD[.N],by=student_number]
+#Then compare the grade histograms for students who dropped vs students who graduated. Then look at only the ones
+#who dropped, but look across time. Are they really different?
+
+## edit by sameer: because data.table has such a major difference in speed between finding
+## the last entry of each group, versus the N-x entry of each group,
+# we successively remove the 'last term' when trying to find the N-x term
+# (the difference in speed is prohibitive as we re-build the entire project everyday)
+# so here is for term N-1
+setkey(num_fail_last_term,student_number,term)
+setkey(num_fail_per_term,student_number,term)
+tmp<-num_fail_per_term[!num_fail_last_term]
+num_fail_last_term_minus1<-tmp[,.SD[.N], by=student_number]
+setkey(num_fail_last_term_minus1,student_number)
+setkey(students_last_session,student_number)
+num_fail_last_term_minus1<-students_last_session[num_fail_last_term_minus1][,.(student_number,MSE_term_F,term,status,i.status)]
+
+## and here for N-2
+tmp_remove<- tmp[,.SD[.N], by=student_number]
+setkey(tmp_remove,student_number,term)
+setkey(tmp,student_number,term)
+tmp2<-tmp[!tmp_remove]
+
+setkey(tmp2,student_number,term)
+num_fail_last_term_minus2<-tmp2[,.SD[.N], by=student_number]
+setkey(num_fail_last_term_minus2,student_number)
+setkey(students_last_session,student_number)
+num_fail_last_term_minus2<-students_last_session[num_fail_last_term_minus2][,.(student_number,MSE_term_F,term,status,i.status)]
+
+
+
