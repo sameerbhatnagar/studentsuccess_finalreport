@@ -9,3 +9,135 @@ The previous chapter explored how classical statistical models can be built and 
 ## Decision Trees and Random Forests
 
 ## Neural Networks
+
+
+## EDA
+
+
+```{r}
+library(sjPlot)
+library(sjmisc)
+library(magrittr)
+library(dplyr)
+library(data.table)
+```
+
+
+
+```{r}
+load("bin/data/labelled_students_Dawson.Rdata")
+load("bin/data/course_records_Dawson.Rdata")
+```
+
+
+```{r}
+# this combines both tables into 1
+DT <- as.data.table(dplyr::inner_join(students_last_session, courses, by = "student_number", suffix = c(".last_session", ".courses")))
+setkey(DT, student_number, ansession.courses)
+str(DT)
+# DT[, plot(ansession.last_session, ansession.courses)]
+DT[, table(CoteR)]
+
+DT[, Gender := factor(Sexe.courses, levels = c("F", "M"), labels = c("Female", "Male"))]
+DT[, table(LangueMaternelle.courses)]
+DT[, Language := factor(LangueMaternelle.courses, levels = c("AN", "FR", "AU"), labels = c("anglo", "franco", "other"))]
+DT[, table(Language)]
+DT[, 'Birth Place' := ifelse(birth_place.courses=="Quebec", "Quebec", "Other")]
+DT[, 'Birth Place' := factor(`Birth Place`, levels = c("Other", "Quebec"))]
+DT[, table(`Birth Place`)]
+
+DT[, table(result, useNA = "always")]
+DT[, result := ifelse((result=="" | result=="Department" | result=="Intensive" | result=="Not applicable"), NA, result)]
+DT[, table(result, useNA = "always")]
+DT[, result := factor(result, levels = c("Passing", "At risk", "Failing"))]
+DT[, table(result, useNA = "always")]
+
+str(DT)
+DT[, table(prog, useNA = "always")]
+DT[, prog := ifelse(prog == "NA", NA, prog)]
+DT[, table(prog, useNA = "always")]
+DT[, prog := factor(prog)]
+```
+
+
+```{r, eval=FALSE}
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$Sexe)
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "col")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "cell")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "row")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$profile, margin = "col")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "cell")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "row")
+students_last_session$student_number %>% unique() %>% length()
+courses$student_number %>% unique() %>% length()
+all(students_last_session$student_number %in% courses$student_number)
+```
+
+
+
+```{r}
+pacman::p_load(feather)
+path <- "bin/data/DT_dawson"
+write_feather(DT, path)
+df <- read_feather(path)
+
+
+
+DT[, table(course.dept)]
+DT[is.na(Note)]
+DT[complete.cases(DT),]
+
+
+DT
+
+fit <- glm()
+
+mice::md.pairs(DT)
+
+str(DT)
+DT[, table(prog)]
+DT[unique(student_number), sort(table(birth_place.courses), decreasing = T), mult = "last"]
+
+# this shows that the last entry for each subject corresponds to the session in students_last_session table
+DT[unique(student_number), plot(ansession.last_session, ansession.courses), mult = "last"]
+abline(a = 0, b = 1, col = "red")
+
+# distribution of number of rows for each student
+DT[, .N, by = "student_number"] %>% select(N) %>% unlist("N") %>% hist
+
+str(DT)
+DT[, sjp.xtab(quit.next.term, Sexe.last_session, margin = "row"), mult = "last"]
+
+fit <- glm(quit.next.term ~ Gender + Language + `Birth Place`, data = DT, family = "binomial")
+sjPlot::sjp.glm(fit)
+
+summary(fit)
+
+
+library(lme4)
+library(lmerTest)
+
+fit2 <- lme4::glmer(quit.next.term ~ Gender + Language + `Birth Place` + (1|student_number), data = DT, family = binomial)
+summary(fit2)
+plot(fit2)
+ranef(fit2)
+sjPlot::sjt.lmer(fit2)
+sjPlot::sjp.xtab(DT$student_number, students_last_session$LangueMaternelle, margin = "row")
+
+colnames(courses)
+colnames(students_last_session)
+
+
+library(geepack)
+
+fit3 <- geeglm(quit.next.term ~ Gender + Language + `Birth Place`, data = DT, family = binomial, 
+               corstr = "independence", id = student_number)
+
+
+pacman::p_load(gee)
+
+fit4 <- gee(quit.next.term ~ Gender + Language + `Birth Place`, data = DT, family = binomial, 
+               corstr="exchangeable", id = student_number)
+
+```
+
