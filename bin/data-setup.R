@@ -1,9 +1,8 @@
 ## ---- load-data ----
-rm(list=ls())
+# rm(list=ls())
 
-path.to.data.directory<-Sys.getenv("R_path_to_data_directory")
 NOW = 20171
-load(paste0(path.to.data.directory,'student_success_Triple.RData'))
+load(paste0(R_path_to_data_directory,'student_success_Triple.RData'))
 earliest.ansession<-20103
 
 library(data.table)
