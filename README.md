@@ -49,4 +49,8 @@ R_path_to_data_directory = "/home/sahir/git_repositories/studentsuccess_finalrep
      - Larry Calahan, and Ross Tzankov (especially for additional feedback in generalizing SQL procedures)
      - Kim Rousseau and Greg Bagshaw from John Abbott College
 
+## To Do List:
+ - Investigate baseline models that colleges can use for identifying at-risk students (Jon G)
+ - Finish Littl Review (Sam B) 
+
 
