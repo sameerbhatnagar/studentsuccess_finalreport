@@ -1,8 +1,219 @@
 # Methods Centered on Determining Predictive Factors {#explanatory}
 
+```{r, echo=FALSE}
+pacman::p_load_gh("strengejacke/sjPlot")
+pacman::p_load(tidyverse)
+pacman::p_load(sjmisc)
+pacman::p_load(magrittr)
+pacman::p_load(data.table)
+pacman::p_load_gh("wilkelab/cowplot")
+pacman::p_load(mice)
+pacman::p_load(FFTrees)
+pacman::p_load(Hmisc)
+pacman::p_load(lme4)
+pacman::p_load(lmerTest)
+```
+
+
+```{r}
+load("bin/data/labelled_students_Dawson.Rdata")
+load("bin/data/course_records_Dawson.Rdata")
+```
+
+
 **Under Construction**
 
 This chapter will be focused on methods which have a sound probabilistic framework, and allow for inference into the statistical importance of predictive factors.
 
- - Logistic Regression
- - Mixed Effects Models
+## Details of the data used
+
+
+```{r,echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+# this combines both tables into 1
+DT <- as.data.table(dplyr::inner_join(students_last_session, courses, by = "student_number", suffix = c(".last_session", ".courses")))
+setkey(DT, student_number, ansession.courses)
+str(DT)
+# DT[, plot(ansession.last_session, ansession.courses)]
+DT[, table(CoteR)]
+
+DT[, Gender := factor(Sexe.courses, levels = c("F", "M"), labels = c("Female", "Male"))]
+DT[, table(LangueMaternelle.courses)]
+DT[, Language := factor(LangueMaternelle.courses, levels = c("AN", "FR", "AU"), labels = c("anglo", "franco", "other"))]
+DT[, table(Language)]
+DT[, 'Birth Place' := ifelse(birth_place.courses=="Quebec", "Quebec", "Other")]
+DT[, 'Birth Place' := factor(`Birth Place`, levels = c("Other", "Quebec"))]
+DT[, table(`Birth Place`)]
+setnames(DT, old = "Birth Place", new="Birth_Place")
+
+DT[, table(result, useNA = "always")]
+DT[, result := ifelse((result=="" | result=="Department" | result=="Intensive" | result=="Not applicable"), NA, result)]
+DT[, table(result, useNA = "always")]
+DT[, result := factor(result, levels = c("Passing", "At risk", "Failing"))]
+DT[, table(result, useNA = "always")]
+
+str(DT)
+DT[, table(prog, useNA = "always")]
+DT[, prog := ifelse(prog == "NA", NA, prog)]
+DT[, table(prog, useNA = "always")]
+DT[, prog := factor(prog)]
+DT[, table(prog, useNA = "always")]
+
+DT[, table(program.courses, useNA = "always")]
+DT[, table(program.last_session, useNA = "always")]
+str(DT)
+
+DT[, quit_next_term := factor(quit.next.term, levels = 0:1, labels = c("No", "Yes"))]
+
+DT[,CoteR := factor(CoteR)]
+DT[, table(CoteR, useNA = "always")]
+# DT[, hist(Note)]
+DT[is.na(Note)]
+
+students_last_session$status %>% table
+
+colnames(DT)
+table(DT$course)
+DT[, table(`current-out`)]
+DT[, table(result)]
+DT[, table(status)]
+DT$course.dept %>% unique() %>% length()
+DT$section %>% unique() %>% length()
+DT_describe <- DT[,list(student_number, quit.next.term, quit_next_term, result, Note, MoyenneGroupeEvaluation, section,
+                     CoteR, course.dept, prog, `current-out`, status, Gender, Language, Birth_Place)]
+
+```
+
+
+
+```{r, echo=FALSE}
+d <- Hmisc::describe(quit_next_term ~ . , data = DT_describe)
+plot(d, what = c("quit_next_term", "result", "Note", "MoyenneGroupeEvaluation",
+                     "CoteR", "prog", "current-out", "status", "Gender", "Language", "Birth_Place"))
+```
+
+```{r, results='asis', echo=FALSE}
+html(d, what = c("quit_next_term", "result", "Note", "MoyenneGroupeEvaluation",
+                     "CoteR", "prog", "current-out", "status", "Gender", "Language", "Birth_Place"))
+```
+
+
+
+## Complete Case Analysis
+
+
+```{r, eval=TRUE}
+DT_use_in_model <- DT[,list(student_number, quit.next.term, Note, quit_next_term,
+                            CoteR, prog, Gender, Language, Birth_Place)]
+
+cc_ind <- complete.cases(DT_use_in_model)
+DT_cc <- DT_use_in_model[cc_ind]
+```
+
+
+There were a total of `r nrow(DT_use_in_model)` observations from `r length(unique(DT_use_in_model$student_number))` students. Among these, there were `r sum(cc_ind)` observation with complete data (no missingness) for the variables `quit.next.term`, `Note`, `CoteR`, `prog`, `Gender`, `Language` and `Birth_Place`, from `r length(unique(DT_cc$student_number))` students.
+
+
+## Logistic Regression
+
+### Binomial Family
+
+```{r}
+fit <- glm(quit_next_term ~ Gender + Language + Birth_Place + Note + CoteR, data = DT_cc, family = "binomial")
+```
+
+```{r}
+sjPlot::sjp.glm(fit)
+```
+
+```{r, results='asis'}
+sjPlot::sjt.glm(fit)
+```
+
+
+
+## Mixed Effects Models
+
+
+
+```{r, echo=FALSE}
+# fit_glmer <- lme4::glmer(quit_next_term ~ Gender + Language + Birth_Place + Note + CoteR + (1|student_number), data = DT_cc, 
+#                         family = binomial)
+# summary(fit_glmer)
+# saveRDS(fit_glmer, file = "models/glmer.rds")
+fit_glmer <- readRDS(file = "models/glmer.rds")
+```
+
+```{r, echo=FALSE}
+sjPlot::sjp.glmer(fit_glmer, type = "fe")
+```
+
+```{r, results='asis', echo=FALSE}
+sjPlot::sjt.glmer(fit_glmer)
+```
+
+
+
+
+
+
+
+
+```{r, eval=FALSE, echo=FALSE}
+DT[unique(student_number), sort(table(birth_place.courses), decreasing = T), mult = "last"]
+
+# this shows that the last entry for each subject corresponds to the session in students_last_session table
+DT[unique(student_number), plot(ansession.last_session, ansession.courses), mult = "last"]
+abline(a = 0, b = 1, col = "red")
+
+DT[unique(student_number), plot(ansession.last_session, ansession.courses), mult = "first"]
+
+# distribution of number of rows for each student
+DT[, .N, by = "student_number"] %>% select(N) %>% unlist("N") %>% hist
+str(DT)
+DT[, sjp.xtab(quit.next.term, Sexe.last_session, margin = "row"), mult = "last"]
+fit <- glm(quit.next.term ~ Gender + Language + `Birth Place`, data = DT, family = "binomial")
+sjPlot::sjp.glm(fit)
+summary(fit)
+library(lme4)
+library(lmerTest)
+fit2 <- lme4::glmer(quit.next.term ~ Gender + Language + `Birth Place` + (1|student_number), data = DT, family = binomial)
+summary(fit2)
+plot(fit2)
+ranef(fit2)
+sjPlot::sjt.lmer(fit2)
+sjPlot::sjp.xtab(DT$student_number, students_last_session$LangueMaternelle, margin = "row")
+```
+
+
+
+
+
+
+```{r, eval=FALSE, echo=FALSE}
+DT_use_in_model$student_number
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$Sexe)
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "col")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "cell")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "row")
+
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "cell")
+sjPlot::sjp.xtab(students_last_session$status, students_last_session$LangueMaternelle, margin = "row")
+
+
+courses %>% str
+
+courses[student_number == "00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0"]
+
+students_last_session[student_number == "00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0"]
+
+students_last_session$student_number %>% unique() %>% length()
+
+courses$student_number %>% unique() %>% length()
+
+all(students_last_session$student_number %in% courses$student_number)
+
+unique(DT, by = "student_number")
+
+key(DT)
+```
+
