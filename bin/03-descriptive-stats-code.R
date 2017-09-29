@@ -3,6 +3,7 @@ library(data.table)
 library(magrittr)
 library(ggplot2)
 library(stringr)
+library(pROC)
 
 ## ---- demographics-dawson ----
 load("bin/data/labelled_students_Dawson.Rdata")
@@ -246,10 +247,12 @@ setnames(fcount,'V1','F Count')
 t2<-merge(fcount,t2)
 
 #This is the right plot, but needs work (ggplot) to make it look nice.
-hist(t2$V1[which(t2$status=="out")],col=rgb(1,0,0,0.5),main="Average Total Grade",ylim=c(0,20500))
+hist(t2$V1[which(t2$status=="out")],col=rgb(1,0,0,0.5),main="Number of Failed MSEs",ylim=c(0,20500))
 hist(t2$V1[which(t2$status=="grad")],col=rgb(0,0,1,0.5),add=T)
 legend("topright",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
 box(which="plot")
+t.test(t2$V1[which(t2$status=="out")],t2$V1[which(t2$status=="grad")])
+#There is a large difference in mean number of Failing MSEs.
 
 #Let's work backwords to see how the N-x semesters look withtrespect to their MSEs. Copying the code from above
 
@@ -277,12 +280,14 @@ setkey(num_fail_per_term,'student_number','term')
 num_fail_last_term<-num_fail_per_term[,.SD[.N],by=student_number]
 #Then compare the grade histograms for students who dropped vs students who graduated. Then look at only the ones
 #who dropped, but look across time. Are they really different?
+t.test(num_fail_last_term$MSE_term_F[which(num_fail_last_term$status=="out")],num_fail_last_term$MSE_term_F[which(num_fail_last_term$status=="grad")])
+#Huge difference here for the last semester:
+hist(num_fail_last_term$MSE_term_F[which(num_fail_last_term$status=="out")],col=rgb(1,0,0,0.5),main="Number of Failed MSEs in last term",ylim=c(0,20500))
+hist(num_fail_last_term$MSE_term_F[which(num_fail_last_term$status=="grad")],col=rgb(0,0,1,0.5),add=T)
+legend("topright",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
+box(which="plot")
 
-## edit by sameer: because data.table has such a major difference in speed between finding
-## the last entry of each group, versus the N-x entry of each group,
-# we successively remove the 'last term' when trying to find the N-x term
-# (the difference in speed is prohibitive as we re-build the entire project everyday)
-# so here is for term N-1
+
 setkey(num_fail_last_term,student_number,term)
 setkey(num_fail_per_term,student_number,term)
 tmp<-num_fail_per_term[!num_fail_last_term]
@@ -290,6 +295,7 @@ num_fail_last_term_minus1<-tmp[,.SD[.N], by=student_number]
 setkey(num_fail_last_term_minus1,student_number)
 setkey(students_last_session,student_number)
 num_fail_last_term_minus1<-students_last_session[num_fail_last_term_minus1][,.(student_number,MSE_term_F,term,status,i.status)]
+t.test(num_fail_last_term_minus1$MSE_term_F[which(num_fail_last_term_minus2$status=="out")],num_fail_last_term_minus1$MSE_term_F[which(num_fail_last_term_minus2$status=="grad")])
 
 ## and here for N-2
 tmp_remove<- tmp[,.SD[.N], by=student_number]
@@ -302,6 +308,50 @@ num_fail_last_term_minus2<-tmp2[,.SD[.N], by=student_number]
 setkey(num_fail_last_term_minus2,student_number)
 setkey(students_last_session,student_number)
 num_fail_last_term_minus2<-students_last_session[num_fail_last_term_minus2][,.(student_number,MSE_term_F,term,status,i.status)]
+t.test(num_fail_last_term_minus2$MSE_term_F[which(num_fail_last_term_minus2$status=="out")],num_fail_last_term_minus2$MSE_term_F[which(num_fail_last_term_minus2$status=="grad")])
 
+#Grad = 0, DO = 1
+num_fail_last_term$status<-factor(num_fail_last_term$status,labels=c(0,1))
+num_fail_last_term_minus1$status<-factor(num_fail_last_term_minus1$status,labels=c(0,1))
+num_fail_last_term_minus2$status<-factor(num_fail_last_term_minus2$status,labels=c(0,1))
+
+
+DOfunc<- glm(status ~ MSE_term_F, num_fail_last_term,family="binomial")
+summary(DOfunc)
+
+num_fail_last_term_Pred <- num_fail_last_term
+num_fail_last_term_Pred$Pred <- predict(DOfunc,num_fail_last_term_Pred,type="response")
+rocCur<-roc(num_fail_last_term$status,num_fail_last_term_Pred$Pred)
+auc(rocCur)
+#0.708
+
+confusionMatrix(as.integer(num_fail_last_term_Pred$Pred>0.6),num_fail_last_term$status)
+
+confusionMatrix(as.integer(num_fail_last_term$MSE_term_F>1),num_fail_last_term$status)
+confusionMatrix(as.integer(num_fail_last_term_minus1$MSE_term_F>1),num_fail_last_term_minus1$status)
+confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F>1),num_fail_last_term_minus2$status)
+#Here are the lines that JAC uses as a prediction mechanism. Whichever students have more than 1 failing
+#MSE get put on a list that would get them some help. As we can see from the confusion matrix, their batting average
+#isn't too bad (68% positive predictivevalue in last semester, 72% in last-1 and 78% in last-2). Also, the overall
+#prediction is fairly good with the average coming in at around 72% for prediction accuracy.
+
+#Next step is to merge
+#Try to merge all MSE tables for last semester, minus 1 and minus 2 to see if you can get trends.
+#For example, when starting last semester, do the grades and MSE from previous semesters help predict the DO rate
+# of semester n+1. There is probably additional predictive power to just the MSE of the current semester.
+#Simply stacking the MSEs should lead to an increase predictability ratio. Obviously adding grades should help.
+
+setkey(num_fail_last_term,student_number)
+setkey(num_fail_last_term_minus1,student_number)
+
+num_fail_last_2terms<-merge(num_fail_last_term,num_fail_last_term_minus1,all=T)
+
+setkey(num_fail_last_term_minus2,student_number)
+num_fail_last_3terms<-merge(num_fail_last_2terms,num_fail_last_term_minus2,all=T)
+
+#Build the model with time series information, then predict, then confusion Matrix to compare the JAC way vs the
+#purely academic data way. Can still add the demographic admissions data and such.
+
+#Could also add all the other schools.
 
 
