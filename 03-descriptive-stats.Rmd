@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 <<<<<<< HEAD
 ---
@@ -149,4 +149,15 @@ What we remark in the table above is that the number of courses failed does not 
 
 For the above graphic, we calculate, for each student in their term, the fraction of courses that they took and _failed_, and we plot the distributions for the group of students we know who dropped out, and those we know stayed in the college for a fourth term. The red boxplot shows that,of the students who dropped out after their third term, 50% of them failed more than than half of their classes in that third term (the central notch represents a 95% confidence interval on the median). Conversely, the distribution on the left, squashed down at 0, shows that almost all students who stay on for a fourth term, pass all of their third term classes (The additional dots shown in this distribution are considered outliers to the distribution, meaning there are some students who failed all of their third term classes, and decided to stay for an additional fourth term).
 
+### Early Detection Mechanisms: The Mid-Semester Evaluation
+In all colleges, the Mid-Semester Evaluation (MSE) is used by teachers to provide feedback to students concerning their performance thus far in the semester. In light of this research project, it would be useful for colleges to know which number of which kind of MSE performances are pre-emptive signs that a student is at risk of dropping out before graduating. Current methods that exist to put students on the danger list are that a particular student has two or more failing MSEs. Let us verify that this criterion is optimal. 
+```{r Optimal-Failing-MSE}
+```
+
+```{r Optimal-Failing-MSE-prop}
+```
+You should print the 3 confusion matrices. Then go to the 3 graphs. 
+
+Looking at both the F1 score and the accuracy is interesting. Accuracy actually has a peak and then decrease at 1 for the last semester whereas the F1 score just flattens out for all semesters. 
+As can be seen from the above data, the F1 score, which is a figure of merit for the predictive quality focusing on the maximixing the diagonal elements and minimizing the off diagonal elements, suggests that there is no extra predictability after a student crosses the threshold of 1 Failing MSE. This suggests that should colleges want to create a mechanism to optimally figure out which students are at risk of dropping out, they should place students on the danger list if these students have one or more failing MSEs in any given semester, not two. 
 
