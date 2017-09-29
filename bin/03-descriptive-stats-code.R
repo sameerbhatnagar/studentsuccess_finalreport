@@ -317,7 +317,7 @@ num_fail_last_term$status<-factor(num_fail_last_term$status,labels=c(0,1))
 num_fail_last_term_minus1$status<-factor(num_fail_last_term_minus1$status,labels=c(0,1))
 num_fail_last_term_minus2$status<-factor(num_fail_last_term_minus2$status,labels=c(0,1))
 
-
+#Building a model to predict drop outs. Add more parameters than just MSE.
 DOfunc<- glm(status ~ MSE_term_F, num_fail_last_term,family="binomial")
 summary(DOfunc)
 predict(DOfunc, type="response")
@@ -384,25 +384,43 @@ plot(xaxis, F1arr3,xlab='# Failing MSEs 2 Terms before DO',ylab='F1 Score')
 # of semester n+1. There is probably additional predictive power to just the MSE of the current semester.
 #Simply stacking the MSEs should lead to an increase predictability ratio. Obviously adding grades should help.
 
+
+#Merging all the avg semester grades with the number of failing MSEs for that term.
 setkey(num_fail_last_term,student_number)
+setkey(avg_grade_last_term,student_number)
+avg_grade_MSE_last_term<-merge(num_fail_last_term,avg_grade_last_term)
+
 setkey(num_fail_last_term_minus1,student_number)
-
-num_fail_last_2terms<-merge(num_fail_last_term,num_fail_last_term_minus1,all.x=FALSE,all.y=FALSE)
-num_fail_last_2terms$MSE_doub<-factor(num_fail_last_2terms$MSE_term_F.x >0 | num_fail_last_2terms$MSE_term_F.y>0,labels=c(0,1))
-tmp<-confusionMatrix(num_fail_last_2terms$MSE_doub,num_fail_last_2terms$status.x)
-tmp$byClass
-
-#This model has an impressive 99% of recall. In other words, if this model says you're going down, you're going down.
-
+setkey(avg_grade_last_term_minus1,student_number)
+avg_grade_MSE_last_term_minus1<-merge(num_fail_last_term_minus1,avg_grade_last_term_minus1)
 
 setkey(num_fail_last_term_minus2,student_number)
-num_fail_last_f2<-merge(num_fail_last_term_minus1,num_fail_last_term_minus2,all.x=F,all.y=F)
-num_fail_last_f2$MSE_doub<-factor(num_fail_last_f2$MSE_term_F.x >0 | num_fail_last_f2$MSE_term_F.y>0,labels=c(0,1))
-tmp<-confusionMatrix(num_fail_last_f2$MSE_doub,num_fail_last_f2$status.x)
+setkey(avg_grade_last_term_minus2,student_number)
+avg_grade_MSE_last_term_minus2<-merge(num_fail_last_term_minus2,avg_grade_last_term_minus2)
+
+
+#Looking for a confusion matrix with the F1 score that is high based on past grades and MSEs.
+
+
+num_fail_last_2terms<-merge(avg_grade_MSE_last_term,avg_grade_MSE_last_term_minus1,all.x=FALSE,all.y=FALSE)
+#num_fail_last_2terms$MSE_doub<-factor(num_fail_last_2terms$MSE_term_F.x >0 | num_fail_last_2terms$avg_grade.y<70,labels=c(0,1))
+num_fail_last_2terms$MSE_doub<-factor(num_fail_last_2terms$MSE_term_F.y >1,labels=c(0,1))
+tmp<-confusionMatrix(num_fail_last_2terms$MSE_doub,num_fail_last_2terms$status.x.x)
 tmp$byClass
+
+setkey(avg_grade_MSE_last_term_minus2,student_number)
+
+num_fail_last_f2<-merge(avg_grade_MSE_last_term_minus1,avg_grade_MSE_last_term_minus2,all.x=F,all.y=F)
+num_fail_last_f2$MSE_doub<-factor(num_fail_last_f2$MSE_term_F.x >0 | num_fail_last_f2$avg_grade.y<70,labels=c(0,1))
+tmp<-confusionMatrix(num_fail_last_f2$MSE_doub,num_fail_last_f2$status.x.x)
+tmp$byClass
+tmp
 
 #Build the model with time series information, then predict, then confusion Matrix to compare the JAC way vs the
 #purely academic data way. Can still add the demographic admissions data and such.
+
+#Need to start moving now to the prediction of a student vs time of stay. So Day 1 prediction, then after the first
+#batch of MSEs, then after first batch of final grades. We would be predicting 2 things: quit next term and quit ever.
 
 #Could also add all the other schools.
 
