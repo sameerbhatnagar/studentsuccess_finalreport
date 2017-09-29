@@ -1,3 +1,10 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+editor_options: 
+  chunk_output_type: console
+---
 # Methods Centered on Determining Predictive Factors {#explanatory}
 
 ```{r, echo=FALSE}
@@ -12,6 +19,11 @@ pacman::p_load(FFTrees)
 pacman::p_load(Hmisc)
 pacman::p_load(lme4)
 pacman::p_load(lmerTest)
+
+Mode <- function(x) {
+  ux <- unique(x)
+  ux[which.max(tabulate(match(x, ux)))]
+}
 ```
 
 
@@ -35,6 +47,9 @@ setkey(DT, student_number, ansession.courses)
 str(DT)
 # DT[, plot(ansession.last_session, ansession.courses)]
 DT[, table(CoteR)]
+DT[, table(term.courses)]
+
+DT[student_number=="00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0"][, table(term.courses)]
 
 DT[, Gender := factor(Sexe.courses, levels = c("F", "M"), labels = c("Female", "Male"))]
 DT[, table(LangueMaternelle.courses)]
@@ -79,7 +94,7 @@ DT[, table(status)]
 DT$course.dept %>% unique() %>% length()
 DT$section %>% unique() %>% length()
 DT_describe <- DT[,list(student_number, quit.next.term, quit_next_term, result, Note, MoyenneGroupeEvaluation, section,
-                     CoteR, course.dept, prog, `current-out`, status, Gender, Language, Birth_Place)]
+                     CoteR, course.dept, prog, `current-out`, status, Gender, Language, Birth_Place, term.courses)]
 
 ```
 
@@ -103,51 +118,82 @@ html(d, what = c("quit_next_term", "result", "Note", "MoyenneGroupeEvaluation",
 
 ```{r, eval=TRUE}
 DT_use_in_model <- DT[,list(student_number, quit.next.term, Note, quit_next_term,
-                            CoteR, prog, Gender, Language, Birth_Place)]
+                            result, prog, Gender, Language, Birth_Place, term.courses)]
 
 cc_ind <- complete.cases(DT_use_in_model)
 DT_cc <- DT_use_in_model[cc_ind]
+
+
+
+# collapsed by student and term, we took the mean note and mode MSE
+DT_collapse <- unique(DT_cc[, list(student_number, quit.next.term, quit_next_term, prog, Gender, Language, Birth_Place, term.courses, mean_note = mean(Note), mode_mse = Mode(result)), by = list(term.courses,student_number)], by = c("student_number","term.courses"))
+
+
+
+# DT_cc[student_number=="00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0", list(student_number, quit.next.term, quit_next_term, prog, Gender, Language, Birth_Place, term.courses, Note, mean_note = mean(Note), result, mode_mse = Mode(result)), by = list(term.courses,student_number)]
+# 
+# DT_collapse[student_number=="00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0"]
+# 
+# DT_collapse_t1 <- unique(DT_cc[term.courses==1, list(student_number, quit.next.term, quit_next_term, prog, Gender, Language, Birth_Place, term.courses, mean_note = mean(Note), mode_mse = Mode(result)), by = student_number], by = "student_number")
+
+
+# There were a total of `r nrow(DT_use_in_model)` observations from `r length(unique(DT_use_in_model$student_number))` students. Among these, there were `r sum(cc_ind)` observation with complete data (no missingness) for the variables `quit.next.term`, `Note`, `prog`, `Gender`, `Language` and `Birth_Place`, from `r length(unique(DT_cc$student_number))` students.
+
+
 ```
 
 
-There were a total of `r nrow(DT_use_in_model)` observations from `r length(unique(DT_use_in_model$student_number))` students. Among these, there were `r sum(cc_ind)` observation with complete data (no missingness) for the variables `quit.next.term`, `Note`, `CoteR`, `prog`, `Gender`, `Language` and `Birth_Place`, from `r length(unique(DT_cc$student_number))` students.
 
-
-## Logistic Regression
+### Logistic Regression
 
 ### Binomial Family
 
-```{r}
-fit <- glm(quit_next_term ~ Gender + Language + Birth_Place + Note + CoteR, data = DT_cc, family = "binomial")
+```{r, echo=TRUE}
+fits <- lapply(1:5, function(i) glm(quit_next_term ~ Gender + Language + Birth_Place + mean_note + mode_mse, data = DT_collapse[term.courses==i], 
+           family = "binomial"))
 ```
 
 ```{r}
-sjPlot::sjp.glm(fit)
+# for(i in 1:5) sjPlot::sjp.glm(fits[[i]])
+sjPlot::sjp.glm(fits[[1]])
+sjPlot::sjp.glm(fits[[2]])
+sjPlot::sjp.glm(fits[[3]])
+sjPlot::sjp.glm(fits[[4]])
+sjPlot::sjp.glm(fits[[5]])
 ```
 
-```{r, results='asis'}
-sjPlot::sjt.glm(fit)
+
+```{r, eval=FALSE, echo=FALSE}
+knitr::knit_exit()
+```
+
+
+```{r, results='asis', eval=FALSE, echo=FALSE}
+sjPlot::sjt.glm(fits[[1]])
 ```
 
 
 
 ## Mixed Effects Models
 
+Do day 1 predictions. only look at term 1 records. 
 
-
-```{r, echo=FALSE}
-# fit_glmer <- lme4::glmer(quit_next_term ~ Gender + Language + Birth_Place + Note + CoteR + (1|student_number), data = DT_cc, 
-#                         family = binomial)
-# summary(fit_glmer)
+```{r, echo=TRUE, eval=FALSE}
+# result = mid semester evalutions
+# quit_next_term ~ Gender + Language + Birth_Place + Note + result + (1|student_number)
+fit_glmer <- lme4::glmer(quit_next_term ~ Gender + Language + Birth_Place + Note + result + (1|student_number), 
+                         data = DT_cc[term.courses == 1],
+                         family = binomial)
+summary(fit_glmer)
 # saveRDS(fit_glmer, file = "models/glmer.rds")
 fit_glmer <- readRDS(file = "models/glmer.rds")
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 sjPlot::sjp.glmer(fit_glmer, type = "fe")
 ```
 
-```{r, results='asis', echo=FALSE}
+```{r, results='asis', echo=FALSE, eval=FALSE}
 sjPlot::sjt.glmer(fit_glmer)
 ```
 

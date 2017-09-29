@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Data Mining for Student Success and Perseverance</title>
   <meta name="description" content="This is the Final Report for PAREA grant">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown <!--bookdown:version--> and GitBook 2.6.7">
 
   <meta property="og:title" content="Data Mining for Student Success and Perseverance" />
   <meta property="og:type" content="book" />
@@ -29,28 +29,28 @@
 <meta name="author" content="Nathaniel Lasry">
 
 
-<meta name="date" content="2017-09-08">
+<meta name="date" content="2017-09-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="descriptive-statistics.html">
-<link rel="next" href="predictive.html">
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-
-
-
-
-
-
-
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 
 
 <style type="text/css">
@@ -98,69 +98,56 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
+<!--bookdown:title:start-->
+<div id="header">
+<h1 class="title">Data Mining for Student Success and Perseverance</h1>
+<h4 class="author"><em>Sameer Bhatnagar</em></h4>
+<h4 class="author"><em>Jonathan Guillemette</em></h4>
+<h4 class="author"><em>Micheal Dugdale</em></h4>
+<h4 class="author"><em>Sahir Bhatnagar</em></h4>
+<h4 class="author"><em>Nathaniel Lasry</em></h4>
+<h4 class="date"><em>2017-09-15</em></h4>
+</div>
+<!--bookdown:title:end-->
+
+<!--bookdown:toc:start-->
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
       <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">Data Mining for Student Success</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#context"><i class="fa fa-check"></i><b>2.1</b> Context</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objectives"><i class="fa fa-check"></i><b>2.2</b> Objectives</a></li>
+<!--bookdown:toc2:start-->
+<ul>
+<li><a href="#preface"><span class="toc-section-number">1</span> Preface</a></li>
+<li><a href="#intro"><span class="toc-section-number">2</span> Introduction</a><ul>
+<li><a href="#context"><span class="toc-section-number">2.1</span> Context</a></li>
+<li><a href="#objectives"><span class="toc-section-number">2.2</span> Objectives</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="littreview.html"><a href="littreview.html"><i class="fa fa-check"></i><b>3</b> Literature</a><ul>
-<li class="chapter" data-level="3.1" data-path="littreview.html"><a href="littreview.html#modeling-success-and-attrition-in-cegep"><i class="fa fa-check"></i><b>3.1</b> Modeling success and attrition in CEGEP</a></li>
-<li class="chapter" data-level="3.2" data-path="littreview.html"><a href="littreview.html#predictive-modelling-in-learning-analytics-and-educational-data-mining"><i class="fa fa-check"></i><b>3.2</b> Predictive Modelling in Learning Analytics and Educational Data Mining</a></li>
+<li><a href="#littreview"><span class="toc-section-number">3</span> Literature</a><ul>
+<li><a href="#modeling-success-and-attrition-in-cegep"><span class="toc-section-number">3.1</span> Modeling success and attrition in CEGEP</a></li>
+<li><a href="#predictive-modelling-in-learning-analytics-and-educational-data-mining"><span class="toc-section-number">3.2</span> Predictive Modelling in Learning Analytics and Educational Data Mining</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
-<li class="chapter" data-level="4.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#demographics-across-the-colleges-and-major-programs"><i class="fa fa-check"></i><b>4.1</b> Demographics across the colleges and major programs</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#dawson"><i class="fa fa-check"></i><b>4.1.1</b> Dawson</a></li>
-<li class="chapter" data-level="4.1.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#john-abbott-college"><i class="fa fa-check"></i><b>4.1.2</b> John Abbott College</a></li>
-<li class="chapter" data-level="4.1.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#vanier"><i class="fa fa-check"></i><b>4.1.3</b> Vanier</a></li>
+<li><a href="#descriptive-statistics"><span class="toc-section-number">4</span> Descriptive Statistics</a><ul>
+<li><a href="#demographics-across-the-colleges-and-major-programs"><span class="toc-section-number">4.1</span> Demographics across the colleges and major programs</a><ul>
+<li><a href="#dawson"><span class="toc-section-number">4.1.1</span> Dawson</a></li>
+<li><a href="#john-abbott-college"><span class="toc-section-number">4.1.2</span> John Abbott College</a></li>
+<li><a href="#vanier"><span class="toc-section-number">4.1.3</span> Vanier</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#academic-performance-in-semesters-leading-to-drop-out"><i class="fa fa-check"></i><b>4.2</b> Academic Performance in Semesters leading to drop-out</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#grades"><i class="fa fa-check"></i><b>4.2.1</b> Grades</a></li>
+<li><a href="#academic-performance-in-semesters-leading-to-drop-out"><span class="toc-section-number">4.2</span> Academic Performance in Semesters leading to drop-out</a><ul>
+<li><a href="#grades"><span class="toc-section-number">4.2.1</span> Grades</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#conclusion"><i class="fa fa-check"></i><b>4.3</b> Conclusion</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#passed-vs.failed-courses"><i class="fa fa-check"></i><b>4.3.1</b> Passed vs. Failed Courses</a></li>
+<li><a href="#conclusion"><span class="toc-section-number">4.3</span> Conclusion</a><ul>
+<li><a href="#passed-vs.failed-courses"><span class="toc-section-number">4.3.1</span> Passed vs. Failed Courses</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="explanatory.html"><a href="explanatory.html"><i class="fa fa-check"></i><b>5</b> Methods Centered on Determining Predictive Factors</a><ul>
-<li class="chapter" data-level="5.1" data-path="explanatory.html"><a href="explanatory.html#details-of-the-data-used"><i class="fa fa-check"></i><b>5.1</b> Details of the data used</a></li>
-<li class="chapter" data-level="5.2" data-path="explanatory.html"><a href="explanatory.html#complete-case-analysis"><i class="fa fa-check"></i><b>5.2</b> Complete Case Analysis</a></li>
-<li class="chapter" data-level="5.3" data-path="explanatory.html"><a href="explanatory.html#logistic-regression"><i class="fa fa-check"></i><b>5.3</b> Logistic Regression</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="explanatory.html"><a href="explanatory.html#binomial-family"><i class="fa fa-check"></i><b>5.3.1</b> Binomial Family</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="explanatory.html"><a href="explanatory.html#mixed-effects-models"><i class="fa fa-check"></i><b>5.4</b> Mixed Effects Models</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="predictive.html"><a href="predictive.html"><i class="fa fa-check"></i><b>6</b> Methods centered on predicting at-risk students</a><ul>
-<li class="chapter" data-level="6.1" data-path="predictive.html"><a href="predictive.html#decision-trees-and-random-forests"><i class="fa fa-check"></i><b>6.1</b> Decision Trees and Random Forests</a></li>
-<li class="chapter" data-level="6.2" data-path="predictive.html"><a href="predictive.html#neural-networks"><i class="fa fa-check"></i><b>6.2</b> Neural Networks</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="comparisons.html"><a href="comparisons.html"><i class="fa fa-check"></i><b>7</b> Comparisons</a></li>
-<li class="chapter" data-level="8" data-path="conted.html"><a href="conted.html"><i class="fa fa-check"></i><b>8</b> Continuing Education at Dawson</a><ul>
-<li class="chapter" data-level="8.1" data-path="conted.html"><a href="conted.html#services"><i class="fa fa-check"></i><b>8.1</b> Services</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="conted.html"><a href="conted.html#continuing-educations-growth-over-time"><i class="fa fa-check"></i><b>8.1.1</b> Continuing Education’s Growth over Time</a></li>
-<li class="chapter" data-level="8.1.2" data-path="conted.html"><a href="conted.html#department-level-seat-distributions"><i class="fa fa-check"></i><b>8.1.2</b> Department Level Seat Distributions</a></li>
-<li class="chapter" data-level="8.1.3" data-path="conted.html"><a href="conted.html#course-level-distributions"><i class="fa fa-check"></i><b>8.1.3</b> Course Level distributions</a></li>
-<li class="chapter" data-level="8.1.4" data-path="conted.html"><a href="conted.html#specialized-spaces"><i class="fa fa-check"></i><b>8.1.4</b> Specialized spaces</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="conted.html"><a href="conted.html#students"><i class="fa fa-check"></i><b>8.2</b> Students</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="conted.html"><a href="conted.html#demographics"><i class="fa fa-check"></i><b>8.2.1</b> Demographics</a></li>
-<li class="chapter" data-level="8.2.2" data-path="conted.html"><a href="conted.html#success-rates"><i class="fa fa-check"></i><b>8.2.2</b> Success Rates</a></li>
+<li><a href="#explanatory"><span class="toc-section-number">5</span> Methods Centered on Determining Predictive Factors</a><ul>
+<li><a href="#details-of-the-data-used"><span class="toc-section-number">5.1</span> Details of the data used</a></li>
+<li><a href="#complete-case-analysis"><span class="toc-section-number">5.2</span> Complete Case Analysis</a></li>
+<li><a href="#logistic-regression"><span class="toc-section-number">5.3</span> Logistic Regression</a><ul>
+<li><a href="#binomial-family"><span class="toc-section-number">5.3.1</span> Binomial Family</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="descriptive-statistics.html"><a href="descriptive-statistics.html#conclusion"><i class="fa fa-check"></i><b>9</b> Conclusion</a></li>
-<li class="chapter" data-level="10" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>10</b> Placeholder</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
-
+<!--bookdown:toc2:end-->
       </nav>
     </div>
 
@@ -176,8 +163,62 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
+<!--bookdown:toc:end-->
+<!--bookdown:body:start-->
+<div id="preface" class="section level1">
+<h1><span class="header-section-number">1</span> Preface</h1>
+<!--chapter:end:index.Rmd-->
+</div>
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">2</span> Introduction</h1>
+<div id="context" class="section level2">
+<h2><span class="header-section-number">2.1</span> Context</h2>
+</div>
+<div id="objectives" class="section level2">
+<h2><span class="header-section-number">2.2</span> Objectives</h2>
+<!--chapter:end:01-intro.Rmd-->
+</div>
+</div>
+<div id="littreview" class="section level1">
+<h1><span class="header-section-number">3</span> Literature</h1>
+<div id="modeling-success-and-attrition-in-cegep" class="section level2">
+<h2><span class="header-section-number">3.1</span> Modeling success and attrition in CEGEP</h2>
+</div>
+<div id="predictive-modelling-in-learning-analytics-and-educational-data-mining" class="section level2">
+<h2><span class="header-section-number">3.2</span> Predictive Modelling in Learning Analytics and Educational Data Mining</h2>
+<!--chapter:end:02-literature.Rmd-->
+</div>
+</div>
+<div id="descriptive-statistics" class="section level1">
+<h1><span class="header-section-number">4</span> Descriptive Statistics</h1>
+<div id="demographics-across-the-colleges-and-major-programs" class="section level2">
+<h2><span class="header-section-number">4.1</span> Demographics across the colleges and major programs</h2>
+<div id="dawson" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Dawson</h3>
+</div>
+<div id="john-abbott-college" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> John Abbott College</h3>
+</div>
+<div id="vanier" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Vanier</h3>
+</div>
+</div>
+<div id="academic-performance-in-semesters-leading-to-drop-out" class="section level2">
+<h2><span class="header-section-number">4.2</span> Academic Performance in Semesters leading to drop-out</h2>
+<div id="grades" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Grades</h3>
+</div>
+</div>
+<div id="conclusion" class="section level2">
+<h2><span class="header-section-number">4.3</span> Conclusion</h2>
+<div id="passed-vs.failed-courses" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Passed vs. Failed Courses</h3>
+<!--chapter:end:03-descriptive-stats.Rmd-->
+</div>
+</div>
+</div>
 <div id="explanatory" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Methods Centered on Determining Predictive Factors</h1>
+<h1><span class="header-section-number">5</span> Methods Centered on Determining Predictive Factors</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;bin/data/labelled_students_Dawson.Rdata&quot;</span>)
 <span class="kw">load</span>(<span class="st">&quot;bin/data/course_records_Dawson.Rdata&quot;</span>)</code></pre></div>
 <p><strong>Under Construction</strong></p>
@@ -232,23 +273,23 @@ left: 0.1em;
 bottom: -1ex;
 }
 </style>
- <font color="MidnightBlue"><div align=center><span style="font-weight:bold">quit&#95;next&#95;term ~ . <br><br> 15  Variables &#8195; 642068  Observations</span></div></font> <hr class="thinhr"> <span style="font-weight:bold">quit&#95;next&#95;term</span> <style>
- .hmisctable991011 {
+ <font color="MidnightBlue"><div align=center><span style="font-weight:bold">quit&#95;next&#95;term ~ . <br><br> 16  Variables &#8195; 642068  Observations</span></div></font> <hr class="thinhr"> <span style="font-weight:bold">quit&#95;next&#95;term</span> <style>
+ .hmisctable132713 {
  border: none;
  font-size: 85%;
  }
- .hmisctable991011 td {
+ .hmisctable132713 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable991011 th {
+ .hmisctable132713 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable991011">
+ <table class="hmisctable132713">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>2</td></tr>
  </table>
@@ -258,83 +299,83 @@ bottom: -1ex;
  Proportion  0.954  0.046
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">student&#95;number</span> <style>
- .hmisctable172323 {
+ .hmisctable735630 {
  border: none;
  font-size: 85%;
  }
- .hmisctable172323 td {
+ .hmisctable735630 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable172323 th {
+ .hmisctable735630 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable172323">
+ <table class="hmisctable735630">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>25931</td></tr>
  </table>
  <style>
- .hmisctable250932 {
+ .hmisctable601562 {
  border: none;
  font-size: 85%;
  }
- .hmisctable250932 td {
+ .hmisctable601562 td {
  text-align: right;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable250932 th {
+ .hmisctable601562 th {
  color: Black;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: bold;
  }
  </style>
- <table class="hmisctable250932">
+ <table class="hmisctable601562">
  <tr><td><font color="MidnightBlue">lowest</font>&#160;:</td><td>00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0</td><td>000100B35C3450D606327FBF0CD6DF1DBE651E55246A7B05763B7553EEADF0F6</td><td>00020938792AE1411E407C5BD7665B96F37A32248F58646657963F375D887666</td><td>0007E6AFA1CD700997510D26B72479B397EC4E897C33C788A2E283D6374A75B1</td><td>000FD1F57F60D2CBCC8B526CC43E6EE0A8FD1BC92498681DD19E03555310C9EF</td></tr>
  <tr><td><font color="MidnightBlue">highest</font>:</td><td>FFF4A2FD0DD4ED282EA3382ABD6069F21C6905DCC2A609D9FB36C2AFDDEB1D14</td><td>FFF644DC0DE9E07F7A51F33CE8EEB8D7E3B3713F4F422854D214601787449AA9</td><td>FFF65E6BC9D881DF6103052367831319201D65CF7ECFBEF1877514D56BF84C18</td><td>FFF998E5F20621E4B1C496D60B27CBD26392F6C3CFEDB365D0AE7A0825F94267</td><td>FFFFFEF94D3B3A22BB9265E006CFFFAF4EB827DA2B5C213358AF05D295D737B4</td></tr>
  </table>
  <hr class="thinhr"> <span style="font-weight:bold">quit.next.term</span> <style>
- .hmisctable381496 {
+ .hmisctable399262 {
  border: none;
  font-size: 85%;
  }
- .hmisctable381496 td {
+ .hmisctable399262 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable381496 th {
+ .hmisctable399262 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable381496">
+ <table class="hmisctable399262">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Sum</th><th>Mean</th><th>Gmd</th></tr>
  <tr><td>642068</td><td>0</td><td>2</td><td>0.13</td><td>29234</td><td>0.04553</td><td>0.08692</td></tr>
  </table>
  <hr class="thinhr"> <span style="font-weight:bold">result</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAFVBMVEUAAAA7OztqamqCgoLa2trr6+v///+OfjPfAAAAJElEQVQImWNgYIUBBgY2GCCNyQIDJJvAxAQkmBlAbmBkBDkBALhsAoPf65zSAAAAAElFTkSuQmCC" alt="image" /></div> <style>
- .hmisctable440827 {
+ .hmisctable652663 {
  border: none;
  font-size: 85%;
  }
- .hmisctable440827 td {
+ .hmisctable652663 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable440827 th {
+ .hmisctable652663 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable440827">
+ <table class="hmisctable652663">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>520256</td><td>121812</td><td>3</td></tr>
  </table>
@@ -345,64 +386,64 @@ iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAFVBMVEUAAAA7OztqamqCgoLa2trr6+v/
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">Note</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAAB11BMVEUAAAABAQECAgIDAwMEBAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJycoKCgqKiorKystLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7Ozs8PDw9PT0+Pj5AQEBCQkJDQ0NERERFRUVHR0dISEhKSkpLS0tMTExNTU1OTk5QUFBRUVFSUlJTU1NXV1dYWFhZWVlbW1tfX19gYGBhYWFjY2NoaGhqampwcHBxcXF3d3d6enp8fHyDg4OFhYWKioqLi4uMjIyPj4+QkJCSkpKampqdnZ2enp6hoaGjo6OkpKSlpaWpqamqqqqrq6uurq6wsLCxsbGzs7O0tLS2tra5ubm+vr6/v7/ExMTGxsbHx8fIyMjJycnMzMzOzs7Q0NDR0dHS0tLT09PY2NjZ2dna2trb29vc3Nzd3d3f39/i4uLn5+fp6enq6urr6+vt7e3v7+/w8PDz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v9/f3+/v7///9I2WsIAAACAElEQVQ4jc3V2V8SURQH8B/GsBQMUwpOqOiIgcgAswhIUMYS7Vm077vZYlamFuVWZJBlZQiI88fGSA9TfSx7mOg83DP3c8+d8/2cl4uPaoUts/FZLj37h9uQ1Ar6zMZnWYyv5xvv1tPj6V8qGuZaHn05dQ2nrzzLFyRn5r9wzZSziA6CDgP9NPh9EnOy0a7Zo2+mbzYNZ9HrQ3Ow5mqFNyoxxx81yjU3LK/vb6E5SuDyiNLF844g+u795MqpFdYh5e4UOXf7gsPjh9Gvha8D3b3Y7gPYFrh60MoCEdcPt//JvNY+SOdJfagHTg7bQgREh3JeHrT1A0GKvDuvmJfarucT41fP6SfPmhH4vcsCXhypKF0P8qq4Mk8nJu8c2u1Fhwj9wCZcAReuv1C4DJdUcYU1TWGb3LZdhCa0OVd3PF0q5r+7dBeV/6uW67lUT8X6V6m6Ku+WKtJKtVKurJbLayulpddfl78sLn56W/hceJV7Yh6bGR2buu9+uFCUXXLbv3UxPMQjlOyqvUW61CB7Yr8jeZgJDrk70ywdT1DcQcp6wGtO7dUKKVN7mjHGQ8aBpMWe2GlK+PSRmMGTtFB77Nowp3FFtphjVg1faxsAKRIQnETqWMzKA1wLPG7YA9AIJrAMulhsFQj427CrDzvkAptcQHMAT8LrRCcLg6Crmb4BAkeUSTdplbgAAAAASUVORK5CYII=" alt="image" /></div> <style>
- .hmisctable626434 {
+ .hmisctable979359 {
  border: none;
  font-size: 85%;
  }
- .hmisctable626434 td {
+ .hmisctable979359 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable626434 th {
+ .hmisctable979359 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable626434">
+ <table class="hmisctable979359">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>590863</td><td>51205</td><td>101</td><td>0.999</td><td>76.05</td><td>17.3</td><td>41</td><td>60</td><td>70</td><td>80</td><td>87</td><td>92</td><td>95</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font>&#160;:   0   1   2   3   4 ,  <font color="MidnightBlue">highest</font>:  96  97  98  99 100</span> <hr class="thinhr"> <span style="font-weight:bold">MoyenneGroupeEvaluation</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAABnlBMVEUAAAABAQEEBAQFBQUHBwcICAgJCQkKCgoLCwsMDAwNDQ0RERESEhITExMUFBQVFRUWFhYXFxcYGBgZGRkaGhobGxscHBweHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJycoKCgqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk7Ozs9PT0/Pz9AQEBBQUFCQkJDQ0NERERFRUVISEhJSUlKSkpLS0tMTExNTU1PT09QUFBSUlJUVFRVVVVYWFhaWlpcXFxeXl5fX19gYGBhYWFiYmJlZWVpaWlqampra2tsbGxwcHBzc3N0dHR1dXV5eXl6enp8fHx+fn5/f3+BgYGIiIiKioqOjo6RkZGSkpKYmJiZmZmampqcnJyenp6fn5+hoaGoqKipqamtra2vr6+xsbG1tbW5ubm6urq7u7vCwsLHx8fJycnKysrOzs7Pz8/R0dHU1NTV1dXY2NjZ2dna2trh4eHl5eXr6+vs7Oz09PT19fX39/f5+fn7+/v8/Pz+/v7///8hKjxbAAABZElEQVQ4jc3V6TNCURgG8CfZoqylLMm9aS+VLYpS9hARkT3KvmUNcZHKfy0aNRnVtzPeL+fOmefc+c3z5QVDdB43ObpiTKwWDOKD6ARRbmBDJ3lIFAiSdMVPB/tTLhEW9vJnSbpCEKtTLiGoLsdLvs6IuRI7fjdaMi4FJL7/4HqCWpzt4lmMuRtDhMjcB0ZAiyCUolRZBFk9milUKqAJhnM8INQXv68Cqt996YFeVa6+CKDez9pZhr9dHXzT7RtZ13H4+3iNTOlNyOmqhWHAHyPnil3zZ5NH4tCuRYMun0smxfoVEVc8enGyhurxbZnTCDldyEVDYKZ955fRLFdyFzmPnh2h9GYKzNluMnvqzhZJf69sMa4Dhtn1/FzszzMbi1a3d3jM67Quubun3T1mV6fQQoOSgqcF1FWg28BXgaXlQN6ERjnKtGwoBWiVgqtJBmq+AnVqQMctsVupGc/Q5PJo8tefL71vUrika5sAAAAASUVORK5CYII=" alt="image" /></div> <style>
- .hmisctable116498 {
+ .hmisctable748956 {
  border: none;
  font-size: 85%;
  }
- .hmisctable116498 td {
+ .hmisctable748956 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable116498 th {
+ .hmisctable748956 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable116498">
+ <table class="hmisctable748956">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>590646</td><td>51422</td><td>68</td><td>0.998</td><td>76.66</td><td>8.025</td><td>64</td><td>68</td><td>72</td><td>77</td><td>82</td><td>86</td><td>88</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font>&#160;:   0   2  10  11  20 ,  <font color="MidnightBlue">highest</font>:  96  97  98  99 100</span> <hr class="thinhr"> <span style="font-weight:bold">section</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAABkAAAANCAMAAABrcDXcAAAAPFBMVEUAAAAtLS0wMDBHR0dNTU1PT09YWFhaWlp7e3uIiIiTk5Ofn5+hoaGtra3Dw8PMzMza2trk5OTr6+v///+1++lwAAAALElEQVQYlWNg4BLCDhgYuIWxA/rJcApgB4PBbUz8POxIwcXLJsjCx8HMyAoApKAV081ygCkAAAAASUVORK5CYII=" alt="image" /></div> <style>
- .hmisctable595013 {
+ .hmisctable391045 {
  border: none;
  font-size: 85%;
  }
- .hmisctable595013 td {
+ .hmisctable391045 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable595013 th {
+ .hmisctable391045 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable595013">
+ <table class="hmisctable391045">
  <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
  <tr><td>642068</td><td>0</td><td>132</td><td>0.981</td><td>479.6</td><td>925.9</td><td> 1</td><td> 1</td><td> 2</td><td> 5</td><td>20</td><td>44</td><td>62</td></tr>
  </table>
@@ -412,22 +453,22 @@ iVBORw0KGgoAAAANSUhEUgAAABkAAAANCAMAAABrcDXcAAAAPFBMVEUAAAAtLS0wMDBHR0dNTU1PT09Y
  Proportion  0.972  0.000  0.003  0.002  0.001  0.004  0.017  0.000
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">CoteR</span> <style>
- .hmisctable529672 {
+ .hmisctable328292 {
  border: none;
  font-size: 85%;
  }
- .hmisctable529672 td {
+ .hmisctable328292 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable529672 th {
+ .hmisctable328292 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable529672">
+ <table class="hmisctable328292">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>2</td></tr>
  </table>
@@ -438,84 +479,84 @@ iVBORw0KGgoAAAANSUhEUgAAABkAAAANCAMAAABrcDXcAAAAPFBMVEUAAAAtLS0wMDBHR0dNTU1PT09Y
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">course.dept</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAJcAAAANCAMAAACTvAxuAAABYlBMVEUAAAABAQEDAwMEBAQFBQUGBgYHBwcJCQkKCgoLCwsMDAwODg4PDw8QEBASEhIVFRUWFhYXFxcYGBgaGhobGxscHBwdHR0fHx8gICAjIyMkJCQnJycoKCgpKSkqKiorKysvLy8xMTEzMzM0NDQ1NTU5OTk7Ozs8PDw9PT0/Pz9AQEBCQkJDQ0NERERFRUVGRkZLS0tMTExOTk5RUVFSUlJUVFRWVlZXV1daWlpdXV1fX19iYmJkZGRlZWVmZmZoaGhsbGxubm5wcHB4eHh5eXl6enp7e3t/f3+AgICEhISFhYWHh4eKioqLi4uNjY2RkZGVlZWWlpaYmJikpKSlpaWmpqanp6eqqqqrq6utra2zs7O1tbW2tra5ubm/v7/FxcXLy8vQ0NDV1dXX19fa2trd3d3f39/h4eHr6+vu7u7v7+/w8PDx8fH09PT19fX29vb4+Pj5+fn6+vr9/f3+/v7///9b7kjVAAABVElEQVQ4jc2VV1MCQRCEG7lTMQFGzGLGACbEBMgJCBgwB1QMIKwJVNz/756h5KrOYosDy37oh62u3m/mZUDKIFHSXAFaBlX6NVd8cKVvNPcoVCqu+QGeaGiQt7RUXLN9PFFPE2/pP+XK6aWieb6FJJO9K8khl4knxRTHOGfyd6ntK0VUR/DUbBYcMz13R+ktprXvS4XLuqTOJRT+Loar8nF1u5SZ4AGlb7azT65EhNnzn3B5R5RcDVXKTPsipS+IeISp/QzdgHS9U70bVSTuc9TnKxXXseOLS+yUuS6XX5lnw49UBL3YoqmFhx+u+B5CTsGGw4QV4ko9ZnR5RU9Rw4R9dIxmU9tuBGWulowGroAoc8nnrKOXuRVh5uc4IQIaXc1kHauErLnZm8XpmLTArNMPwWgyAY5a9CDvlp1CZ0b/MPHXGYxotbXFgIqjoi9jwC4yfwe8zywIembnZgAAAABJRU5ErkJggg==" alt="image" /></div> <style>
- .hmisctable648390 {
+ .hmisctable328082 {
  border: none;
  font-size: 85%;
  }
- .hmisctable648390 td {
+ .hmisctable328082 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable648390 th {
+ .hmisctable328082 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable648390">
+ <table class="hmisctable328082">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>59</td></tr>
  </table>
  <span style="font-size: 85%;"><font color="MidnightBlue">lowest</font>&#160;: 101 109 140 142 144 ,  <font color="MidnightBlue">highest</font>: 611 613 615 982 990</span> <hr class="thinhr"> <span style="font-weight:bold">prog</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAFgAAAANCAMAAAAaCFlCAAAA9lBMVEUXFxcYGBgcHBwdHR0fHx8gICAiIiIjIyMpKSkrKystLS0uLi4xMTE0NDQ1NTU3Nzc4ODg5OTk6Ojo/Pz9AQEBBQUFDQ0NFRUVJSUlLS0tMTExNTU1OTk5PT09QUFBXV1dZWVlbW1tdXV1eXl5fX19hYWFnZ2doaGhqampubm5vb29wcHBzc3N1dXV7e3t/f3+CgoKEhISGhoaOjo6UlJSdnZ29vb2/v7/Dw8PU1NTV1dXY2Nja2trb29vc3Nzd3d3e3t7k5OTl5eXo6Ojp6enr6+vs7Ozt7e3u7u7w8PDz8/P09PT29vb4+Pj5+fn8/Pz9/f3////5kNzTAAAAyElEQVQ4je3US3PBYBjF8VfRKhHXSCh1raB1SVGqVKnjFtT5/l+mY8aMRRbvdNF00//6zG/xLB4Baboi3zgTlJZW5Rtn/7AL8FhaMijfOHPvFH3zl+AH39/CZudH8OTlDG8/ufi4wG+vXIHLJQdDYs3RO5Uc7T03Ox6OnK5Os7nNmc3NF8dbzvYUeA7AukUvi24WlSsUvGjfoRxCPoTGPaz66VfoURgadB0xDYkMVANBA/EiwkVEqgiUkGrhpgp/DddPEI/wNPENwWlG6RijYnMAAAAASUVORK5CYII=" alt="image" /></div> <style>
- .hmisctable608052 {
+ .hmisctable594576 {
  border: none;
  font-size: 85%;
  }
- .hmisctable608052 td {
+ .hmisctable594576 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable608052 th {
+ .hmisctable594576 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable608052">
+ <table class="hmisctable594576">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>623629</td><td>18439</td><td>29</td></tr>
  </table>
  <style>
- .hmisctable316133 {
+ .hmisctable630734 {
  border: none;
  font-size: 85%;
  }
- .hmisctable316133 td {
+ .hmisctable630734 td {
  text-align: right;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable316133 th {
+ .hmisctable630734 th {
  color: Black;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: bold;
  }
  </style>
- <table class="hmisctable316133">
+ <table class="hmisctable630734">
  <tr><td><font color="MidnightBlue">lowest</font>&#160;:</td><td>140B0     </td><td>142A0     </td><td>142C0     </td><td>144A0     </td><td>180A0     </td></tr>
  <tr><td><font color="MidnightBlue">highest</font>:</td><td>570E0     </td><td>570F0     </td><td>574B0     </td><td>700B0     </td><td>transition</td></tr>
  </table>
  <hr class="thinhr"> <span style="font-weight:bold">current-out</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAIVBMVEUAAAAHBwcNDQ03Nzc7OztAQEDS0tLa2trj4+Pr6+v///996QxaAAAANElEQVQImWPgBAIWFhDJwAUErKwgkoENwWREMBlgTA4Ek4mBgZ2dnZkZSDAgRElkwtzAAAAWlgO07783zQAAAABJRU5ErkJggg==" alt="image" /></div> <style>
- .hmisctable135073 {
+ .hmisctable160436 {
  border: none;
  font-size: 85%;
  }
- .hmisctable135073 td {
+ .hmisctable160436 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable135073 th {
+ .hmisctable160436 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable135073">
+ <table class="hmisctable160436">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>147681</td><td>494387</td><td>3</td></tr>
  </table>
@@ -526,22 +567,22 @@ iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAIVBMVEUAAAAHBwcNDQ03Nzc7OztAQEDS
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">status</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAIVBMVEUAAAAICAgLCws3Nzc7OztAQEDS0tLa2trk5OTr6+v////m/tpJAAAAM0lEQVQImWPgBAIWFhDJwAUErKwgkjCTA8FkYmdnZ2YGEuwMDDBRNgSTEcFkwMWEuYEBACnjA+1ko+GVAAAAAElFTkSuQmCC" alt="image" /></div> <style>
- .hmisctable497477 {
+ .hmisctable485838 {
  border: none;
  font-size: 85%;
  }
- .hmisctable497477 td {
+ .hmisctable485838 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable497477 th {
+ .hmisctable485838 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable497477">
+ <table class="hmisctable485838">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>3</td></tr>
  </table>
@@ -551,22 +592,22 @@ iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAIVBMVEUAAAAICAgLCws3Nzc7OztAQEDS
  Proportion   0.268   0.542   0.189
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">Gender</span> <style>
- .hmisctable728640 {
+ .hmisctable469435 {
  border: none;
  font-size: 85%;
  }
- .hmisctable728640 td {
+ .hmisctable469435 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable728640 th {
+ .hmisctable469435 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable728640">
+ <table class="hmisctable469435">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>2</td></tr>
  </table>
@@ -577,22 +618,22 @@ iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAIVBMVEUAAAAICAgLCws3Nzc7OztAQEDS
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">Language</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
 iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAG1BMVEUAAAADAwM7OztAQEB5eXmSkpLa2trr6+v///9pac1qAAAAK0lEQVQImWNgYIcBBgYOGCCNyQYFrAhRRjCThQUsD2IyM+NjAm1nYgI5AQDvzQMmkR3fTwAAAABJRU5ErkJggg==" alt="image" /></div> <style>
- .hmisctable377811 {
+ .hmisctable424391 {
  border: none;
  font-size: 85%;
  }
- .hmisctable377811 td {
+ .hmisctable424391 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable377811 th {
+ .hmisctable424391 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable377811">
+ <table class="hmisctable424391">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>3</td></tr>
  </table>
@@ -602,22 +643,22 @@ iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAG1BMVEUAAAADAwM7OztAQEB5eXmSkpLa
  Proportion  0.569  0.181  0.250
  </pre>
  <hr class="thinhr"> <span style="font-weight:bold">Birth&#95;Place</span> <style>
- .hmisctable203188 {
+ .hmisctable138973 {
  border: none;
  font-size: 85%;
  }
- .hmisctable203188 td {
+ .hmisctable138973 td {
  text-align: center;
  padding: 0 1ex 0 1ex;
  }
- .hmisctable203188 th {
+ .hmisctable138973 th {
  color: MidnightBlue;
  text-align: center;
  padding: 0 1ex 0 1ex;
  font-weight: normal;
  }
  </style>
- <table class="hmisctable203188">
+ <table class="hmisctable138973">
  <tr><th>n</th><th>missing</th><th>distinct</th></tr>
  <tr><td>642068</td><td>0</td><td>2</td></tr>
  </table>
@@ -626,458 +667,99 @@ iVBORw0KGgoAAAANSUhEUgAAAAoAAAANCAMAAACn6Q83AAAAG1BMVEUAAAADAwM7OztAQEB5eXmSkpLa
  Frequency  157397 484671
  Proportion  0.245  0.755
  </pre>
+ <hr class="thinhr"> <span style="font-weight:bold">term.courses</span><div style='float: right; text-align: right;'><img src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAADEAAAANCAMAAAA3+nb4AAAAwFBMVEUAAAAFBQUGBgYWFhYiIiI1NTVLS0tMTExNTU1PT09TU1NWVlZYWFhgYGBmZmZoaGhvb29wcHB3d3d5eXl6enp+fn6BgYGHh4eQkJCTk5OVlZWbm5ucnJygoKCjo6OoqKirq6utra2urq6vr6+ysrK2tra4uLi+vr7AwMDCwsLIyMjJycnKysrNzc3Q0NDR0dHZ2dna2tre3t7f39/i4uLl5eXm5ubo6Ojp6enq6urr6+v39/f6+vr9/f3+/v7///+/KyArAAAAk0lEQVQokaXSxxKCQBRE0RYTomNOKCYMiGFgjPhU5v//Shcu3Fg1r7z7U71pNCwKRULmoW1pF6TN+0vsUo64te4SAUfMEW2wNBO1jOpgO8BiCk+Z9NnwIY03vsWjGjPFCR5fpLkxUzzR1eWhPl5+i/eveohHWK8wkegnaFJWUN6meoVch/wShfY5KqhDcX91AhKzFx3Yf+95TrxZAAAAAElFTkSuQmCC" alt="image" /></div> <style>
+ .hmisctable610654 {
+ border: none;
+ font-size: 85%;
+ }
+ .hmisctable610654 td {
+ text-align: center;
+ padding: 0 1ex 0 1ex;
+ }
+ .hmisctable610654 th {
+ color: MidnightBlue;
+ text-align: center;
+ padding: 0 1ex 0 1ex;
+ font-weight: normal;
+ }
+ </style>
+ <table class="hmisctable610654">
+ <tr><th>n</th><th>missing</th><th>distinct</th><th>Info</th><th>Mean</th><th>Gmd</th><th>.05</th><th>.10</th><th>.25</th><th>.50</th><th>.75</th><th>.90</th><th>.95</th></tr>
+ <tr><td>642068</td><td>0</td><td>16</td><td>0.958</td><td>2.898</td><td>1.911</td><td>1</td><td>1</td><td>1</td><td>2</td><td>4</td><td>5</td><td>6</td></tr>
+ </table>
+ <pre style="font-size:85%;">
+ Value           1      2      3      4      5      6      7      8      9     10
+ Frequency  168424 154833 101666 110496  51058  29098  14698   7050   2569   1343
+ Proportion  0.262  0.241  0.158  0.172  0.080  0.045  0.023  0.011  0.004  0.002
+                                                     
+ Value          11     12     13     14     15     16
+ Frequency     505    183     90     37     14      4
+ Proportion  0.001  0.000  0.000  0.000  0.000  0.000
+ </pre>
  <hr class="thinhr">
 </div>
 <div id="complete-case-analysis" class="section level2">
 <h2><span class="header-section-number">5.2</span> Complete Case Analysis</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">DT_use_in_model &lt;-<span class="st"> </span>DT[,<span class="kw">list</span>(student_number, quit.next.term, Note, quit_next_term,
-                            CoteR, prog, Gender, Language, Birth_Place)]
+                            result, prog, Gender, Language, Birth_Place, term.courses)]
 
 cc_ind &lt;-<span class="st"> </span><span class="kw">complete.cases</span>(DT_use_in_model)
-DT_cc &lt;-<span class="st"> </span>DT_use_in_model[cc_ind]</code></pre></div>
-<p>There were a total of 642068 observations from 25931 students. Among these, there were 574804 observation with complete data (no missingness) for the variables <code>quit.next.term</code>, <code>Note</code>, <code>CoteR</code>, <code>prog</code>, <code>Gender</code>, <code>Language</code> and <code>Birth_Place</code>, from 25077 students.</p>
+DT_cc &lt;-<span class="st"> </span>DT_use_in_model[cc_ind]
+
+
+
+<span class="co"># collapsed by student and term, we took the mean note and mode MSE</span>
+DT_collapse &lt;-<span class="st"> </span><span class="kw">unique</span>(DT_cc[, <span class="kw">list</span>(student_number, quit.next.term, quit_next_term, prog, Gender, Language, Birth_Place, term.courses, <span class="dt">mean_note =</span> <span class="kw">mean</span>(Note), <span class="dt">mode_mse =</span> <span class="kw">Mode</span>(result)), <span class="dt">by =</span> <span class="kw">list</span>(term.courses,student_number)], <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;student_number&quot;</span>,<span class="st">&quot;term.courses&quot;</span>))
+
+
+
+<span class="co"># DT_cc[student_number==&quot;00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0&quot;, list(student_number, quit.next.term, quit_next_term, prog, Gender, Language, Birth_Place, term.courses, Note, mean_note = mean(Note), result, mode_mse = Mode(result)), by = list(term.courses,student_number)]</span>
+<span class="co"># </span>
+<span class="co"># DT_collapse[student_number==&quot;00001B70E66F950D0F06F7F6F6F63411FF966DE0274EE37469A108A0AAD817C0&quot;]</span>
+<span class="co"># </span>
+<span class="co"># DT_collapse_t1 &lt;- unique(DT_cc[term.courses==1, list(student_number, quit.next.term, quit_next_term, prog, Gender, Language, Birth_Place, term.courses, mean_note = mean(Note), mode_mse = Mode(result)), by = student_number], by = &quot;student_number&quot;)</span>
+
+
+<span class="co"># There were a total of `r nrow(DT_use_in_model)` observations from `r length(unique(DT_use_in_model$student_number))` students. Among these, there were `r sum(cc_ind)` observation with complete data (no missingness) for the variables `quit.next.term`, `Note`, `prog`, `Gender`, `Language` and `Birth_Place`, from `r length(unique(DT_cc$student_number))` students.</span></code></pre></div>
 </div>
 <div id="logistic-regression" class="section level2">
 <h2><span class="header-section-number">5.3</span> Logistic Regression</h2>
 <div id="binomial-family" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Binomial Family</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">glm</span>(quit_next_term ~<span class="st"> </span>Gender +<span class="st"> </span>Language +<span class="st"> </span>Birth_Place +<span class="st"> </span>Note +<span class="st"> </span>CoteR, <span class="dt">data =</span> DT_cc, <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sjPlot::<span class="kw">sjp.glm</span>(fit)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fits &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:<span class="dv">5</span>, function(i) <span class="kw">glm</span>(quit_next_term ~<span class="st"> </span>Gender +<span class="st"> </span>Language +<span class="st"> </span>Birth_Place +<span class="st"> </span>mean_note +<span class="st"> </span>mode_mse, <span class="dt">data =</span> DT_collapse[term.courses==i], 
+           <span class="dt">family =</span> <span class="st">&quot;binomial&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for(i in 1:5) sjPlot::sjp.glm(fits[[i]])</span>
+sjPlot::<span class="kw">sjp.glm</span>(fits[[<span class="dv">1</span>]])</code></pre></div>
 <pre><code>## Waiting for profiling to be done...</code></pre>
 <p><img src="studentsuccess_final_report_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sjPlot::<span class="kw">sjt.glm</span>(fit)</code></pre></div>
-<table style="border-collapse:collapse; border:none;border-bottom:double;">
-<tr>
-<td style="padding:0.2cm; border-top:double;">
- 
-</td>
-<td style="border-bottom:1px solid; padding-left:0.5em; padding-right:0.5em; border-top:double;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; border-bottom:1px solid; border-top:double;" colspan="3">
-quit_next_term
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; font-style:italic;">
- 
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em; font-style:italic;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; font-style:italic; ">
-Odds Ratio
-</td>
-<td style="padding:0.2cm; text-align:center; font-style:italic; ">
-CI
-</td>
-<td style="padding:0.2cm; text-align:center; font-style:italic; ">
-p
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; border-top:1px solid; text-align:left;">
-(Intercept)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em; border-top:1px solid; ">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; border-top:1px solid; ">
-0.35
-</td>
-<td style="padding:0.2cm; text-align:center; border-top:1px solid; ">
-0.34 – 0.37
-</td>
-<td style="padding:0.2cm; text-align:center; border-top:1px solid; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Gender (Male)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.29
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.26 – 1.32
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm;" colspan="5">
-Language
-</td>
-</tr>
-<tr>
-<td style="font-style:italic; padding:0.2cm; padding-left:0.6cm; text-align:left;">
-franco
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.10
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.07 – 1.14
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="font-style:italic; padding:0.2cm; padding-left:0.6cm; text-align:left;">
-other
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.87
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.84 – 0.89
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Birth_Place (Quebec)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.79
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.77 – 0.81
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Note
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.97
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.97 – 0.98
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-CoteR (E)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.92
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.85 – 1.00
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-.054
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;">
-Observations
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em; border-top:1px solid;">
- 
-</td>
-<td style="padding:0.2cm; padding-top:0.1cm; padding-bottom:0.1cm; text-align:center; border-top:1px solid;" colspan="3">
-574804
-</td>
-</tr>
-</table>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sjPlot::<span class="kw">sjp.glm</span>(fits[[<span class="dv">2</span>]])</code></pre></div>
+<pre><code>## Waiting for profiling to be done...</code></pre>
+<p><img src="studentsuccess_final_report_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sjPlot::<span class="kw">sjp.glm</span>(fits[[<span class="dv">3</span>]])</code></pre></div>
+<pre><code>## Waiting for profiling to be done...</code></pre>
+<p><img src="studentsuccess_final_report_files/figure-html/unnamed-chunk-8-3.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sjPlot::<span class="kw">sjp.glm</span>(fits[[<span class="dv">4</span>]])</code></pre></div>
+<pre><code>## Waiting for profiling to be done...</code></pre>
+<p><img src="studentsuccess_final_report_files/figure-html/unnamed-chunk-8-4.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sjPlot::<span class="kw">sjp.glm</span>(fits[[<span class="dv">5</span>]])</code></pre></div>
+<pre><code>## Waiting for profiling to be done...</code></pre>
+<p><img src="studentsuccess_final_report_files/figure-html/unnamed-chunk-8-5.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">knit_exit</span>()</code></pre></div>
 </div>
 </div>
-<div id="mixed-effects-models" class="section level2">
-<h2><span class="header-section-number">5.4</span> Mixed Effects Models</h2>
-<p><img src="studentsuccess_final_report_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<table style="border-collapse:collapse; border:none;border-bottom:double;">
-<tr>
-<td style="padding:0.2cm; border-top:double;">
- 
-</td>
-<td style="border-bottom:1px solid; padding-left:0.5em; padding-right:0.5em; border-top:double;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; border-bottom:1px solid; border-top:double;" colspan="3">
-quit_next_term
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; font-style:italic;">
- 
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em; font-style:italic;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; font-style:italic; ">
-Odds Ratio
-</td>
-<td style="padding:0.2cm; text-align:center; font-style:italic; ">
-CI
-</td>
-<td style="padding:0.2cm; text-align:center; font-style:italic; ">
-p
-</td>
-</tr>
-<tr>
-<td colspan="5" style="padding:0.2cm; text-align:left; border-top:1px solid; font-weight:bold; text-align:left;">
-Fixed Parts
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-(Intercept)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em; ">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.00
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.00 – 0.00
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Gender (Male)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.66
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.42 – 1.95
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Language (franco)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.16
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.94 – 1.43
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-.169
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Language (other)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.11
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.90 – 1.37
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-.347
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Birth_Place (Quebec)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.87
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-0.71 – 1.07
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-.194
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-Note
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.01
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.01 – 1.01
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-&lt;.001
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left;">
-CoteR (E)
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.19
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-1.07 – 1.33
-</td>
-<td style="padding:0.2cm; text-align:center; ">
-.001
-</td>
-</tr>
-<tr>
-<td colspan="5" style="padding:0.2cm; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; font-weight:bold; text-align:left; padding-top:0.5em;">
-Random Parts
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;">
-τ<sub>00, student_number</sub>
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; padding-top:0.1cm; padding-bottom:0.1cm;" colspan="3">
-60.140
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;">
-N<sub>student_number</sub>
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; padding-top:0.1cm; padding-bottom:0.1cm;" colspan="3">
-25077
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
-ICC<sub>student_number</sub>
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; padding-top:0.1cm; padding-bottom:0.1cm;" colspan="3">
-0.948
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;">
-Observations
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em; border-top:1px solid;">
- 
-</td>
-<td style="padding:0.2cm; padding-top:0.1cm; padding-bottom:0.1cm; text-align:center; border-top:1px solid;" colspan="3">
-574804
-</td>
-</tr>
-<tr>
-<td style="padding:0.2cm; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">
-Deviance
-</td>
-<td style="padding-left:0.5em; padding-right:0.5em;">
- 
-</td>
-<td style="padding:0.2cm; text-align:center; padding-top:0.1cm; padding-bottom:0.1cm;" colspan="3">
-107474.567
-</td>
-</tr>
-</table>
-
 </div>
-</div>
+<!--bookdown:body:end-->
             </section>
 
           </div>
         </div>
       </div>
-<a href="descriptive-statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="predictive.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<!--bookdown:link_prev-->
+<!--bookdown:link_next-->
     </div>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"google": false,
-"weibo": false,
-"instapper": false,
-"vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-methods-inference.Rmd",
-"text": "Edit"
-},
-"download": ["studentsuccess_final_report.pdf", "studentsuccess_final_report.epub"],
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
+<!--bookdown:config-->
 
 </body>
 
