@@ -1,6 +1,7 @@
 ## ---- packages ----
 source('bin/packages.R')
 
+
 ## ---- demographics-dawson ----
 load("bin/data/labelled_students_Dawson.Rdata")
 with(students_last_session,table(Sexe,LangueMaternelle)) %>% prop.table() %>%
@@ -23,7 +24,6 @@ load("bin/data/labelled_students_Dawson.Rdata")
 load("bin/data/course_records_Dawson.Rdata")
 #Look to find the grades of the students who dropped as a total average
 
-#<<<<<<< HEAD
 ave<-courses[,mean(Note,na.rm=T),by=.(student_number)]
 setnames(ave,'V1','Average_all_terms')
 students_last_session<-merge(ave,students_last_session)
@@ -42,7 +42,7 @@ hist(students_last_session$Average[which(students_last_session$status=="out")],c
 hist(students_last_session$Average[which(students_last_session$status=="grad")],col=rgb(0,0,1,0.5),add=T)
 legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
 box(which="plot")
-#=======
+
 ave<-courses[,mean(Note),by=.(student_number)]
 setnames(ave,'V1','Average_all_courses')
 setkey(students_last_session,student_number)
@@ -236,6 +236,7 @@ ggplot(c2,aes(x=`F Count`,group=status)) + geom_histogram(bins=8,aes(color=statu
 #Next step will be to look for students who have great MSE the whole way through and who haven't failed a class.
 #Let's figure out the people who leave after X semesters for reasons that aren't academic. How big is that fraction?
 
+## ---- Optimal-Failing-MSE ----
 t1<-courses[,sum(result=="Failing",na.rm=T),by=c("term","student_number")]
 t2<-t1[,status:=students_last_session$status[which(student_number == students_last_session$student_number)],by=student_number]
 fcount<-courses[,sum(result=="Failing",na.rm=T),by=c("term","student_number")]
@@ -291,7 +292,7 @@ num_fail_last_term_minus1<-tmp[,.SD[.N], by=student_number]
 setkey(num_fail_last_term_minus1,student_number)
 setkey(students_last_session,student_number)
 num_fail_last_term_minus1<-students_last_session[num_fail_last_term_minus1][,.(student_number,MSE_term_F,term,status,i.status)]
-t.test(num_fail_last_term_minus1$MSE_term_F[which(num_fail_last_term_minus2$status=="out")],num_fail_last_term_minus1$MSE_term_F[which(num_fail_last_term_minus2$status=="grad")])
+t.test(num_fail_last_term_minus1$MSE_term_F[which(num_fail_last_term_minus1$status=="out")],num_fail_last_term_minus1$MSE_term_F[which(num_fail_last_term_minus1$status=="grad")])
 
 ## and here for N-2
 tmp_remove<- tmp[,.SD[.N], by=student_number]
@@ -311,25 +312,66 @@ num_fail_last_term$status<-factor(num_fail_last_term$status,labels=c(0,1))
 num_fail_last_term_minus1$status<-factor(num_fail_last_term_minus1$status,labels=c(0,1))
 num_fail_last_term_minus2$status<-factor(num_fail_last_term_minus2$status,labels=c(0,1))
 
-
+#Building a model to predict drop outs. Add more parameters than just MSE.
 DOfunc<- glm(status ~ MSE_term_F, num_fail_last_term,family="binomial")
 summary(DOfunc)
-
+predict(DOfunc, type="response")
 num_fail_last_term_Pred <- num_fail_last_term
 num_fail_last_term_Pred$Pred <- predict(DOfunc,num_fail_last_term_Pred,type="response")
 rocCur<-roc(num_fail_last_term$status,num_fail_last_term_Pred$Pred)
 auc(rocCur)
 #0.708
 
-confusionMatrix(as.integer(num_fail_last_term_Pred$Pred>0.6),num_fail_last_term$status)
+#confusionMatrix(as.integer(num_fail_last_term_Pred$Pred>0.6),num_fail_last_term$status)
 
-confusionMatrix(as.integer(num_fail_last_term$MSE_term_F>1),num_fail_last_term$status)
-confusionMatrix(as.integer(num_fail_last_term_minus1$MSE_term_F>1),num_fail_last_term_minus1$status)
-confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F>1),num_fail_last_term_minus2$status)
-#Here are the lines that JAC uses as a prediction mechanism. Whichever students have more than 1 failing
-#MSE get put on a list that would get them some help. As we can see from the confusion matrix, their batting average
-#isn't too bad (68% positive predictivevalue in last semester, 72% in last-1 and 78% in last-2). Also, the overall
-#prediction is fairly good with the average coming in at around 72% for prediction accuracy.
+
+F1arr<-array(data=NA,dim=5)
+xaxis<-c(seq(0,4,1))
+temp<-confusionMatrix(as.integer(num_fail_last_term$MSE_term_F==0),num_fail_last_term$status)
+F1arr[1]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term$MSE_term_F==1),num_fail_last_term$status)
+F1arr[2]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term$MSE_term_F==2),num_fail_last_term$status)
+F1arr[3]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term$MSE_term_F==3),num_fail_last_term$status)
+F1arr[4]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term$MSE_term_F>4),num_fail_last_term$status)
+F1arr[5]<-temp$overall[1]
+
+
+
+F1arr2<-array(data=NA,dim=5)
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus1$MSE_term_F==0),num_fail_last_term_minus1$status)
+F1arr2[1]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus1$MSE_term_F==1),num_fail_last_term_minus1$status)
+F1arr2[2]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus1$MSE_term_F==2),num_fail_last_term_minus1$status)
+F1arr2[3]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus1$MSE_term_F==3),num_fail_last_term_minus1$status)
+F1arr2[4]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus1$MSE_term_F>4),num_fail_last_term_minus1$status)
+F1arr2[5]<-temp$overall[1]
+
+F1arr3<-array(data=NA,dim=5)
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F==0),num_fail_last_term_minus2$status)
+F1arr3[1]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F==1),num_fail_last_term_minus2$status)
+F1arr3[2]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F==2),num_fail_last_term_minus2$status)
+F1arr3[3]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F==3),num_fail_last_term_minus2$status)
+F1arr3[4]<-temp$overall[1]
+temp<-confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F>4),num_fail_last_term_minus2$status)
+F1arr3[5]<-temp$overall[1]
+
+## ---- Optimal-Failing-MSE-prop----
+plot(xaxis, F1arr,xlab='# Failing MSEs in Last Term',ylab='F1 Score')
+plot(xaxis, F1arr2,xlab='# Failing MSEs in Before Last Term',ylab='F1 Score')
+plot(xaxis, F1arr3,xlab='# Failing MSEs 2 Terms before DO',ylab='F1 Score')
+
+
+#Could also look at grades that students ended up getting after receiving a failing MSE. Based on past performance
+#is this a natural path for them.
 
 #Next step is to merge
 #Try to merge all MSE tables for last semester, minus 1 and minus 2 to see if you can get trends.
@@ -337,16 +379,43 @@ confusionMatrix(as.integer(num_fail_last_term_minus2$MSE_term_F>1),num_fail_last
 # of semester n+1. There is probably additional predictive power to just the MSE of the current semester.
 #Simply stacking the MSEs should lead to an increase predictability ratio. Obviously adding grades should help.
 
-setkey(num_fail_last_term,student_number)
-setkey(num_fail_last_term_minus1,student_number)
 
-num_fail_last_2terms<-merge(num_fail_last_term,num_fail_last_term_minus1,all=T)
+#Merging all the avg semester grades with the number of failing MSEs for that term.
+setkey(num_fail_last_term,student_number)
+setkey(avg_grade_last_term,student_number)
+avg_grade_MSE_last_term<-merge(num_fail_last_term,avg_grade_last_term)
+
+setkey(num_fail_last_term_minus1,student_number)
+setkey(avg_grade_last_term_minus1,student_number)
+avg_grade_MSE_last_term_minus1<-merge(num_fail_last_term_minus1,avg_grade_last_term_minus1)
 
 setkey(num_fail_last_term_minus2,student_number)
-num_fail_last_3terms<-merge(num_fail_last_2terms,num_fail_last_term_minus2,all=T)
+setkey(avg_grade_last_term_minus2,student_number)
+avg_grade_MSE_last_term_minus2<-merge(num_fail_last_term_minus2,avg_grade_last_term_minus2)
+
+
+#Looking for a confusion matrix with the F1 score that is high based on past grades and MSEs.
+
+
+num_fail_last_2terms<-merge(avg_grade_MSE_last_term,avg_grade_MSE_last_term_minus1,all.x=FALSE,all.y=FALSE)
+#num_fail_last_2terms$MSE_doub<-factor(num_fail_last_2terms$MSE_term_F.x >0 | num_fail_last_2terms$avg_grade.y<70,labels=c(0,1))
+num_fail_last_2terms$MSE_doub<-factor(num_fail_last_2terms$MSE_term_F.y >1,labels=c(0,1))
+tmp<-confusionMatrix(num_fail_last_2terms$MSE_doub,num_fail_last_2terms$status.x.x)
+tmp$byClass
+
+setkey(avg_grade_MSE_last_term_minus2,student_number)
+
+num_fail_last_f2<-merge(avg_grade_MSE_last_term_minus1,avg_grade_MSE_last_term_minus2,all.x=F,all.y=F)
+num_fail_last_f2$MSE_doub<-factor(num_fail_last_f2$MSE_term_F.x >0 | num_fail_last_f2$avg_grade.y<70,labels=c(0,1))
+tmp<-confusionMatrix(num_fail_last_f2$MSE_doub,num_fail_last_f2$status.x.x)
+tmp$byClass
+tmp
 
 #Build the model with time series information, then predict, then confusion Matrix to compare the JAC way vs the
 #purely academic data way. Can still add the demographic admissions data and such.
+
+#Need to start moving now to the prediction of a student vs time of stay. So Day 1 prediction, then after the first
+#batch of MSEs, then after first batch of final grades. We would be predicting 2 things: quit next term and quit ever.
 
 #Could also add all the other schools.
 
