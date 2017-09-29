@@ -1,9 +1,5 @@
 ## ---- packages ----
-library(data.table)
-library(magrittr)
-library(ggplot2)
-library(stringr)
-library(pROC)
+source('bin/packages.R')
 
 ## ---- demographics-dawson ----
 load("bin/data/labelled_students_Dawson.Rdata")
