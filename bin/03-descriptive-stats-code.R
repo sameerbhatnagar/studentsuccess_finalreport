@@ -23,7 +23,6 @@ load("bin/data/labelled_students_Dawson.Rdata")
 load("bin/data/course_records_Dawson.Rdata")
 #Look to find the grades of the students who dropped as a total average
 
-#<<<<<<< HEAD
 ave<-courses[,mean(Note,na.rm=T),by=.(student_number)]
 setnames(ave,'V1','Average_all_terms')
 students_last_session<-merge(ave,students_last_session)
@@ -42,7 +41,7 @@ hist(students_last_session$Average[which(students_last_session$status=="out")],c
 hist(students_last_session$Average[which(students_last_session$status=="grad")],col=rgb(0,0,1,0.5),add=T)
 legend("topleft",c("Drop-Outs","Graduates"),fill=c(rgb(1,0,0,0.5),rgb(0,0,1,0.5)))
 box(which="plot")
-#=======
+
 ave<-courses[,mean(Note),by=.(student_number)]
 setnames(ave,'V1','Average_all_courses')
 setkey(students_last_session,student_number)
@@ -108,7 +107,7 @@ ggplot(data = students_last_session[!is.na(Average_all_courses)], aes(x=Average_
 # t.test(students_last_session$Average[which(students_last_session$status == "grad")],
        # students_last_session$Average[which(students_last_session$status == "out")])
 t.test(Average_all_courses ~ status,data=students_last_session)
-#>>>>>>> 09d5dad94bfceabd1acdaa6e46b0bbf82e89c757
+
 
 #Nice to see that the majority of kids who drop have a college average above 60%. Ie they are passing!!!
 #Clearly they are different in terms of the average overall grade during their stay.

@@ -84,7 +84,7 @@
   \postauthor{\par}
   \predate{\centering\large\emph}
   \postdate{\par}
-  \date{2017-06-02}
+  \date{2017-10-27}
 
 \usepackage{booktabs}
 \usepackage{amsthm}
@@ -420,6 +420,23 @@ who haven't. The following set of graphs will look at that comparison
 for 3 different semesters: the semester in which they dropped out (or
 graduated), the semester before that and the one before that. Let us see
 what the data says.
+
+\includegraphics{studentsuccess_final_report_files/figure-latex/Average comp-1.pdf}
+
+From the average total grade between the drop outs and the graduates, we
+can clearly see that the distributions are significantly different, but
+what is surprising is that NaN\% of students have an average grade above
+75\% and that more than NaN\% of the students who dropped out had an
+average grade above 60\%. In other words, most students who drop out
+have passing averages. One hypothesis for this effect is that students
+who end up dropping out start with good semesters and have their
+performance decline closer to the final semester. Let us verify this
+hypothesis.
+
+Let us now look at the performance of drop outs vs graduates on a
+semester by semester basis. Let us start by looking at the average
+grades of students in their last semester during which they are either
+graduating or dropping-out.
 \includegraphics{studentsuccess_final_report_files/figure-latex/Average-comp-1.pdf}
 
 \begin{verbatim}
@@ -486,6 +503,23 @@ graduate or drop out.
 
 \includegraphics{studentsuccess_final_report_files/figure-latex/N-1-semester-comp-1.pdf}
 
+In this data, we can clearly observe a stark difference between the
+graduates and the drop outs. First of all, note that 22\% of students
+still have a term average over 75\% in the semester in which they drop
+out. To push it further 14\% of students who drop out have an average
+grade over 80\%. The data clearly suggests that some of the drop outs
+aren't dropping out because of academic performance. Furthermore, the
+long tail of the data on the low end of performance suggests that some
+of the students stopped coming to class prior to the end of the semester
+resulting in very low grades that serve to drive their cegep average
+grades from the graph above even lower. 34\% of students have a grade
+below 40 suggesting that they have indeed stopped coming to school some
+time during the semester. What if these students hadn't stopped coming,
+would their performance be similar to that of graduates?
+
+Let us now turn our attention to the semester before the one where they
+graduate or drop out.
+
 \begin{verbatim}
 ## 
 ##  Welch Two Sample t-test
@@ -523,6 +557,18 @@ are again expecting the same trend.
 ## mean in group grad  mean in group out 
 ##           80.42574           68.93729
 \end{verbatim}
+
+\hypertarget{conclusion}{\section{Conclusion}\label{conclusion}}
+
+In conclusion, the data strongly suggests that there are approximately
+20\% of students who consistently have averages above 75\%, but still
+drop out. Therefore, that section of the drop out population is a
+section that will always go undetected if only traditional academic
+failure metrics are used to assess which students are likely to drop
+out. Students who move out to the US or the rest of Canada after their
+second semester and those who drop out by lack of interest are two
+potential student types that will always drop out no matter what
+remedial solutions are offered for them.
 
 One of the profile level Key Performance Indicators that colleges are
 supposed to specifically keep track of is third semester retention. In
@@ -866,217 +912,6 @@ Residual deviance:\strut
 \end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
-
-\hypertarget{conted}{\chapter{Continuing Education at
-Dawson}\label{conted}}
-
-** Under Construction **
-
-The department of Continuing at Education offers evening courses across
-many disciplines throughout the year. The purpose of this report is to
-give a broad overview of the demographics and sector-level metrics for
-students taking courses within Cont Ed.
-
-\section{Services}\label{services}
-
-Herein, we look at the services offered by the Division of Continuing
-Education. This section is meant to give an overview of the breadth and
-depth of the offerings outside of the regular day division.
-
-\subsection{Continuing Education's Growth over
-Time}\label{continuing-educations-growth-over-time}
-
-How have each of the departments increased their ContEd offerings over
-time?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/dept-level-sizes-over-time-1.pdf}
-
-The above figure shows that the demand for courses in the Math
-department (department 201) has steadily increased over the last seven
-years, as have the Humanities (department 345), and English (602 and
-603).
-
-\subsection{Department Level Seat
-Distributions}\label{department-level-seat-distributions}
-
-Which parts of Continuing Education are the most important in 2016?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/dept-level-sizes-2016-1.pdf}
-
-The previous plot shows that while there are many departments that
-offered courses in 2016, the bulk share were in Math, English and the
-Huamnities. Of note here are the departments that require specialized
-lab spaces, such as Chemistry (202) and Physics (203), which will be
-looked at more closely as we move forward.
-
-\subsection{Course Level
-distributions}\label{course-level-distributions}
-
-If we look at the three most important departments (Math,Humanities and
-English) in 2016, how are the seats distrinuted across courses?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/big-dept-seat-dist-by-course-1.pdf}
-
-\subsection{Specialized spaces}\label{specialized-spaces}
-
-If we look at the departments that require specialized spaces
-(i.e.~labs), in 2016, how are the seats distributed by course? - Has
-this evolved over time? - What are the seasonal variations?
-
-\subsubsection{Winter}\label{winter}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/lab-dept-seat-dist-by-course-winter-1.pdf}
-
-\subsubsection{Fall}\label{fall}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/lab-dept-seat-dist-by-course-fall-1.pdf}
-
-\subsubsection{Summer}\label{summer}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/lab-dept-seat-dist-by-course-summer-1.pdf}
-
-\section{Students}\label{students}
-
-\subsection{Demographics}\label{demographics}
-
-Who are the students using continuing education services?
-
-\begin{itemize}
-\tightlist
-\item
-  are there gender differences?
-\item
-  are there age differences?
-\item
-  do these demographics change over time?
-\item
-  are there seasonal variations?
-\item
-  are there differences in different departments?
-\end{itemize}
-
-\subsubsection{Sexe}\label{sexe}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/Sexe-demographics-over-time-1.pdf}
-
-Of note in the above figure: - English (603): 2016 marks the first year
-where male students have a passing average - Math (201): failing
-averages in all semesters - Chemistry (202): fairly consistent
-performance across time for both genders, with slightly aging
-demographic over the years - Physics (203): most consistent in academic
-performance and demographics - Computer Science (420): most widely
-varying in both dimensions across time
-
-What is impact of condensed summer term?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/Sexe-demographics-over-time-summer-1.pdf}
-
-Finally, as there seems to be relatively little change in these patterns
-over time, we can collapse all over the past seven years,
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/Sexe-demographics-1.pdf}
-
-and then add on the average grade achieved by students with the same
-gender, in the same courses from the same disciplines, but from the
-``regular'' day division.
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/Sexe-demographics-day-mean-1.pdf}
-
-What is clear from the above is that - in general, students do better in
-their day division courses than in the their Continuing Education
-Counterparts - Math is the most difficult subject both in the day
-division and in the evening - the Physics department has the smallest
-performance gap between day students and those in Continuing Education
-
-\subsubsection{Birth Place}\label{birth-place}
-
-Now, instead of looking at effect of gender, we focus instead on Birth
-Place. To Quebec residents stand out in any consistent way, as compared
-to those born elsewhere?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/birth-place-demographics-over-time-1.pdf}
-
-Some observations from the above figure: - The older students in
-Continuing Education were in large part not born in Quebec.
-
-Again, what is impact of condensed summer term?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/birth-place-demographics-over-time-summer-1.pdf}
-
-Finally, as there seems to be relatively little change in these patterns
-over time, we can collapse all over the past seven years,
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/birth-place-demographics-1.pdf}
-
-and then add on the average grade achieved by students with the same
-\textbf{birth place} (namely quebec residents vs \emph{other}), in the
-same courses from the same disciplines, but from the ``regular'' day
-division.
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/birth-place-demographics-day-mean-1.pdf}
-
-The same observation as from our study of gender demographics above
-holds: regardless of birthplace, day division students outperform their
-day division counterparts, and this gap is smallest in the physics
-department. The overall weakness in math is not limited to any one
-gender, nor explained by birth place
-
-\subsubsection{Mother Tongue}\label{mother-tongue}
-
-Finally we look at the possible impact of Mother Tongue. How do
-anglophones, francophones, and allophones compare in Continuing
-Education?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/langue-demographics-over-time-1.pdf}
-
-Again, what is impact of condensed summer term?
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/langue-demographics-over-time-summer-1.pdf}
-
-Finally, as there seems to be relatively little change in these patterns
-over time, we can collapse all over the past seven years,
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/langue-demographics-1.pdf}
-
-and then add on the average grade achieved by students with the same
-\textbf{mother tongue}, in the same courses from the same disciplines,
-but from the ``regular'' day division.
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/langue-demographics-day-mean-1.pdf}
-
-\subsection{Success Rates}\label{success-rates}
-
-There are many students who take courses through both Continuing
-Education, and the regular day division over the course of their time at
-Dawson. One way of measuring the difference in the student experience
-here would be to look at those students alone, and compare the average
-of their grades in each division, while controlling for discipline. (the
-diagonal in each facet is simply meant to provide a reference for a
-hypothetical 1-to-1 correlation.) In order to control for student
-strength, we bin by overall average of high school grades.
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-AN-1.pdf}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-FR-1.pdf}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-AU-1.pdf}
-
-The above graphic shows that stronger students seem to be able to do as
-well in their day courses as they do in their evening ones, but this is
-not the cas for weaker students. What's more, there seems to be no
-consistency across departments.
-
-The following graphic is the same as above, but instead of binning
-students by their High School Average (as a proxy for over student
-strength), we use students first term CEGEP grades, and then plot their
-performance in day and evening courses averaged over all subsequent
-terms (disaggregated again by discipline).
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-term1vsall-AN-1.pdf}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-term1vsall-FR-1.pdf}
-
-\includegraphics{studentsuccess_final_report_files/figure-latex/day-conted-same-students-term1vsall-AU-1.pdf}
 
 \hypertarget{conclusion}{\chapter{Conclusion}\label{conclusion}}
 

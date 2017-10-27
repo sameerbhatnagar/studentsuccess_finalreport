@@ -42,7 +42,7 @@ Here in we will describe
 ```
 ### Grades 
 Do students who drop out do so because of poor grades? What fraction of students are counted year after year as drop-outs and labeled as problems to be solved by the system while being exemplary students in terms of academic performance. Armed with this dataset, we can get the answer to that question. Let us begin by looking at the average grades of students who eventually dropped out compared to grades of students who haven't. The following set of graphs will look at that comparison for 3 different semesters: the semester in which they dropped out (or graduated), the semester before that and the one before that. Let us see what the data says.
-<<<<<<< HEAD
+
 
 ```{r Average comp}
 ```
@@ -82,7 +82,7 @@ Let us now turn our attention to the semester before the one where they graduate
 
 ```{r N-1-semester-comp}
 ```
-<<<<<<< HEAD
+
 ```{r}
 x<-c2[,.SD[.N],by=c("student_number")][status=="out"]$V1
 ```
@@ -103,7 +103,7 @@ x<-c2[,.SD[.N-1],by=c("student_number")][status=="out"]$V1
 ```{r}
 x<-avg_grade_last_term_minus1[status=="out"]$avg_grade
 ```
->>>>>>> 09d5dad94bfceabd1acdaa6e46b0bbf82e89c757
+
 The data clearly shows that even if there are significant differences between the groups, the drop out student population is getting closer to the graduate population. A section of `r round(sum(x>75, na.rm=T)/length(x),digits=2)*100`% is observed to have an average grade above 75%.
 
 Finally, let us look at 2 semesters before they graduate or drop-out. We are again expecting the same trend.
