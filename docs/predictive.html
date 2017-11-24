@@ -29,7 +29,7 @@
 <meta name="author" content="Nathaniel Lasry">
 
 
-<meta name="date" content="2017-10-27">
+<meta name="date" content="2017-11-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -76,8 +76,10 @@
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#objectives"><i class="fa fa-check"></i><b>2.2</b> Objectives</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="littreview.html"><a href="littreview.html"><i class="fa fa-check"></i><b>3</b> Literature</a><ul>
-<li class="chapter" data-level="3.1" data-path="littreview.html"><a href="littreview.html#modeling-success-and-attrition-in-cegep"><i class="fa fa-check"></i><b>3.1</b> Modeling success and attrition in CEGEP</a></li>
-<li class="chapter" data-level="3.2" data-path="littreview.html"><a href="littreview.html#predictive-modelling-in-learning-analytics-and-educational-data-mining"><i class="fa fa-check"></i><b>3.2</b> Predictive Modelling in Learning Analytics and Educational Data Mining</a></li>
+<li class="chapter" data-level="3.1" data-path="littreview.html"><a href="littreview.html#learning-analytics-and-educational-data-mining"><i class="fa fa-check"></i><b>3.1</b> Learning Analytics and Educational Data Mining</a></li>
+<li class="chapter" data-level="3.2" data-path="littreview.html"><a href="littreview.html#early-alert-programs-in-higher-education"><i class="fa fa-check"></i><b>3.2</b> Early Alert Programs in Higher Education</a></li>
+<li class="chapter" data-level="3.3" data-path="littreview.html"><a href="littreview.html#modeling-success-and-attrition-in-higher-education"><i class="fa fa-check"></i><b>3.3</b> Modeling success and attrition in Higher Education</a></li>
+<li class="chapter" data-level="3.4" data-path="littreview.html"><a href="littreview.html#modeling-success-and-attrition-in-cegep"><i class="fa fa-check"></i><b>3.4</b> Modeling success and attrition in CEGEP</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="descriptive.html"><a href="descriptive.html"><i class="fa fa-check"></i><b>4</b> Descriptive Statistics</a><ul>
 <li class="chapter" data-level="4.1" data-path="descriptive.html"><a href="descriptive.html#demographics-across-the-colleges-and-major-programs"><i class="fa fa-check"></i><b>4.1</b> Demographics across the colleges and major programs</a><ul>
@@ -123,7 +125,7 @@
 <div id="predictive" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Methods centered on predicting at-risk students</h1>
 <p><strong>Under construction</strong></p>
-<p>Over the last twenty years, there has an increasing amount of work in the applied social sciences that explore the use of what <span class="citation">(Breiman and others <a href="#ref-breiman2001twocultures">2001</a>)</span> refers to as “algorithmic modelling”“, as opposed to”data modelling“. He describes these as two cultures, the former being made up of mostly computer scientists, and the latter being made up statisticians (the methods therein are the ones explored in the previous chapter of this report). The key metric in such classical methods are <strong>goodness of fit</strong>, and such”explanatory“” modelling aims to find associative and causal relationships between predictors. Meanwhile, “algorithmic”“, or”predictive“” methods emphasize determining any function that maps input variables to output responses, with less regard for a probabilitic framework that allows for causation, focusing solely on emprirical precision<span class="citation">(Shmueli and others <a href="#ref-shmueli2010explain">2010</a>)</span>. In the recently published <strong>Handbok of Learning Analytics</strong><span class="citation">(Lang et al. <a href="#ref-hla2017">2017</a>)</span>, published by the Society of Learning Analytics Research, <span class="citation">(Bergner <a href="#ref-bergner_measurement_2017">2017</a>)</span> asserts that the researchers looking into educational data stand to gain from understanding the nuances of both methodologies, as previous work has shown the strengths and weakeness of either in this domain.</p>
+<p>Over the last twenty years, there has an increasing amount of work in the applied social sciences that explore the use of what <span class="citation">(Breiman and others <a href="#ref-breiman2001twocultures">2001</a>)</span> refers to as “algorithmic modelling”“, as opposed to”data modelling“. He describes these as two cultures, the former being made up of mostly computer scientists, and the latter being made up statisticians (the methods therein are the ones explored in the previous chapter of this report). The key metric in such classical methods are <strong>goodness of fit</strong>, and such”explanatory“” modelling aims to find associative and causal relationships between predictors. Meanwhile, “algorithmic”“, or”predictive“” methods emphasize determining any function that maps input variables to output responses, with less regard for a probabilistic framework that allows for causation, focusing solely on emprirical precision<span class="citation">(Shmueli <a href="#ref-shmueli2010explain">2010</a>)</span>. In the recently published <strong>Handbok of Learning Analytics</strong><span class="citation">(Lang et al. <a href="#ref-hla2017">2017</a>)</span>, published by the Society of Learning Analytics Research, <span class="citation">(Bergner <a href="#ref-bergner_measurement_2017">2017</a>)</span> asserts that the researchers looking into educational data stand to gain from understanding the nuances of both methodologies, as previous work has shown the strengths and weakeness of either in this domain.</p>
 <p>The previous chapter explored how classical statistical models can be built and used to determine what are the factors that influence dropout. This is useful for policy makers and admninstrators who want to dedicate resources in the most strategic places. However this chapter will explore models whose inner workings are less interpretable, but whose primary objective is prediction/identification of at-risk students. This is useful in the context where college administration has some blanket intervention that it would like to apply, and we just want to ensure that the students most in need are reached. Despite the less clear interpratability of factors in these <em>predictive</em> models (as compared to the <em>explanatory</em> models in the previous chapter), we will stil explore methods to “open up the black box”, and determine which features are most important in achieving both accrate and sensitive prediction.</p>
 <div id="decision-trees-and-random-forests" class="section level2">
 <h2><span class="header-section-number">6.1</span> Decision Trees and Random Forests</h2>
@@ -139,7 +141,7 @@
 <p>Breiman, Leo, and others. 2001. “Statistical Modeling: The Two Cultures (with Comments and a Rejoinder by the Author).” <em>Statistical Science</em> 16 (3). Institute of Mathematical Statistics: 199–231.</p>
 </div>
 <div id="ref-shmueli2010explain">
-<p>Shmueli, Galit, and others. 2010. “To Explain or to Predict?” <em>Statistical Science</em> 25 (3). Institute of Mathematical Statistics: 289–310.</p>
+<p>Shmueli, Galit. 2010. “To Explain or to Predict?” <em>Statistical Science</em> 25 (3). Institute of Mathematical Statistics: 289–310.</p>
 </div>
 <div id="ref-hla2017">
 <p>Lang, C., G. Siemens, Alyssa Wise, and D. Gasevic. 2017. <em>Handbook of Learning Analytics</em>. SOLAR.</p>

@@ -2,9 +2,15 @@
 
 **Under Construction **
 
+## Learning Analytics and Educational Data Mining
+Data Mining and Statistical Machine Learning methodologies can be roughly subdivided into _Predictive_ and _Explanatory_ modelling[@shmueli2010explain].  In the domain on Educational Data Mining, these two paradigms manifest themselves as well[@hla2017Liu]
+
+## Early Alert Programs in Higher Education
+[@simons2011EarlyAlert]
+
+## Modeling success and attrition in Higher Education
+ - [@singell_RHE_2010ModelingRetention]
+ - [@tinto1987Attrition] 
+
 ## Modeling success and attrition in CEGEP
-The most important relevant work for this project is [[@jorgensen2009pareafinalreport]].
-
-
-## Predictive Modelling in Learning Analytics and Educational Data Mining
-[@hla2017]
+ - The most important relevant work for this project is [@jorgensen2009pareafinalreport].
