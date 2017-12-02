@@ -3,14 +3,26 @@
 **Under Construction **
 
 ## Learning Analytics and Educational Data Mining
-Data Mining and Statistical Machine Learning methodologies can be roughly subdivided into _Predictive_ and _Explanatory_ modelling[@shmueli2010explain].  In the domain on Educational Data Mining, these two paradigms manifest themselves as well[@hla2017Liu]
+Data Mining and Statistical Machine Learning methodologies can be roughly subdivided into _Predictive_ and _Explanatory_ modelling[@shmueli2010explain].  These two paradigms manifest themselves as well in the domain on *Educational* data mining[@hla2017Liu]. 
 
-## Early Alert Programs in Higher Education
+
+## Modeling Student Attrition in Higher Education
+Some of the earliest theoretical work on persistence in higher education [@tinto1975dropout] models dropouts in higher education as a social process, resulting from poor student integration within their institution; that the probability of a student staying in school is shaped by the level of matching between the student's motivation and academic ability, with the social and academic culture of the institution [@cabrera1993StructuralEquations]. This "Student Integration Model" goes as far as claiming that attrition can serve as a "barometer of the social and intellectual health of college life"[@tinto1987Attrition].  
+
+A competing theoretical model, known generally as the "Student Attrition Model", borrows from work on "turnover"" in industry and organizations, wherein student satisfaction, and perceptions of value in their own work, directly influence their intention and decision to dropout [@bean1980dropouts],[@bean1983turnover]. While the "Student Integration Model" posits more importance on variables _internal to the institution_, the "Student Attrition Model" assigns what is observed at the college as an _outcome_, shaped by external factors, such as parental and social support, or presence of opportunities elsewhere. In Tinto's work, college grades are seen as a result of a student's integration into the institution. In contrast, [@bean1985interaction] models these same grades as a _cause_ of "dropout syndrom". 
+
+Longitudinal models of student attrition are important if we are to take into account the evolving nature of a student's ultimate decision to stop school[@tinto1975dropout], and how the timing of interventions can have an impact on the outcome[@ishitani2002longitudinal]. 
 [@simons2011EarlyAlert]
+Research on attrition from institutions of higher education [@singell_RHE_2010ModelingRetention]
 
-## Modeling success and attrition in Higher Education
- - [@singell_RHE_2010ModelingRetention]
- - [@tinto1987Attrition] 
 
 ## Modeling success and attrition in CEGEP
- - The most important relevant work for this project is [@jorgensen2009pareafinalreport].
+The most important relevant work for this project is [@jorgensen2009pareafinalreport], wherein the aim was to determine what factors were most important in attrition at an English Montreal CEGEP. Querying the academic records of over 40,000 students, the authors found that by-and-large, the most important predictor of attrition were the grades attained in high school. The effect of gender was more pronounced for weaker students, with male drop-out rates up to 10% higher than females, when their secondary overall average was below 80%. 
+
+While this work did include survey results, the methodological approach followed [@desjardins1999event], wherein the core analysis was done on large data sets that avoid expensive surveying and that are subject to low response rates, and instead used only variables that are already stored in instituional academic databases. The objective of our project is to continue this work, but with several important extensions. This will include how we:
+
+- examine attrition in the broader context of multiple institutions in the CEGEP Network, 
+- investigate the application of a more varied set of statistical modelling and machine learning techniques,
+- leverage the affordances of longitudinal data: namely, what added insight can be offered by modelling attrition based on the repeated observations of student academic performance at every semester?
+- study the impact of refined definitions of "attrition" on this research, as suggested by [@tinto1975dropout]: how can voluntary withdrawals be seperated from those dropouts resulting from academic failure? How are temporary absences and program transfers taken into account?
+
