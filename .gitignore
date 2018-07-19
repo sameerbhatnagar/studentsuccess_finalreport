@@ -7,3 +7,5 @@ _book
 _bookdown_files
 rsconnect
 .Rprofile
+*.png
+
